@@ -1,0 +1,11 @@
+@import "_variables.scss";
+
+@function xblog-color($color-map,  $color-name: default, $opacity: null){
+  $color: map-get($color-map, $color-name);
+
+  @return if($opacity, rgba($color, $opacity), $color);
+}
+
+@function xblog-component($component, $state, $property-name){
+  @return map-get(map-get($component, $state), $property-name);
+}

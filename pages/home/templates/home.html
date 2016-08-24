@@ -1,0 +1,9 @@
+<xblog-header cover="resources/images/xblog-home-cover.jpg"></xblog-header>
+
+<ngx-grid type="fluid">
+  <ngx-grid-row>
+    <ngx-grid-col size="md-12 lg-8" offset="md-1 lg-3">
+        <xblog-home-article *ngFor="let article of articles" [model]="article"></xblog-home-article>
+    </ngx-grid-col>
+  </ngx-grid-row>
+</ngx-grid>

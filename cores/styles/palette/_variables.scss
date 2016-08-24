@@ -1,0 +1,26 @@
+$xblog-color-gray: (
+  dark: hsl(204, 4%, 23%),
+  default: hsl(206, 4%, 35%),
+  light: hsl(206, 7%, 54%),
+  light-1: hsl(200, 9%, 93%)
+) !default;
+
+$xblog-color-white: (
+  dark: hsl(0, 0%, 90%),
+  default: hsl(0,0%,96%),
+  light: hsl(0,0%,100%)
+) !default;
+
+$xblog-color-black: (
+  dark-1: hsl(0,0%,0%),
+  dark: hsl(0, 0%, 20%),
+  default: hsl(0, 0%, 33%),
+  light: hsl(0,0%,60%),
+  light-1: hsl(0,0%,80%)
+) !default;
+
+$xblog-color-green: (
+  dark: hsl(120, 39%, 44%),
+  default: hsl(120, 39%, 54%),
+  light: hsl(103, 44%, 79%)
+) !default;

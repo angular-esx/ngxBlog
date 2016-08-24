@@ -1,0 +1,5 @@
+@import './_variables.scss';
+
+@function xblog-breakpoint($breakpoint-name){
+  @return map-get($xblog-breakpoints, $breakpoint-name);
+}

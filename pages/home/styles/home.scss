@@ -1,0 +1,7 @@
+@import './_variables.scss';
+
+:host(.xblog-home) {
+  > .xblog-header {
+    margin: $xblog-home-header-margin;
+  }
+}

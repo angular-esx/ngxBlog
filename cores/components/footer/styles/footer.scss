@@ -1,0 +1,25 @@
+@import "../../../styles/state/state.scss";
+
+@import "./variables.scss";
+
+:host(.xblog-footer) {
+  display: block;
+  padding: $xblog-footer-padding;
+  text-align: center;
+
+  > .xblog-footer-social-link {
+    padding: $xblog-footer-social-link-padding;
+    color: xblog-component($xblog-footer-social-link, default, foreground-color);
+
+    @include xblog-state(footer-social-link, 'focus hover') {
+      text-decoration: none;
+      color: xblog-component($xblog-footer-social-link, hover, foreground-color);
+    }
+  }
+
+  > .xblog-footer-copyright {
+    font-size: $xblog-footer-copyright-font-size;
+    text-align: center;
+    margin: $xblog-footer-copyright-margin;
+  }
+}

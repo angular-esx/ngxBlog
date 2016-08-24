@@ -1,0 +1,17 @@
+@import "./_variables.scss";
+
+@function xblog-font-size($size-name){
+  @return map-get($xblog-font-sizes, $size-name);
+}
+
+@function xblog-h-font-size($size-name){
+  @return map-get($xblog-h-font-sizes, $size-name);
+}
+
+@function xblog-line-height($line-height-name){
+  @return map-get($xblog-line-heights, $line-height-name);
+}
+
+@function xblog-font-weight($font-weight-name){
+  @return map-get($xblog-font-weights, $font-weight-name);
+}

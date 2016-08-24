@@ -1,0 +1,13 @@
+{
+  "name": "ngx-blog",
+  "version": "0.0.1",
+  "authors": [
+    "Minh Van <minh.van1789@gmail.com>"
+  ],
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "ngxBootstrap": "git@github.com:angular-esx/ngx-bootstrap.git#refactor-scss/ngxBootstrap"
+  },
+  "overrides": {}
+}

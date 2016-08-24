@@ -1,0 +1,18 @@
+@import "../../../styles/typography/typography.scss";
+@import "../../../styles/palette/palette.scss";
+
+$xblog-header-foreground-color: xblog-color($xblog-color-white);
+
+$xblog-header-site-heading-font-size: xblog-h-font-size(h1);
+$xblog-header-site-heading-font-size-md: $xblog-header-site-heading-font-size * 1.6;
+
+$xblog-header-subheading-font-family: $xblog-font-family-sans-serif;
+$xblog-header-subheading-font-size: xblog-font-size(lg);
+$xblog-header-subheading-font-weight: xblog-font-weight(300);
+$xblog-header-subheading-line-height: xblog-line-height(sm);
+$xblog-header-subheading-margin: .5rem 0 0;
+
+$xblog-header-hr-width-max: 270px;
+$xblog-header-hr-border-width: 4px;
+$xblog-header-hr-border-top-color: xblog-color($xblog-color-white);
+$xblog-header-hr-margin: 20px auto;

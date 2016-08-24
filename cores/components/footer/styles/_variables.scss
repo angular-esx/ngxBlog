@@ -1,0 +1,17 @@
+@import "../../../styles/typography/typography.scss";
+@import "../../../styles/palette/palette.scss";
+
+$xblog-footer-padding: 2.5rem 0 3.25rem;
+
+$xblog-footer-social-link-padding: 0 .25rem;
+$xblog-footer-social-link: (
+  hover: (
+    foreground-color: xblog-color($xblog-color-green)
+  ),
+  default: (
+    foreground-color: xblog-color($xblog-color-black, dark)
+  )
+);
+
+$xblog-footer-copyright-font-size: xblog-font-size(xs);
+$xblog-footer-copyright-margin: .5rem 0 0;
