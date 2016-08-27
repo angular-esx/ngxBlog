@@ -1,0 +1,77 @@
+@import "../../../../cores/styles/state/state.scss";
+
+@import './_variables.scss';
+
+:host(.xblog-post){
+  display: block;
+  box-shadow: $xblog-post-box-shadow;
+
+  & .ngx-card {
+    border-radius: 0;
+    border: none;
+
+    & ngx-card-title > a {
+      font-weight: $xblog-post-title-font-weight;
+      text-decoration: none;
+      color: xblog-component($xblog-post-title, default, foreground-color);
+
+      @include xblog-state($xblog-post-title, 'focus hover') {
+        color: xblog-component($xblog-post-title, hover, foreground-color);
+      }
+
+      > p {
+        margin: 0;
+        overflow: hidden;
+      }
+    }
+
+    & ngx-card-subtitle {
+      font-style: $xblog-post-subtitle-font-style;
+    }
+
+    & ngx-card-text > p {
+      overflow: hidden;
+      max-height: $xblog-post-description-max-height;
+    }
+  }
+
+  &.xblog-post-size-large {
+    & ngx-card-title > a {
+      font-size: $xblog-post-title-font-size-large;
+      
+      > p {
+        white-space: nowrap;
+        text-overflow: ellipsis;
+      }
+    }
+
+    & ngx-card-subtitle {
+      font-size: $xblog-post-subtitle-font-size-large;
+    }
+  }
+
+  &.xblog-post-size-small {
+    > .ngx-card {
+      //height: $xblog-post-height-small;
+
+      & ngx-card-title {
+        display: flex;
+        align-items: center;
+        height: $xblog-post-title-height-small;
+        margin: 0;
+        
+        > a {
+          font-size: $xblog-post-title-font-size-small;
+        }
+      }
+
+      & ngx-card-subtitle {
+        font-size: $xblog-post-subtitle-font-size-small;
+      }
+
+      & ngx-card-text > p {
+        font-size: $xblog-post-description-font-size-small;
+      }
+    }
+  }
+}

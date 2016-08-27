@@ -1,0 +1,32 @@
+@import "../../../../cores/styles/palette/palette.scss";
+@import "../../../../cores/styles/typography/typography.scss";
+
+//$xblog-post-height-small: 200px;
+$xblog-post-box-shadow: 0 1px 4px 0 rgba(0,0,0,0.14);
+
+
+$xblog-post-title-font-size-large: xblog-h-font-size(h3);
+$xblog-post-title-font-size-small: xblog-h-font-size(h5);
+
+$xblog-post-title-font-weight: xblog-font-weight(bold-2);
+
+$xblog-post-title-height-small: xblog-max-height(xblog-line-height(base), 2);
+
+$xblog-post-title: (
+  hover: (
+    foreground-color: xblog-color($xblog-color-green)
+  ),
+  default: (
+    foreground-color: xblog-color($xblog-color-black, dark)
+  )
+);
+
+
+$xblog-post-subtitle-font-size-large: xblog-font-size(sm);
+$xblog-post-subtitle-font-size-small: xblog-font-size(xs);
+$xblog-post-subtitle-font-style: italic;
+
+
+$xblog-post-description-font-size-small: xblog-font-size(sm);
+
+$xblog-post-description-max-height: xblog-max-height(xblog-line-height(base), 2);
