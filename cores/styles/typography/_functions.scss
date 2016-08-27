@@ -15,3 +15,7 @@
 @function xblog-font-weight($font-weight-name){
   @return map-get($xblog-font-weights, $font-weight-name);
 }
+
+@function xblog-max-height($line-height, $line-number, $unit: em){
+  @return #{$line-height * $line-number}$unit;
+}
