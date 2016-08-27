@@ -14,35 +14,31 @@
     background-attachment: scroll;
     background-repeat: no-repeat;
     background-position: center center;
-    height: 50vh;
+    min-height: 50vh;
 
-    & .xblog-header-site-heading {
-      text-align: center;
-      h1 {
-        margin-top: 0;
-        font-size: $xblog-header-site-heading-font-size;
+    > .ngx-grid {
+      width: 100%;
+
+      & h1[xblog-header-main] {
+        text-align: center;
+        font-size: $xblog-header-main-font-size;
       }
-      @media (min-width: xblog-breakpoint(md)) {
-        h1 {
-          font-size: $xblog-header-site-heading-font-size-md;
-        }
+
+      & hr[xblog-header-divider] {
+        width: $xblog-header-divider-width;
+        margin: $xblog-header-divider-margin;
+        border-width: $xblog-header-divider-border-width;
+        border-top-color: $xblog-header-divider-border-top-color !important;
       }
-    }
 
-    & hr {
-      max-width: $xblog-header-hr-width-max;
-      margin: $xblog-header-hr-margin;
-      border-width: $xblog-header-hr-border-width;
-      border-top-color: $xblog-header-hr-border-top-color !important;
-    }
-
-    & .xblog-subheading {
-      display: block;
-      font-family: $xblog-header-subheading-font-family;
-      font-size: $xblog-header-subheading-font-size;
-      font-weight: $xblog-header-subheading-font-weight;
-      line-height: $xblog-header-subheading-line-height;
-      margin: $xblog-header-subheading-margin;
+      & xblog-header-sub {
+        display: block;
+        text-align: center;
+        font-family: $xblog-header-sub-font-family;
+        font-size: $xblog-header-sub-font-size;
+        font-weight: $xblog-header-sub-font-weight;
+        margin: $xblog-header-sub-margin;
+      }
     }
   }
 }

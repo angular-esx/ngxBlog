@@ -3,7 +3,7 @@ import * as ngCore from '@angular/core';
 import { DomSanitizationService } from '@angular/platform-browser';
 
 import { 
-  ngxJumbotronComponent, 
+  NGX_GRID_DIRECTIVES, 
   NGX_JUMBOTRON_DIRECTIVES 
 } from 'ngx-bootstrap/components';
 
@@ -31,7 +31,10 @@ export var headerComponent = ngCore.Component({
   selector: 'xblog-header',
   templateUrl: './templates/header.html',
   styleUrls: ['./styles/header.scss'],
-  directives: [ NGX_JUMBOTRON_DIRECTIVES ],
+  directives: [
+    NGX_GRID_DIRECTIVES, 
+    NGX_JUMBOTRON_DIRECTIVES 
+  ],
   properties: [ 'cover' ],
   host: {
     '[class.xblog-header]': 'true'

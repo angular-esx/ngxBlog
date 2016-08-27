@@ -1,7 +1,13 @@
 <ngx-jumbotron [style.background-image]="backgroundImage">
-  <div class="xblog-header-site-heading">
-    <h1>$ngx</h1>
-    <hr>
-    <span class="xblog-header-subheading">This is blog for $ngx</span>
-  </div>
+  <ngx-grid type="fluid">
+    <ngx-grid-row>
+      <ngx-grid-col size="md-12 lg-8" offset="md-1 lg-3">
+          <ng-content select="h1[xblog-header-main]"></ng-content>
+  
+          <ng-content select="hr[xblog-header-divider]"></ng-content>
+
+          <ng-content select="xblog-header-sub"></ng-content>
+      </ngx-grid-col>
+    </ngx-grid-row>
+  </ngx-grid>
 </ngx-jumbotron>
