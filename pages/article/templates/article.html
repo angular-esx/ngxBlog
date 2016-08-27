@@ -1,0 +1,29 @@
+<xblog-header [cover]="article.cover">
+  <h1 xblog-header-main>{{article.title}}</h1>
+
+  <hr xblog-header-divider />
+
+  <xblog-header-sub>{{article.postedDate}}</xblog-header-sub> 
+</xblog-header>
+
+<ngx-grid class="xblog-article-content-section" type="fluid">
+  <ngx-grid-row>
+    <ngx-grid-col size="md-12 lg-8" offset="md-1 lg-3">
+        <article [innerHtml]="article.content"></article>
+    </ngx-grid-col>
+  </ngx-grid-row>
+</ngx-grid>
+
+<h2 class="xblog-article-related-posts-section-title">Related Articles</h2>
+
+<ngx-grid class="xblog-article-related-posts-section" type="fluid">
+  <ngx-grid-row>
+    <ngx-grid-col size="lg-10" offset="lg-2">
+      <ngx-grid-row>
+        <ngx-grid-col *ngFor="let relatedPost of article.relatedPosts" size="xs-12 md-6 lg-4">
+          <xblog-post size="small" [model]="relatedPost"></xblog-post>
+        </ngx-grid-col>
+      </ngx-grid-row>
+    </ngx-grid-col>
+  </ngx-grid-row>
+</ngx-grid>

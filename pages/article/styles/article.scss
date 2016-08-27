@@ -1,0 +1,15 @@
+@import './_variables.scss';
+
+:host(.xblog-article) {
+  > .xblog-article-content-section {
+    margin: $xblog-article-content-section-margin;
+  }
+
+  > .xblog-article-related-posts-section-title {
+    text-align: center;
+  }
+
+  > .xblog-article-related-posts-section {
+    margin: $xblog-article-related-posts-section-margin;
+  }
+}
