@@ -9,12 +9,6 @@ function _initRoute(){
   var _configs = [];
 
   NAVIGATIONS.forEach(function(navigation){
-    // if(navigation.useAsDefault){
-    //   _configs.push({
-    //     path: '/',
-    //     redirectTo: '/blog'
-    //   });
-    // }
     _configs.push(_createRoute(navigation));
   });
 
@@ -23,9 +17,9 @@ function _initRoute(){
 
 function _createRoute(navigation){
   return {
-    path: navigation.useAsDefault ? '/blog' : '/blog' + navigation.path,
+    path: navigation.useAsDefault ? '/' : navigation.path,
     name: navigation.name,
-    component: navigation.module,
+    component: navigation.component,
     useAsDefault: navigation.useAsDefault
   };
 }

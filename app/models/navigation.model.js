@@ -1,15 +1,19 @@
 import { ngxUtils } from 'ngx-bootstrap/cores';
 
-import { homePage } from '../../pages';
+import { 
+  homePage, 
+  articlePage 
+} from '../../pages';
 
 export var NAVIGATIONS = [
-  new _navigation('/home', 'Home', homePage, null, true)
+  new _navigation('/home', 'Home', homePage, null, true),
+  new _navigation('/article', 'Article', articlePage)
 ];
 
 function _navigation(path, name, page, params, useAsDefault){
   this.path = path;
   this.name = name;
-  this.module = page;
+  this.component = page;
   this.params = params;
   this.useAsDefault = useAsDefault;
 
