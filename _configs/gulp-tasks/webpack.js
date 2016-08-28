@@ -1,18 +1,18 @@
-function _task(params){
+function _task(params) {
   var _webpackConfig = require('../webpack/webpack-common')(params.plugins);
   var _baseTask = require('./baseTask')();
 
-  _baseTask.run = function(){
+  _baseTask.run = function () {
     var _envt = require('../envts')(this.args);
     var _webpack = this.webpack;
     var _unminifiedWebpackPlugin = this.unminifiedWebpackPlugin;
     var _deferred = this.q.defer();
 
-    var _getEntry = function(name) {
+    var _getEntry = function (name) {
       return _envt
-      .getJsDest(name)
-      .replace('./', '')
-      .replace('.js', '');
+        .getJsDest(name)
+        .replace('./', '')
+        .replace('.js', '');
     };
 
     _webpackConfig.entry = {};
@@ -24,10 +24,16 @@ function _task(params){
     };
 
     _webpackConfig.plugins.push(
-      // new _webpack.optimize.UglifyJsPlugin({
-      //   compress: { warnings: false }
-      // }),
-      // new _unminifiedWebpackPlugin(),
+      new _webpack.optimize.UglifyJsPlugin({
+        compress: {
+          warnings: false,
+          keep_fnames: true
+        },
+        mangle: {
+          keep_fnames: true
+        }
+      }),
+      new _unminifiedWebpackPlugin(),
       new _webpack.optimize.DedupePlugin(),
       new _webpack.optimize.CommonsChunkPlugin({
         name: [
