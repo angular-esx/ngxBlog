@@ -1,7 +1,5 @@
-var baseEnvt = require('./_envt');
+import { BaseEnvt } from './_envt';
 
-var exports = Object.assign({}, baseEnvt, {
+export class DeverlopEnvt extends BaseEnvt {
 
-});
-
-module.exports = exports; 
+}

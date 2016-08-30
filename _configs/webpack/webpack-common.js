@@ -1,10 +1,11 @@
-function _webpackConfig(gulpPlugins) {
-  var _path = require('path');
+import * as path from 'path';
 
-  return {
-    context: _path.resolve(__dirname, '../..'),
-    plugins: [],
-    module: {
+export class WebpackConfig {
+  constructor(gulpPlugins) {
+    this.context = path.resolve(__dirname, '../..');
+    this.postcss = () => [gulpPlugins.autoprefixer];
+    this.plugins = [];
+    this.module = {
       loaders: [
         {
           test: /\.js$/,
@@ -21,11 +22,6 @@ function _webpackConfig(gulpPlugins) {
           ].join('')
         }
       ]
-    },
-    postcss: function () {
-      return [gulpPlugins.autoprefixer];
-    }
-  };
+    };
+  }
 }
-
-module.exports = _webpackConfig;

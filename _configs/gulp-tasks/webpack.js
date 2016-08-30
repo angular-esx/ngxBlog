@@ -1,70 +1,75 @@
-function _task(params) {
-  var _webpackConfig = require('../webpack/webpack-common')(params.plugins);
-  var _baseTask = require('./baseTask')();
+import { BaseTask } from './baseTask';
+import { Envt } from '../envts';
+import { WebpackConfig } from '../webpack/webpack-common';
 
-  _baseTask.run = function () {
-    var _envt = require('../envts')(this.args);
-    var _webpack = this.webpack;
-    var _unminifiedWebpackPlugin = this.unminifiedWebpackPlugin;
-    var _deferred = this.q.defer();
+export let WebpackTask = (() => {
+  let _webpackConfig = new WeakMap();
 
-    var _getEntry = function (name) {
-      return _envt
-        .getJsDest(name)
-        .replace('./', '')
-        .replace('.js', '');
-    };
+  class WebpackTask extends BaseTask {
+    constructor(params) {
+      super(params);
+      _webpackConfig.set(this, new WebpackConfig(params.plugins));
+    }
 
-    _webpackConfig.entry = {};
-    _webpackConfig.entry[_getEntry('xblog')] = ['./app/router.js'];
-    _webpackConfig.entry[_getEntry('main')] = ['./app/main.js'];
+    run() {
+      let _envt = new Envt(this.args);
+      let _deferred = this.q.defer();
+      let _baseConfig = _webpackConfig.get(this);
 
-    _webpackConfig.output = {
-      filename: '[name].js'
-    };
+      let _getEntry = (name) => _envt
+      .getJsDest(name)
+      .replace('./', '')
+      .replace('.js', '');
+      
+      _baseConfig.entry = {};
+      _baseConfig.entry[_getEntry('xblog')] = ['./app/router.js'];
+      _baseConfig.entry[_getEntry('main')] = ['./app/main.js'];
 
-    _webpackConfig.plugins.push(
-      new _webpack.optimize.UglifyJsPlugin({
-        compress: {
-          warnings: false,
-          keep_fnames: true
-        },
-        mangle: {
-          keep_fnames: true
+      _baseConfig.output = {
+        filename: '[name].js'
+      };
+
+      _baseConfig.plugins.push(
+        new this.webpack.optimize.UglifyJsPlugin({
+          compress: {
+            warnings: false,
+            keep_fnames: true
+          },
+          mangle: {
+            keep_fnames: true
+          }
+        }),
+        new this.unminifiedWebpackPlugin(),
+        new this.webpack.optimize.DedupePlugin(),
+        new this.webpack.optimize.CommonsChunkPlugin({
+          name: [
+            _getEntry('main'),
+            _getEntry('xblog')
+          ],
+        })
+      );
+
+      this.webpack(_baseConfig, (ex, stats) => {
+        if (ex) {
+          console.log(ex);
+          _deferred.reject();
         }
-      }),
-      new _unminifiedWebpackPlugin(),
-      new _webpack.optimize.DedupePlugin(),
-      new _webpack.optimize.CommonsChunkPlugin({
-        name: [
-          _getEntry('main'),
-          _getEntry('xblog')
-        ],
-      })
-    );
 
-    _webpack(_webpackConfig, function (ex, stats) {
-      if (ex) {
-        console.log(ex);
-        _deferred.reject();
-      }
+        if (stats) {
+          console.log(stats.toString({
+            colors: true,
+            children: false,
+            chunks: false,
+            modules: false
+          }));
+        }
 
-      if (stats) {
-        console.log(stats.toString({
-          colors: true,
-          children: false,
-          chunks: false,
-          modules: false
-        }));
-      }
+        _deferred.resolve();
+      });
 
-      _deferred.resolve();
-    });
+      return _deferred.promise;
+    }
+  }
 
-    return _deferred.promise;
-  };
-
-  return _baseTask.getStream(params);
-}
-
-module.exports = _task;
+  return WebpackTask;
+})();

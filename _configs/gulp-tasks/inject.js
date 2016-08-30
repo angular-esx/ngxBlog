@@ -1,8 +1,10 @@
-function _task (params){
-  var _baseTask = require('./baseTask')();
+import { BaseTask } from './baseTask';
+import { Envt } from '../envts';
 
-  _baseTask.run = function(){
-    var _envt = require('../envts')(this.args);
+export class InjectTask extends BaseTask {
+  run() {
+    let _envt = new Envt(this.args);
+
     var _notReadOption = { read: false };
     
     var _polyfillStream = this.gulp
@@ -42,9 +44,5 @@ function _task (params){
       _polyfillStream,
       _injectStream
     );
-  };
-
-  return _baseTask.getStream(params);
+  }
 }
-
-module.exports = _task;

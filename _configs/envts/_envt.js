@@ -1,44 +1,42 @@
-var _envt = {
-  minify: false,
-  distPath: './dist/',
-  jsPath: 'js/',
-  cssPath: 'css/',
-  imgPath: 'resources/images/',
-  iconFontPath: 'resources/icons/fonts/',
-  articlePath: 'articles/'
-};
-
-_envt.getIndexDest = function() {
-  return 'index.html';
-};
-
-_envt.getJsDest = function(path) {
-  return this.getDest(this.jsPath, path);
-};
-
-_envt.getCssDest = function(path) {
-  return this.getDest(this.cssPath, path);
-};
-
-_envt.getImgDest = function(path) {
-  return this.getDest(this.imgPath, path);
-};
-
-_envt.getIconFontDest = function(path) {
-  return this.getDest(this.iconFontPath, path);
-};
-
-_envt.getArticleDest = function(path) {
-  return this.getDest(this.articlePath, path);
-};
-
-_envt.getDest = function() {
-  var _path = '';
-  for (var i = 0; i < arguments.length; i++) {
-    _path += arguments[i] || '';
+export class BaseEnvt {
+  constructor() {
+    this.minify = false;
+    this.distPath = './dist';
+    this.jsPath = 'js';
+    this.cssPath = 'css';
+    this.imgPath = 'resources/images';
+    this.iconFontPath = 'resources/icons/fonts';
+    this.articlePath = 'articles';
   }
 
-  return this.distPath + _path;
-};
+  getIndexDest()	{
+    return 'index.html';
+  }
 
-module.exports = _envt;
+  getJsDest(path) {
+    return this.getDest(this.jsPath, path);
+  }
+
+  getCssDest(path) {
+    return this.getDest(this.cssPath, path);
+  }
+
+  getImgDest(path) {
+    return this.getDest(this.imgPath, path);
+  }
+
+  getIconFontDest(path) {
+    return this.getDest(this.iconFontPath, path);
+  }
+
+  getArticleDest(path) {
+    return this.getDest(this.articlePath, path);
+  }
+
+  getDest(...args) {
+    let _path = '';
+    args.forEach(arg => _path += `/${arg}`);
+
+    return `${this.distPath}${_path}`;
+  }
+}

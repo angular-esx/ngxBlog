@@ -1,13 +1,10 @@
-function _task (params){
-  var _baseTask = require('./baseTask')();
+import { BaseTask } from './baseTask';
+import { Envt } from '../envts';
 
-  _baseTask.run = function(){
-    var _envt = require('../envts')(this.args);
+export class CleanTask extends BaseTask {
+  run() {
+    let _envt = new Envt(this.args);
 
-    this.del.sync([_envt.distPath + '**']);
-  };
-
-  return _baseTask.getStream(params);
+     this.del.sync([`${_envt.distPath}/**`]);
+  }
 }
-
-module.exports = _task;

@@ -1,32 +1,25 @@
-function _task (params){
-  var _baseTask = require('./baseTask')();
+import { BaseTask } from './baseTask';
 
-  _baseTask.run = function(){
-    var _runSequence = this.runSequence;
+export class WatchTask extends BaseTask {
+  run() {
+    let _envt = new Envt(this.args);
 
     this.gulp.watch([
       './cores/**/*.js',
       './pages/**/*.js'
-    ], function () {
-      _runSequence('lint', 'webpack', 'reload');
-    });
+    ], 
+    () => this.runSequence('lint', 'webpack', 'reload'));
 
     this.gulp.watch([
       './cores/**/*.html',
       './pages/**/*.html'
-    ], function () {
-      _runSequence('webpack', 'reload');
-    });
+    ],
+    () => this.runSequence('webpack', 'reload'));
 
     this.gulp.watch([
       './cores/**/*.scss',
       './pages/**/*.scss'
-    ], function () {
-      _runSequence('scss', 'webpack', 'reload');
-    });
-  };
-
-  return _baseTask.getStream(params);
+    ], 
+    () => this.runSequence('scss', 'webpack', 'reload'));
+  }
 }
-
-module.exports = _task;

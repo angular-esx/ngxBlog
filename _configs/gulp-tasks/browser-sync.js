@@ -1,8 +1,9 @@
-function _task (params){
-  var _baseTask = require('./baseTask')();
+import { BaseTask } from './baseTask';
+import { Envt } from '../envts';
 
-  _baseTask.run = function(){
-    var _envt = require('../envts')(this.args);
+export class BrowserSyncTask extends BaseTask {
+  run() {
+    let _envt = new Envt(this.args);
 
     this.browserSync({
       server: {
@@ -13,9 +14,5 @@ function _task (params){
       open: true,
       notify: false
     });
-  };
-
-  return _baseTask.getStream(params);
+  }
 }
-
-module.exports = _task;

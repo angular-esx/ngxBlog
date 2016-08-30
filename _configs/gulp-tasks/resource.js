@@ -1,10 +1,11 @@
-function _task (params){
-  var _baseTask = require('./baseTask')();
+import { BaseTask } from './baseTask';
+import { Envt } from '../envts';
 
-  _baseTask.run = function(){
-    var _envt = require('../envts')(this.args);
+export class ResourceTask extends BaseTask {
+  run() {
+    let _envt = new Envt(this.args);
 
-    var _iconFontStream = this.gulp
+    let _iconFontStream = this.gulp
     .src([
       './cores/resources/icons/fonts/fontAwesome.otf',
       './cores/resources/icons/fonts/fontAwesome-webfont.eot',
@@ -13,25 +14,17 @@ function _task (params){
       './cores/resources/icons/fonts/fontAwesome-webfont.woff',
       './cores/resources/icons/fonts/fontAwesome-webfont.woff2'
     ])
-    .pipe(this.rename(function(file){ 
-      file.dirname = '';
-    }))
+    .pipe(this.rename(file => file.dirname = ''))
     .pipe(this.gulp.dest(_envt.getIconFontDest()));
 
-    var _imageStream = this.gulp
+    let _imageStream = this.gulp
     .src('./pages/**/resources/images/*.jpg')
-    .pipe(this.rename(function(file){ 
-      file.dirname = '';
-    }))
+    .pipe(this.rename(file => file.dirname = ''))
     .pipe(this.gulp.dest(_envt.getImgDest()));
 
     return this.mergeStream(
       _iconFontStream,
       _imageStream
     );
-  };
-
-  return _baseTask.getStream(params);
+  }
 }
-
-module.exports = _task;

@@ -1,7 +1,9 @@
-var baseEnvt = require('./_envt');
+import { BaseEnvt } from './_envt';
 
-var exports = Object.assign({}, baseEnvt, {
-  minify: true
-});
+export class ProductionEnvt extends BaseEnvt {
+  constructor() {
+    super();
 
-module.exports = exports; 
+    this.minify = true;
+  }
+}

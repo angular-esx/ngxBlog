@@ -1,10 +1,11 @@
-function _task (params){
-  var _baseTask = require('./baseTask')();
-  
-  _baseTask.run = function(){
-    var _envt = require('../envts')(this.args);
+import { BaseTask } from './baseTask';
+import { Envt } from '../envts';
 
-    var _vendorCssStream = this.gulp
+export class ScssTask extends BaseTask {
+  run() {
+    let _envt = new Envt(this.args);
+    
+    let _vendorCssStream = this.gulp
     .src([
       './node_modules/ngx-bootstrap/cores/scss/normalize/normalize.scss',
       './node_modules/ngx-bootstrap/cores/scss/ngx-bootstrap.scss'
@@ -13,10 +14,10 @@ function _task (params){
     .pipe(this.concat('vendor.css'))
     .pipe(this.gulp.dest(_envt.getCssDest()));
 
-    var _iconFontStream = this.gulp.src('./cores/resources/icons/fonts/fonts.scss')
+    let _iconFontStream = this.gulp.src('./cores/resources/icons/fonts/fonts.scss')
     .pipe(this.sass({ outputStyle: 'compressed' }).on('error', this.sass.logError));
 
-    var _xBlogCssStream = this.gulp.src('./cores/styles/xblog.scss');
+    let _xBlogCssStream = this.gulp.src('./cores/styles/xblog.scss');
     if(_envt.minify){
       _xBlogCssStream = _xBlogCssStream
       .pipe(this.sass({ outputStyle: 'compressed' }).on('error', this.sass.logError));
@@ -34,9 +35,5 @@ function _task (params){
       _vendorCssStream,
       _xBlogCssStream
     );
-  };
-
-  return _baseTask.getStream(params);
+  }
 }
-
-module.exports = _task;

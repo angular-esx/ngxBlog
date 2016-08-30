@@ -1,28 +1,27 @@
-function _baseTask(){
-  var _self = this;
-
-  this.run = function(){
-    throw 'run() is required for implement';
-  };
-
-  this.getStream = function(params){
-    _assign(params);
-    
-    return function(){ return _self.run(); };
-  };
-
-  function _assign(params){
-    for(var prop in params){
+export class BaseTask {
+  constructor(params) {
+    Object.keys(params).map(prop => {
       if(prop === 'plugins'){
-        for (var plugin in params.plugins) {
-          _self[plugin] = params.plugins[plugin];
-        }
+        Object.keys(params.plugins).map(plugin => {
+          if(plugin === 'yargs'){
+            this.args = params.plugins.yargs.argv;
+          }
+          else{
+            this[plugin] = params.plugins[plugin];
+          }
+        });
       }
       else{
-        _self[prop] = params[prop];
+        this[prop] = params[prop];
       }
-    }
+    });
+  }
+
+  run() {
+    throw 'run() is required for implement';
+  }
+
+  getStream() {
+    return () => this.run();
   }
 }
-
-module.exports = function(){ return new _baseTask(); };

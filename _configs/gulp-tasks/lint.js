@@ -1,7 +1,7 @@
-function _task (params){
-  var _baseTask = require('./baseTask')();
+import { BaseTask } from './baseTask';
 
-  _baseTask.run = function(){
+export class LintTask extends BaseTask {
+  run() {
     return this.gulp
     .src([
       './cores/**/*.js',
@@ -12,9 +12,5 @@ function _task (params){
     ])
     .pipe(this.jshint('./_configs/jshint/.jshintrc'))
     .pipe(this.jshint.reporter(this.jshintStylish));
-  };
-
-  return _baseTask.getStream(params);
+  }
 }
-
-module.exports = _task;

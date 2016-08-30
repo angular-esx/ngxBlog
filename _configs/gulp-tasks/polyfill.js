@@ -1,8 +1,9 @@
-function _task (params){
-  var _baseTask = require('./baseTask')();
+import { BaseTask } from './baseTask';
+import { Envt } from '../envts';
 
-  _baseTask.run = function(){
-    var _envt = require('../envts')(this.args);
+export class PolyfillTask extends BaseTask {
+  run() {
+    let _envt = new Envt(this.args);
 
     return this.gulp
     .src([
@@ -12,9 +13,5 @@ function _task (params){
       './node_modules/reflect-metadata/Reflect.js'
     ])
     .pipe(this.gulp.dest(_envt.getJsDest()));
-  };
-
-  return _baseTask.getStream(params);
+  }
 }
-
-module.exports = _task;

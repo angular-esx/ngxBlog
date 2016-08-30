@@ -1,22 +1,36 @@
-module.exports = function (args) {
-  return new _envt({
-    envt: args.envt || 'develop'
-  });
-};
+import { BaseEnvt } from './_envt';
+import { DeverlopEnvt } from './envt.develop';
+import { ProductionEnvt } from './envt.production';
 
-function _envt(options) {
-  _init(this, options);
+export class Envt extends BaseEnvt {
+  constructor(options) {
+    super(options);
+    
+    let _envt;
 
-  function _init(context, options) {
-    var _envt = require('./envt.' + options.envt);
-
-    for (var prop in _envt) {
-      if(_envt[prop] && options[prop]){
-        context[prop] = options[prop];
-      }
-      else if(_envt[prop] && !options[prop]){
-        context[prop] = _envt[prop];
+    if(!options.envt){ 
+      _envt = new DeverlopEnvt(); 
+    }
+    else{
+      switch(options.envt){
+        case 'develop':
+          _envt = new DeverlopEnvt();
+          break;
+        case 'production':
+          _envt = new ProductionEnvt();
+          break;
+        default:
+          throw `Not found envt: ${options.envt}`;
       }
     }
+
+    Object.keys(_envt).map(prop => {
+      if(_envt[prop] && options[prop]){
+        this[prop] = options[prop];
+      }
+      else if(_envt[prop] && !options[prop]){
+        this[prop] = _envt[prop];
+      }
+    });
   }
 }
