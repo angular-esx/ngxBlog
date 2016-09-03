@@ -1,2 +1,2 @@
-export { homePage } from './home';
-export { articlePage } from './article';
+export { homePage, homeService } from './home';
+export { articlePage, articleService } from './article';

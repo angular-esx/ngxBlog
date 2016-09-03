@@ -20,8 +20,8 @@
   <ngx-grid-row>
     <ngx-grid-col size="lg-10" offset="lg-2">
       <ngx-grid-row>
-        <ngx-grid-col *ngFor="let relatedPost of article.relatedPosts" size="xs-12 md-6 lg-4">
-          <xblog-post size="small" [model]="relatedPost"></xblog-post>
+        <ngx-grid-col *ngFor="let relatedArticle of article.relatedArticles" size="xs-12 md-6 lg-4">
+          <xblog-post size="small" [model]="relatedArticle"></xblog-post>
         </ngx-grid-col>
       </ngx-grid-row>
     </ngx-grid-col>
