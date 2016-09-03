@@ -1,25 +1,31 @@
-import * as ngRouter from '@angular/router-deprecated';
-
-import { application } from './app';
 import { NAVIGATIONS } from './models/navigation.model';
 
-ngRouter.RouteConfig(_initRoute())(application);
+export var router = _initRoute();
 
 function _initRoute(){
   var _configs = [];
 
   NAVIGATIONS.forEach(function(navigation){
     _configs.push(_createRoute(navigation));
+    
+    if(navigation.useAsDefault){
+      _configs.push(_createIndexRoute(navigation));
+    }
   });
 
   return _configs;
 }
 
-function _createRoute(navigation){
+function _createIndexRoute(navigation){
   return {
-    path: navigation.useAsDefault ? '/' : navigation.path,
-    name: navigation.name,
-    component: navigation.component,
-    useAsDefault: navigation.useAsDefault
+    path: '',
+    component: navigation.component
+  };
+}
+
+function _createRoute(navigation, useAsDefault){
+  return {
+    path: navigation.path,
+    component: navigation.component
   };
 }

@@ -6,19 +6,18 @@ import {
 } from '../../pages';
 
 export var NAVIGATIONS = [
-  new _navigation('/home', 'Home', homePage, null, true),
-  new _navigation('/article', 'Article', articlePage)
+  new _navigation('blog', homePage, null, true),
+  new _navigation('blog/articles/:id', articlePage)
 ];
 
-function _navigation(path, name, page, params, useAsDefault){
+function _navigation(path, page, params, useAsDefault){
   this.path = path;
-  this.name = name;
   this.component = page;
   this.params = params;
   this.useAsDefault = useAsDefault;
 
   this.getRouteLink = function(){
-    var _routeLink = [this.name];
+    var _routeLink = [this.path];
 
     if(params && arguments){
       if(params.length !== arguments.length){ throw 'Required params arent enough'; }
@@ -37,5 +36,3 @@ function _navigation(path, name, page, params, useAsDefault){
     return _routeLink;
   };
 }
-
-//export var postPage = _createPage('/post/:id/:title', 'post', 'postModule', ['id', 'title']);
