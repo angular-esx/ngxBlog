@@ -8,7 +8,7 @@ export class BrowserSyncTask extends BaseTask {
     this.browserSync({
       server: {
         baseDir: _envt.distPath,
-        index: _envt.getIndexDest()
+        index: 'index.html'
       },
       port: 8080,
       open: true,

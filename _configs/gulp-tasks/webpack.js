@@ -22,32 +22,35 @@ export let WebpackTask = (() => {
       .replace('.js', '');
       
       _baseConfig.entry = {};
-      _baseConfig.entry[_getEntry('xblog')] = ['./app/router.js'];
-      _baseConfig.entry[_getEntry('main')] = ['./app/main.js'];
+      _baseConfig.entry[_getEntry('xblog')] = ['./app/main.js'];
 
       _baseConfig.output = {
         filename: '[name].js'
       };
 
       _baseConfig.plugins.push(
-        new this.webpack.optimize.UglifyJsPlugin({
-          compress: {
-            warnings: false,
-            keep_fnames: true
-          },
-          mangle: {
-            keep_fnames: true
-          }
-        }),
-        new this.unminifiedWebpackPlugin(),
         new this.webpack.optimize.DedupePlugin(),
         new this.webpack.optimize.CommonsChunkPlugin({
           name: [
-            _getEntry('main'),
             _getEntry('xblog')
           ],
         })
       );
+
+      if(_envt.minify){
+        _baseConfig.plugins.push(
+          new this.webpack.optimize.UglifyJsPlugin({
+            compress: {
+              warnings: false,
+              keep_fnames: true
+            },
+            mangle: {
+              keep_fnames: true
+            }
+          }),
+          new this.unminifiedWebpackPlugin()
+        );
+      }
 
       this.webpack(_baseConfig, (ex, stats) => {
         if (ex) {
