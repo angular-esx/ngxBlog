@@ -1,5 +1,8 @@
-@import "./typography/typography.scss";
-@import "./palette/palette.scss";
+@import './typography/typography.scss';
+@import './palette/palette.scss';
+
+@import './normalize/normalize.scss';
+@import '../resources/icons/fonts/fonts.scss';
 
 html {
   font-size: xblog-font-size(root);
