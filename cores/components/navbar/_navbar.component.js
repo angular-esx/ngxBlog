@@ -9,7 +9,7 @@ function _navbarComponent(){
 
 export var navbarComponent = ngCore.Component({
   selector: 'xblog-navbar',
-  template: "<ngx-navbar color=\"success\" position=\"top\"><div ngx-navbar-brand>$ngx</div></ngx-navbar>",
+  templateUrl: './templates/navbar.html',
   directives: [ NGX_NAVBAR_DIRECTIVES ],
   host: {
     '[class.xblog-navbar]': 'true'
