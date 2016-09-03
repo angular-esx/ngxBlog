@@ -2,15 +2,12 @@ export class BaseEnvt {
   constructor() {
     this.minify = false;
     this.distPath = './dist';
-    this.jsPath = 'js';
-    this.cssPath = 'css';
-    this.imgPath = 'resources/images';
-    this.iconFontPath = 'resources/icons/fonts';
-    this.articlePath = 'articles';
-  }
-
-  getIndexDest()	{
-    return 'index.html';
+    this.jsPath = 'blog/js';
+    this.cssPath = 'blog/css';
+    this.imgPath = 'blog/resources/images';
+    this.iconFontPath = 'blog/resources/icons/fonts';
+    this.articlePath = 'blog/articles';
+    this.blogPath = 'blog';
   }
 
   getJsDest(path) {
@@ -33,9 +30,15 @@ export class BaseEnvt {
     return this.getDest(this.articlePath, path);
   }
 
+  getBlogDest(path) {
+    return this.getDest(this.blogPath, path);
+  }
+
   getDest(...args) {
     let _path = '';
-    args.forEach(arg => _path += `/${arg}`);
+    args.forEach(arg => { 
+      if(arg){ _path += `/${arg}`; }
+    });
 
     return `${this.distPath}${_path}`;
   }
