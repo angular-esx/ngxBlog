@@ -2,7 +2,8 @@
   "name": "ngx-blog",
   "version": "1.0.0",
   "scripts": {
-    "start": "gulp start"
+    "universal-dev-build": "gulp build --mode universal && gulp prerender --action paginate && gulp prerender --action detail-1 && gulp prerender --action detail-2 && gulp prerender --action detail-3 && gulp prerender --action detail-4 && gulp prerender --action detail-5 && gulp prerender --action detail-6 && gulp prerender --action detail-7 && gulp prerender --action detail-8 && gulp prerender --action detail-9 && gulp prerender --action detail-10 && gulp root-index",
+    "universal-prod-build": "gulp build --mode universal --envt production && gulp prerender --envt production --action paginate && gulp prerender --envt production --action detail-1 && gulp prerender --envt production --action detail-2 && gulp prerender --envt production --action detail-3 && gulp prerender --envt production --action detail-4 && gulp prerender --envt production --action detail-5 && gulp prerender --envt production --action detail-6 && gulp prerender --envt production --action detail-7 && gulp prerender --envt production --action detail-8 && gulp prerender --envt production --action detail-9 && gulp prerender --envt production --action detail-10 && gulp root-index"
   },
   "license": "ISC",
   "dependencies": {

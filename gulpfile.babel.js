@@ -2,13 +2,14 @@ import gulpLoadPlugins from 'gulp-load-plugins';
 import gulp from 'gulp';
 
 import * as gulpTasks from './_configs/gulp-tasks';
-
+import { Envt } from './_configs/envts';
 
 let _plugins = gulpLoadPlugins({
   pattern: [
     'yargs', 'del', 'gulp-jshint', 'jshint-stylish', 'gulp-sass',
     'gulp-rename', 'run-sequence', 'merge-stream', 'browser-sync', 'webpack',
-    'autoprefixer', 'q', 'gulp-inject', 'unminified-webpack-plugin', 'gulp-concat'
+    'autoprefixer', 'q', 'gulp-inject', 'unminified-webpack-plugin', 'gulp-concat',
+    'gulp-inline-ng2-template', 'html-minifier', 'node-sass', 'gulp-file', 'gulp-htmlmin'
   ],
   renameFn: (name) => {  
     return name
@@ -17,12 +18,17 @@ let _plugins = gulpLoadPlugins({
   }
 });
 
-gulp.task('start', function () {
-  _plugins.runSequence('clean', ['scss', 'resource', 'polyfill'], 'webpack', ['inject', 'lint', 'browser-sync']);
+gulp.task('start', () => {
+  _plugins.runSequence('clean', ['lint', 'scss', 'resource', 'polyfill'], 'webpack', ['inject', 'browser-sync']);
 });
 
-gulp.task('build', function () {
-  _plugins.runSequence('clean', ['scss', 'resource', 'polyfill'], 'webpack', ['inject', 'lint']);
+gulp.task('build', () => {
+  if(_plugins.yargs.argv.mode === 'universal'){
+    _plugins.runSequence('clean', ['lint', 'scss', 'resource', 'prebuild'], 'inject');
+  }
+  else { 
+    _plugins.runSequence('clean', ['lint', 'scss', 'resource', 'polyfill'], 'webpack', 'inject');
+  }
 });
 
 _registerTask('clean');
@@ -41,12 +47,22 @@ _registerTask('browser-sync');
 
 _registerTask('watch');
 
-_registerTask('prerender');
-
 _registerTask('webpack');
 
-gulp.task('reload', function(){
+_registerTask('prebuild');
+
+_registerTask('prerender');
+
+gulp.task('reload', () => {
   _plugins.browserSync.reload();
+});
+
+gulp.task('root-index', () => {
+  let _envt = new Envt(_plugins.yargs.argv);
+
+  return gulp.src(_envt.getBlogDest('index.html'))
+  .pipe(_plugins.rename(file => file.dirname = ''))
+  .pipe(gulp.dest(_envt.distPath));
 });
 
 function _registerTask(taskName, dependencies) {
@@ -65,5 +81,6 @@ function _getTask(taskName) {
   return new gulpTasks[_taskName]({
     gulp: gulp,
     plugins: _plugins
-  }).getStream();
+  })
+  .getStream();
 }
