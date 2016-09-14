@@ -1,0 +1,20 @@
+@import './_variables.scss';
+
+:host(.xblog-article-1473861890){
+  > ngx-grid {
+    font-size: $xblog-article-1473861890-grid-font-size;
+    padding: $xblog-article-1473861890-grid-padding;
+    background-color: $xblog-article-1473861890-grid-background-color;
+    box-shadow: $xblog-article-1473861890-grid-box-shadow;
+
+    > ngx-grid-row {
+      &:not(:last-child) {
+        border-bottom: $xblog-article-1473861890-grid-row-border-bottom;
+      }
+
+      > ngx-grid-col {
+        padding: $xblog-article-1473861890-grid-col-padding;
+      }
+    }
+  }
+}
