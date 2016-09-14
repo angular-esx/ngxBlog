@@ -1,6 +1,6 @@
-@import "../../../styles/state/state.scss";
+@import 'state.scss';
 
-@import "./variables.scss";
+@import './_variables.scss';
 
 :host(.xblog-footer) {
   display: block;
