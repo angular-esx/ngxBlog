@@ -3,6 +3,14 @@
 :host(.xblog-article) {
   > .xblog-article-content-section {
     margin: $xblog-article-content-section-margin;
+
+    p {
+      margin: 0;
+    }
+
+    .section-heading {
+      margin: $xblog-article-content-section-heading-margin;
+    }
   }
 
   > .xblog-article-related-posts-section-title {
