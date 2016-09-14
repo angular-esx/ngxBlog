@@ -1,1 +1,1 @@
-export { ARTICLES } from './articles';
+export { ARTICLE_STORE } from '../cms/articles';

@@ -9,14 +9,14 @@
 <ngx-grid class="xblog-article-content-section" type="fluid">
   <ngx-grid-row>
     <ngx-grid-col size="md-12 lg-8" offset="md-1 lg-3">
-        <article [innerHtml]="article.content"></article>
+        <template [ngx-portal-host]="contentComponent"></template>
     </ngx-grid-col>
   </ngx-grid-row>
 </ngx-grid>
 
-<h2 class="xblog-article-related-posts-section-title">Related Articles</h2>
+<h2 *ngIf="hasRelatedArticles()" class="xblog-article-related-posts-section-title">Related Articles</h2>
 
-<ngx-grid class="xblog-article-related-posts-section" type="fluid">
+<ngx-grid *ngIf="hasRelatedArticles()" class="xblog-article-related-posts-section" type="fluid">
   <ngx-grid-row>
     <ngx-grid-col size="lg-10" offset="lg-2">
       <ngx-grid-row>

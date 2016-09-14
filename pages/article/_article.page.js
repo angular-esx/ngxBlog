@@ -2,6 +2,10 @@ import * as ngCore from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 import { 
+  ngxComponentPortal,
+  ngxPortalHostDirective
+} from 'ngx-bootstrap/cores';
+import { 
   NGX_GRID_DIRECTIVES,
   NGX_CARD_DIRECTIVES
 } from 'ngx-bootstrap/components';
@@ -9,7 +13,7 @@ import {
 import { 
   HEADER_DIRECTIVES,
   POST_DIRECTIVES 
-} from '../../cores/components';
+} from 'xblog-cores/components';
 
 import { articleService } from './services/article.service';
 
@@ -29,11 +33,16 @@ function _articlePage(){
 
     this.subscription = this.activatedRoute.params.subscribe(function(params) {
       _self.article = _self.articleService.getArticle(params.id.split('-').pop().replace('.html', ''));
+      _self.contentComponent = new ngxComponentPortal(_self.article.content);
     });
   };
 
   this.ngOnDestroy = function(){
     this.subscription.unsubscribe();
+  };
+
+  this.hasRelatedArticles = function(){
+    return this.article.relatedArticles.length > 0;
   };
 }
 
@@ -42,6 +51,7 @@ export var articlePage = ngCore.Component({
   templateUrl: './templates/article.html',
   styleUrls: ['./styles/article.scss'],
   directives: [
+    ngxPortalHostDirective,
     NGX_GRID_DIRECTIVES,
     NGX_CARD_DIRECTIVES,
     HEADER_DIRECTIVES,

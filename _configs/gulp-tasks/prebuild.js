@@ -1,6 +1,7 @@
 import { BaseTask } from './baseTask';
 
 import fs from 'fs';
+import { SassConfig } from '../sass/sass-config';
 
 const _COMPONENT_SRCS = [
   './bower_components/ngxBootstrap/components/navbar/navbar.component.js',
@@ -13,14 +14,22 @@ const _COMPONENT_SRCS = [
   './cores/components/header/header.component.js',
   './cores/components/footer/footer.component.js',
   './cores/components/post/post.component.js',
+  './cores/components/code-panel/code-panel.component.js',
 
   './pages/home/home.page.js',
   './pages/article/article.page.js'
 ];
 
+const _INCLUDE_PATHS = new SassConfig().includePaths;
+
 export class PrebuildTask extends BaseTask {
   run() {
     let _stream = [];
+
+    if(this.args.article) {
+      let _articleId = this.args.article;
+      _COMPONENT_SRCS.push(`./cms/articles/${_articleId}/article-${_articleId}.component.js`);
+    }
 
     _COMPONENT_SRCS.forEach(src => {
       if(_existingPrebuildFile(src)){
@@ -78,6 +87,7 @@ function _getPrebuildStream(context, src, isFirstPrebuild) {
       context.nodeSass.render({
         file: path,
         outputStyle: 'compressed',
+        includePaths: _INCLUDE_PATHS,
       }, 
       (ex, result) => {
         callback(ex, result ? result.css : null);

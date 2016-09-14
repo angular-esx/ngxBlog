@@ -9,3 +9,4 @@ export { WatchTask } from './watch';
 export { WebpackTask } from './webpack';
 export { PrerenderTask } from './prerender';
 export { PrebuildTask } from './prebuild';
+export { CreateArticleTask } from './create-article';
