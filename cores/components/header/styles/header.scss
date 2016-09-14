@@ -1,6 +1,6 @@
-@import "../../../styles/breakpoint/breakpoint.scss";
+@import 'breakpoint.scss';
 
-@import './variables.scss';
+@import './_variables.scss';
 
 :host(.xblog-header){
   display: block;
