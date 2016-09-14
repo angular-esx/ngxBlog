@@ -1,4 +1,4 @@
-@import "../../../../cores/styles/state/state.scss";
+@import 'state.scss';
 
 @import './_variables.scss';
 
@@ -15,7 +15,7 @@
       text-decoration: none;
       color: xblog-component($xblog-post-title, default, foreground-color);
 
-      @include xblog-state($xblog-post-title, 'focus hover') {
+      @include xblog-state(xblog-post-title, 'focus hover') {
         color: xblog-component($xblog-post-title, hover, foreground-color);
       }
 
@@ -52,8 +52,6 @@
 
   &.xblog-post-size-small {
     > .ngx-card {
-      //height: $xblog-post-height-small;
-
       & ngx-card-title {
         display: flex;
         align-items: center;
