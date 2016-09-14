@@ -1,6 +1,6 @@
 import { BaseTask } from './baseTask';
 import { Envt } from '../envts';
-import { WebpackConfig } from '../webpack/webpack-common';
+import { WebpackConfig } from '../webpack/webpack-config';
 
 export let WebpackTask = (() => {
   let _webpackConfig = new WeakMap();

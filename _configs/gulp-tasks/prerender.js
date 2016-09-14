@@ -1,4 +1,5 @@
 import 'angular2-universal/polyfills';
+import * as ngCore from '@angular/core';
 import { REQUEST_URL, ORIGIN_URL, NODE_LOCATION_PROVIDERS } from 'angular2-universal';
 import { enableProdMode } from '@angular/core';
 import { APP_BASE_HREF } from '@angular/common';
@@ -8,7 +9,9 @@ import { prerender } from './angular2-gulp-prerender';
 import { BaseTask } from './baseTask';
 import { Envt } from '../envts';
 
-import { ARTICLES } from '../../_database';
+import { ARTICLE_STORE } from '../../_database';
+
+import { cmsArticleService } from '../../cms/cores/services';
 
 import { application } from '../../app/app';
 import { homeService, articleService } from '../../pages';
@@ -26,13 +29,16 @@ export class PrerenderTask extends BaseTask {
        return _getPrerenderStream(this, _envt, router, [ homeService ], _src, _envt.getBlogDest('index.html'));
     }
     else if (this.args.action.indexOf('detail-') > -1) {
-      _article = ARTICLES[this.args.action.split('-').pop()];
+      _article = ARTICLE_STORE[this.args.action.split('-').pop()];
 
       return _getPrerenderStream(
         this, 
         _envt,
         _getRouter(_article, router), 
-        [ articleService ], 
+        [ 
+          articleService,
+          { provide: cmsArticleService, useClass: _getCmsArticleService() }
+        ], 
         _src, 
         _envt.getArticleDest(`${_article.routeLink.split('/').pop()}`)
       );
@@ -51,6 +57,10 @@ function _getRouter(article, router){
   });
 
   return _router;
+}
+
+function _getCmsArticleService(){
+  return ngCore.Class(new _cmsArticleService());
 }
 
 function _getPrerenderStream(context, envt, router, providers, src, dest){
@@ -88,4 +98,14 @@ function _getPrerenderStream(context, envt, router, providers, src, dest){
   return _stream
   .pipe(context.rename(_output))
   .pipe(context.gulp.dest(_dest));
+}
+
+function _cmsArticleService(){
+  this.constructor = function cmsArticleService(){};
+
+  this.getCodeBlock = function(id, fileName){
+    return require('fs')
+    .readFileSync(`./cms/articles/${id}/code-blocks/${fileName}`, 'utf8')
+    .toString();
+  };
 }
