@@ -1,29 +1,21 @@
 import * as ngCore from '@angular/core';
-import { DomSanitizationService } from '@angular/platform-browser';
 
 import { ngxUtils } from 'ngx-bootstrap/cores';
 
-import { ARTICLES } from '../../../_database';
+import { ARTICLE_STORE } from '../../../_database';
 
 function _homeService(){
   var _posts;
 
-  this.constructor = [
-    DomSanitizationService,
-
-    function homeService(sanitizer){
-      this.sanitizer = sanitizer;
-    }
-  ];
+  this.constructor = function homeService(){};
 
   this.getPosts = function(){
     if(!_posts) {
       var _post;
       _posts = [];
 
-      ngxUtils.forEach(ARTICLES, function(article){
+      ngxUtils.forEach(ARTICLE_STORE.LIST, function(article){
         _post = ngxUtils.shallowCopy({}, article);
-        _post.content = this.sanitizer.bypassSecurityTrustHtml(_post.content);
 
         _posts.push(_post);
       }, this);

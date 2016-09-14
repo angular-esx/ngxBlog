@@ -5,7 +5,7 @@ import { NGX_GRID_DIRECTIVES } from 'ngx-bootstrap/components';
 import { 
   HEADER_DIRECTIVES,
   POST_DIRECTIVES
-} from '../../cores/components';
+} from 'xblog-cores/components';
 
 import { homeService } from './services/home.service';
 
