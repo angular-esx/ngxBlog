@@ -24,11 +24,15 @@ gulp.task('start', () => {
 
 gulp.task('build', () => {
   if(_plugins.yargs.argv.mode === 'universal'){
-    _plugins.runSequence('clean', ['lint', 'scss', 'resource', 'prebuild'], 'inject');
+    _plugins.runSequence('clean', ['lint', 'scss', 'resource'], 'inject');
   }
   else { 
     _plugins.runSequence('clean', ['lint', 'scss', 'resource', 'polyfill'], 'webpack', 'inject');
   }
+});
+
+gulp.task('preview-article', () => {
+  _plugins.runSequence('clean', ['lint', 'scss', 'resource'], 'inject', 'prerender', 'root-index', 'browser-sync');
 });
 
 _registerTask('clean');
@@ -53,16 +57,28 @@ _registerTask('prebuild');
 
 _registerTask('prerender');
 
+_registerTask('create-article');
+
 gulp.task('reload', () => {
   _plugins.browserSync.reload();
 });
 
 gulp.task('root-index', () => {
   let _envt = new Envt(_plugins.yargs.argv);
+  let _arg = _plugins.yargs.argv.article;
 
-  return gulp.src(_envt.getBlogDest('index.html'))
-  .pipe(_plugins.rename(file => file.dirname = ''))
-  .pipe(gulp.dest(_envt.distPath));
+  if(_arg || _plugins.yargs.argv.action.indexOf('detail-') > -1){
+    _arg = _plugins.yargs.argv.action.split('-').pop();
+
+    return gulp.src(_envt.getBlogDest(`articles/*-${_arg}.html`))
+    .pipe(_plugins.rename('index.html'))
+    .pipe(gulp.dest(_envt.distPath));
+  }
+  else {
+    return gulp.src(_envt.getBlogDest('index.html'))
+    .pipe(_plugins.rename(file => file.dirname = ''))
+    .pipe(gulp.dest(_envt.distPath));
+  }
 });
 
 function _registerTask(taskName, dependencies) {

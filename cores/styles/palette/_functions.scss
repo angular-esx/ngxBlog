@@ -1,4 +1,4 @@
-@import "_variables.scss";
+@import "./_variables.scss";
 
 @function xblog-color($color-map,  $color-name: default, $opacity: null){
   $color: map-get($color-map, $color-name);

@@ -2,6 +2,8 @@ import { bootstrap } from '@angular/platform-browser-dynamic';
 import { provideRouter } from '@angular/router';
 import { prebootComplete } from 'angular2-universal';
 
+import { cmsArticleService } from '../cms/cores/services';
+
 import { application } from './app';
 import { homeService, articleService } from '../pages';
 import { router } from './router';
@@ -10,7 +12,8 @@ document.addEventListener('DOMContentLoaded', function(){
   bootstrap(application, [
     provideRouter(router),
     homeService,
-    articleService
+    articleService,
+    cmsArticleService
   ])
   .then(prebootComplete);
 });
