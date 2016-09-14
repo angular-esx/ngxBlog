@@ -1,0 +1,9 @@
+@import './_variables.scss';
+
+.xblog-highlight{
+  display: inline;
+  font-size: $xblog-highlight-font-size;
+  padding: $xblog-highlight-padding;
+  background: $xblog-highlight-background-color;
+  color: $xblog-highlight-foreground-color;
+}
