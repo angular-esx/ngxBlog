@@ -69,26 +69,30 @@
 <p>We'll detail each lifecycle hook and find out how we should work with them<p/>
 <br/>
 <h2 class="section-heading">ngOnChanges</h2>
-<p>This hook method executes before <span xblog-highlight>ngOnInit</span> and when a data-bound input property value changes.</p>
-<p>The method receives a object of current and previous values, I call it is changeRecord</p>
+<p>This hook method executes before ngOnInit and when a data-bound input property value changes.</p>
+<p>The method receives a object of current and previous values, I call it is <span xblog-highlight>changeRecord</span></p>
 <br/>
-<p>For example, I have a component as below</p>
+<p>For example, I have <span xblog-highlight>ngOnChangesComponent</span> as below</p>
 <br/>
 <xblog-code-panel lang="javascript">
-  <xblog-title>my-app.component.js</xblog-title>
-  <a xblog-source-code [href]="myAppLink">Full Code</a>
-  <xblog-code [innerHtml]="codeBlock"></xblog-code>
+  <xblog-title>{{ngOnChanges.sourceCode.exampleComponent.name}}</xblog-title>
+  <a xblog-source-code [href]="ngOnChanges.sourceCode.exampleComponent.link">Full Code</a>
+  <xblog-code [innerHtml]="ngOnChanges.codeBlocks[1]"></xblog-code>
 </xblog-code-panel>
 <br/>
-<p>There're 2 binding, type is a primitive value, model is an object</p> 
-<p>If I change value of type, <span xblog-highlight>ngOnChanges</span> will be fired and we'll receive a <span xblog-highlight>changeRecord</span> only contains current and previous values of type.</p>
-<p>At this point, we have a chance to do something which relate to changed type such as set or remove a class from our component by using Renderer</p>
 <br/>
-<p>Notice that, the value of model property is the reference to the object. Angular doesn't care if any its property's value changed.</p> 
-<p>It means that the model object reference didn't change so Angular doesn't fire ngOnChanges</p>
+<p>There're 2 binding, <span xblog-highlight>title</span> is a primitive value, <span xblog-highlight>model</span> is an object</p>
+<p>Because I bound data to <span xblog-highlight>childComponent</span> so after its constructor executed, its <span xblog-highlight>ngOnChanges</span> will be fired.</p>
+<p>3 seconds later, its ngOnChanges fires one more time because I've changed data-bound property values</p>
+<p>As you see the below image, although ngOnChanges fires twice, but its <span xblog-highlight>changeRecord</span> is not same.</p>  
+<p>In the second changes, changeRecord only contains current and previous values of <span xblog-highlight>title</span></p>
+<p>The value of <span xblog-highlight>model</span> property is the reference to the object. Angular doesn't care if any its property's value changed.</p>
+<p>If you really want Angular to fire ngOnChanges for every changes of model. <a href="https://facebook.github.io/immutable-js/" rel="nofollow">Immutable</a> will be a solution for you</p>
+<br/>
+<div class="screen-capture"><img [src]="ngOnChanges.screenCaptures[1]"/></div>
 <br/>
 <h2 class="section-heading">ngOnInit</h2>
-<p>This hook method executes after the first <span xblog-highlight>ngOnChanges</span></p>
+<p>This hook method executes after the first ngOnChanges</p>
 <p>We turn to ngOnInit for 2 reasons</p>
 <p>- To perform complex initializations shortly after construction</p>
 <p>- To set up the component after Angular sets the input properties</p>
@@ -97,9 +101,32 @@
 <p>If you fetch data with params which base on values of input properties, make sure you will get errors.</p>
 <p>The constructor should do no more than set the initial local variables to simple values.</p>
 <br/>
+<p>Look at the example with <span xblog-highlight>childComponent</span></p>
+<br/>
+<xblog-code-panel lang="javascript">
+  <xblog-title>{{ngOnInit.sourceCode.childComponent.name}}</xblog-title>
+  <a xblog-source-code [href]="ngOnInit.sourceCode.childComponent.link">Full Code</a>
+  <xblog-code [innerHtml]="ngOnInit.codeBlocks[1]"></xblog-code>
+</xblog-code-panel>
+<br/>
+<br/>
+<p>And this is a screen capture for result</p>
+<br/>
+<div class="screen-capture"><img [src]="ngOnInit.screenCaptures[1]"/></div>
+<br/>
 <h2 class="section-heading">ngDoCheck</h2>
 <p>It is called with enormous frequency, Angular fires it after every change detection cycle no matter where the change occurred</p>
-<p>Look at below sample, when you type something into textbox <span xblog-highlight>ngDoCheck</span> will be called. Even, you just foucus on textbox, it's also called.</p>
+<p>Look at below sample, when you type something into textbox ngDoCheck will be called.</p> 
+<p>Even, you move out of textbox, it's also called.</p>
+<br/>
+<xblog-code-panel lang="javascript">
+  <xblog-title>{{ngDoCheck.sourceCode.childComponent.name}}</xblog-title>
+  <a xblog-source-code [href]="ngDoCheck.sourceCode.childComponent.link">Full Code</a>
+  <xblog-code [innerHtml]="ngDoCheck.codeBlocks[1]"></xblog-code>
+</xblog-code-panel>
+<br/>
+<br/>
+<div class="screen-capture"><img [src]="ngDoCheck.screenCaptures[1]"/></div>
 <br/>
 <p>Clearly, if you decide to implement your logic in there, make sure implementation must be very lightweight or the user experience may suffer</p>
 <br/>
@@ -110,7 +137,29 @@
 <p>The hooks take action based on changing values in a content child which we can only reach by querying for it via <span xblog-highlight>ContentChild</span></p>
 <p>The ngAfterContent hooks concern <span xblog-highlight>ContentChildren</span>, the child components that Angular projected into the component</p>
 <br/>
-<p>Using ng-content is a way to import Html from outside the component and insert content into component's template in a designated spot</p>
+<p>Using <span xblog-highlight>ng-content</span> is a way to import Html from outside the component and insert content into component's template in a designated spot</p>
+<br/>
+<p>I have an exemple with <span xblog-highlight>childComponent</span> which use <span xblog-highlight>ng-content</span> like this</p>
+<br/>
+<xblog-code-panel lang="javascript">
+  <xblog-title>{{ngAfterContent.sourceCode.childComponent.name}}</xblog-title>
+  <a xblog-source-code [href]="ngAfterContent.sourceCode.childComponent.link">Full Code</a>
+  <xblog-code [innerHtml]="ngAfterContent.codeBlocks[1]"></xblog-code>
+</xblog-code-panel>
+<br/>
+<br/>
+<p>In <span xblog-highlight>exampleComponent</span> I've' projected <span xblog-highlight>titleComponent</span> and <span xblog-highlight>itemComponent</span> into childComponent like this</p>
+<br/>
+<xblog-code-panel lang="javascript">
+  <xblog-title>{{ngAfterContent.sourceCode.exampleComponent.name}}</xblog-title>
+  <a xblog-source-code [href]="ngAfterContent.sourceCode.exampleComponent.link">Full Code</a>
+  <xblog-code [innerHtml]="ngAfterContent.codeBlocks[2]"></xblog-code>
+</xblog-code-panel>
+<br/>
+<br/>
+<p>So you can see result in the below image, I've queried instances of titleComponent & itemComponent</p>
+<br/>
+<div class="screen-capture"><img [src]="ngAfterContent.screenCaptures[1]"/></div>
 <br/>
 <p>Notice that, Angular completes composition of the projected content before finishing the composition of this component's view.</p> 
 <p>We still have a window of opportunity to modify that view.</p>
@@ -121,7 +170,18 @@
 <p>The hooks take action based on changing values within the child view which we can only reach by querying for the child view via <span xblog-highlight>ViewChild</span></p>
 <p>The AfterView hooks concern <span xblog-highlight>ViewChildren</span>, the child components whose element tags appear within the component's template.</p>
 <br/>
-<p>Do you see I used <span xblog-highlight>setTimeout()</span> in sample ?</p> 
+<p>Have a look at <span xblog-highlight>exampleComponent</span> & the result below</p>
+<br/>
+<xblog-code-panel lang="javascript">
+  <xblog-title>{{ngAfterView.sourceCode.exampleComponent.name}}</xblog-title>
+  <a xblog-source-code [href]="ngAfterView.sourceCode.exampleComponent.link">Full Code</a>
+  <xblog-code [innerHtml]="ngAfterView.codeBlocks[1]"></xblog-code>
+</xblog-code-panel>
+<br/>
+<br/>
+<div class="screen-capture"><img [src]="ngAfterView.screenCaptures[1]"/></div>
+<br/>
+<p>Do you see I used <span xblog-highlight>setTimeout()</span> in the example ?</p> 
 <p>If you try to update component's data-bound property immediately instead of using setTimeout, Angular throws an error.</p>
 <br/>
 <p>Notice that we must adhere to Angular's unidirectional data flow rule which says that we may not update the view after it has been composed.</p> 
