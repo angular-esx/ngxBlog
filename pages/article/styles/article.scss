@@ -11,6 +11,10 @@
     .section-heading {
       margin: $xblog-article-content-section-heading-margin;
     }
+    .screen-capture {
+      text-align: center;
+      overflow-x: auto;
+    }
   }
 
   > .xblog-article-related-posts-section-title {

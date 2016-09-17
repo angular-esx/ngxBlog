@@ -46,6 +46,7 @@ function _getComponentFileContent(id) {
     CODE_PANEL_DIRECTIVES,
     HIGHLIGHT_DIRECTIVES
   } from 'xblog-cores/components';
+  import { resourceUtils } from 'xblog-cores/utils';
   import { cmsArticleService } from '../../cores/services';
 
   function _article${id}Component(){
@@ -86,15 +87,16 @@ function _getComponentFileContent(id) {
 
 function _getIndexFileContent(id, title) {
   var _title = title.toLowerCase().trim().replace(new RegExp(' ', 'g'), '-');
-  return `import { article${id}Component } from './article-${id}.component'
+  return `import { resourceUtils } from 'xblog-cores/utils';
+  import { article${id}Component } from './article-${id}.component';
 
   export var article${id} = {
     id: ${id},
     title: '${title}',
     postedDate: '${new Date()}',
     author: '',
-    cover: 'blog/resources/images/xblog-home-cover.jpg',
-    routeLink: '/blog/articles/${_title}-${id}.html',
+    cover: resourceUtils.getImg('xblog-home-cover.jpg')',
+    routeLink: resourceUtils.getArticleRouteLink('${_title}-${id}.html'),
     relatedArticles: [],
     tags: [],
     description: '',
