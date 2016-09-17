@@ -21,6 +21,7 @@ export class ResourceTask extends BaseTask {
     .src([
       './pages/**/resources/images/*.jpg',
       './cms/articles/**/resources/images/*.jpg',
+      './cms/articles/**/resources/images/*.png',
     ])
     .pipe(this.rename(file => file.dirname = ''))
     .pipe(this.gulp.dest(_envt.getImgDest()));
