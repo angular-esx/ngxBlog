@@ -95,7 +95,7 @@ function _getIndexFileContent(id, title) {
     title: '${title}',
     postedDate: '${new Date()}',
     author: '',
-    cover: resourceUtils.getImg('xblog-home-cover.jpg')',
+    cover: resourceUtils.getImg('xblog-home-cover.jpg'),
     routeLink: resourceUtils.getArticleRouteLink('${_title}-${id}.html'),
     relatedArticles: [],
     tags: [],
