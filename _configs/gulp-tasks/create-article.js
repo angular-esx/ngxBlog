@@ -58,10 +58,12 @@ function _getComponentFileContent(id) {
         this.id = ${id};
         this.sanitizer = sanitizer;
         this.articleService = articleService;
-
-        this.codeBlock = this.getCodeBlock('code-block.html');
       }
     ];
+
+    this.ngOnInit = function() {
+      this.codeBlock = this.getCodeBlock('code-block.html');
+    };
 
     this.getCodeBlock = function(fileName) {
       var _codeBlock = this.articleService.getCodeBlock(this.id, fileName); 
