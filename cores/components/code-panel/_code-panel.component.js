@@ -1,9 +1,30 @@
 import * as ngCore from '@angular/core';
 
+import { ngxBaseComponent } from 'ngx-bootstrap/cores';
 import { NGX_CARD_DIRECTIVES } from 'ngx-bootstrap/components';
 
 function _codePanelComponent(){
-  this.constructor =  function codePanelComponent(){};
+  var _base;
+
+  this.extends = ngxBaseComponent;
+
+  this.constructor =  [
+    ngCore.ElementRef,
+    ngCore.Renderer,
+
+    function codePanelComponent(elementRef, renderer) {
+      ngxBaseComponent.apply(this, arguments);
+    }
+  ];
+
+  this.getPrefixClass = function(){
+    return 'xblog-code-panel';
+  };
+
+  function _getBaseInstance(context){ 
+    if(!_base){ _base = context.getBaseInstance(ngxBaseComponent); }
+    return _base;
+  }
 }
 
 export var codePanelComponent = ngCore.Component({
@@ -13,7 +34,7 @@ export var codePanelComponent = ngCore.Component({
   directives: [ 
     NGX_CARD_DIRECTIVES 
   ],
-  properties: [ 'lang' ],
+  properties: [ 'lang', 'type' ],
   host: {
     '[class.xblog-code-panel]': 'true'
   }

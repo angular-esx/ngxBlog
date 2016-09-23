@@ -44,4 +44,14 @@
       }
     }
   }
+
+  &.xblog-code-panel-type-no-header {
+    & .ngx-card {
+      padding-top: 0;
+      
+      > .ngx-card-header {
+        display: none;
+      }
+    }
+  }
 }
