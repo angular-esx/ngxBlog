@@ -1,0 +1,13 @@
+export var supperLogService = {
+  name: 'supperLogService'
+};
+
+/*---------------------------------------------------------*/
+
+export var todoListComponent = ngCore.Component({
+  .....
+  providers: [
+    { provide: logService, useValue: supperLogService } 
+  ]
+})
+.Class(new _todoListComponent());
