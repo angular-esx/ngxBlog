@@ -4,3 +4,9 @@ export { footerComponent, FOOTER_DIRECTIVES } from './footer';
 export { postComponent, POST_DIRECTIVES } from './post';
 export { codePanelComponent, CODE_PANEL_DIRECTIVES } from './code-panel';
 export { highlightDirective, HIGHLIGHT_DIRECTIVES } from './highlight';
+export { 
+  tableContentComponent, 
+  tableContentService, 
+  TABLE_CONTENT_DIRECTIVES, 
+  TABLE_CONTENT_PROVIDERS 
+} from './table-content';
