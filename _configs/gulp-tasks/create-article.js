@@ -44,7 +44,10 @@ function _getComponentFileContent(id) {
 
   import { 
     CODE_PANEL_DIRECTIVES,
-    HIGHLIGHT_DIRECTIVES
+    HIGHLIGHT_DIRECTIVES,
+    TABLE_CONTENT_DIRECTIVES,
+    TABLE_CONTENT_PROVIDERS,
+    tableContentService,
   } from 'xblog-cores/components';
   import { resourceUtils } from 'xblog-cores/utils';
   import { cmsArticleService } from '../../cores/services';
@@ -53,15 +56,27 @@ function _getComponentFileContent(id) {
     this.constructor = [
       DomSanitizationService,
       cmsArticleService,
+      tableContentService,
 
-      function article${id}Component(sanitizer, articleService){
+      function article${id}Component(sanitizer, articleService, tableContentService){
         this.id = ${id};
         this.sanitizer = sanitizer;
         this.articleService = articleService;
+        this.tableContentService = tableContentService;
       }
     ];
 
     this.ngOnInit = function() {
+      this.tableContents = this.tableContentService
+      .getBuilder()
+      .addHeadings([
+        { id: 'my-heading', name: 'My heading' }
+      ])
+      .addSubHeadings([
+        { headingId: 'my-heading', id: 'my-subheading', name: 'My subheading' },
+      ])
+      .build();
+
       this.codeBlock = this.getCodeBlock('code-block.html');
     };
 
@@ -77,8 +92,10 @@ function _getComponentFileContent(id) {
     templateUrl: './templates/article-${id}.html',
     directives: [ 
       CODE_PANEL_DIRECTIVES,
-      HIGHLIGHT_DIRECTIVES 
+      HIGHLIGHT_DIRECTIVES,
+      TABLE_CONTENT_DIRECTIVES
     ],
+    providers: [ TABLE_CONTENT_PROVIDERS ],
     host: {
       '[class.xblog-article-${id}]': 'true'
     }
