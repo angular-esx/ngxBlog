@@ -28,14 +28,14 @@
 <h3 id="view-encapsulation-none" class="section-subheading">ViewEncapsulation.None</h3>
 <p>Angular doesn’t use Shadow DOM at all. Styles applied to our component are written to the document head.</p>
 <br/>
-<xblog-code-panel lang="javascript">
+<xblog-code-panel>
   <xblog-title>{{viewEncapsulationNone.sourceCode.name}}</xblog-title>
   <a xblog-source-code [href]="viewEncapsulationNone.sourceCode.link">full code</a>
   <xblog-code [innerHtml]="viewEncapsulationNone.codeBlocks[1]"></xblog-code>
 </xblog-code-panel>
 <br/>
 <br/>
-<xblog-code-panel lang="javascript" type="no-header">
+<xblog-code-panel type="no-header">
   <xblog-code [innerHtml]="viewEncapsulationNone.codeBlocks[2]"></xblog-code>
 </xblog-code-panel>
 <br/>
@@ -52,7 +52,7 @@
 <br/>
 <p>We'll' reuse the example above, but change encapsulation to <span xblog-highlight>ViewEncapsulation.Emulated</span></p>
 <br/>
-<xblog-code-panel lang="javascript">
+<xblog-code-panel>
   <xblog-title>{{viewEncapsulationEmulated.sourceCode.name}}</xblog-title>
   <a xblog-source-code [href]="viewEncapsulationEmulated.sourceCode.link">full code</a>
   <xblog-code [innerHtml]="viewEncapsulationEmulated.codeBlocks[1]"></xblog-code>
@@ -61,7 +61,7 @@
 <br/>
 <p>Here’s what the head looks like with the exact same component but different strategy.</p>
 <br/>
-<xblog-code-panel lang="javascript" type="no-header">
+<xblog-code-panel type="no-header">
   <xblog-code [innerHtml]="viewEncapsulationEmulated.codeBlocks[2]"></xblog-code>
 </xblog-code-panel>
 <br/>
@@ -77,7 +77,7 @@
 <h3 id="view-encapsulation-native" class="section-subheading">ViewEncapsulation.Native</h3>
 <p>This one is super simple to understand since it basically just makes Angular using native Shadow DOM.</p>
 <br/>
-<xblog-code-panel lang="javascript">
+<xblog-code-panel>
   <xblog-title>{{viewEncapsulationNative.sourceCode.name}}</xblog-title>
   <a xblog-source-code [href]="viewEncapsulationNative.sourceCode.link">full code</a>
   <xblog-code [innerHtml]="viewEncapsulationNative.codeBlocks[1]"></xblog-code>
