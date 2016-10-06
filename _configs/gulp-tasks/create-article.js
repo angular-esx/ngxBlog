@@ -80,11 +80,11 @@ function _getComponentFileContent(id) {
       this.codeBlock = this.getCodeBlock('code-block.html');
     };
 
-    this.getCodeBlock = function(fileName, fileType) {
-      var _fileTypes = fileType ? [ fileType ] : ['javascript', 'html', 'css'];
+    this.getCodeBlock = function(fileName, lang) {
+      var _langs = lang ? [ lang ] : ['javascript', 'html', 'css'];
 
       var _codeBlock = this.articleService.getCodeBlock(this.id, fileName); 
-      _codeBlock = highlight.highlightAuto(_codeBlock, _fileTypes).value;
+      _codeBlock = highlight.highlightAuto(_codeBlock, _langs).value;
 
       return this.sanitizer.bypassSecurityTrustHtml(_codeBlock);
     };
