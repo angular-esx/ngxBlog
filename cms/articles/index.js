@@ -1,4 +1,8 @@
-let _ARTICLES = [];
+import { article1475677406 } from './1475677406';
+
+let _ARTICLES = [
+  article1475677406
+];
 
 export var ARTICLE_STORE = _init();
 
