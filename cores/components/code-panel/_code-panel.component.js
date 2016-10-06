@@ -34,7 +34,7 @@ export var codePanelComponent = ngCore.Component({
   directives: [ 
     NGX_CARD_DIRECTIVES 
   ],
-  properties: [ 'lang', 'type' ],
+  properties: [ 'type' ],
   host: {
     '[class.xblog-code-panel]': 'true'
   }
