@@ -1,4 +1,4 @@
-import { BaseTask } from './baseTask';
+import { BaseTask } from './base-task';
 
 import fs from 'fs';
 import { SassConfig } from '../sass/sass-config';
