@@ -2,28 +2,61 @@ import * as ngCore from '@angular/core';
 import { DomSanitizationService } from '@angular/platform-browser';
 import highlight from 'highlight.js';
 
-import { NGX_GRID_DIRECTIVES } from 'ngx-bootstrap/components';
+ import { NGX_GRID_DIRECTIVES } from 'ngx-bootstrap/components';
 
 import { 
   CODE_PANEL_DIRECTIVES,
-  HIGHLIGHT_DIRECTIVES
+  HIGHLIGHT_DIRECTIVES,
+  TABLE_CONTENT_DIRECTIVES,
+  TABLE_CONTENT_PROVIDERS,
+  tableContentService,
 } from 'xblog-cores/components';
 import { resourceUtils } from 'xblog-cores/utils';
 import { cmsArticleService } from '../../cores/services';
 
-function _article1473861890Component(){
-  this.constructor = [
+
+export var article1473861890Component = ngCore.Component({
+  selector: 'article',
+  templateUrl: './templates/article-1473861890.html',
+  styleUrls: ['./styles/article-1473861890.scss'],
+  directives: [ 
+    NGX_GRID_DIRECTIVES,
+    CODE_PANEL_DIRECTIVES,
+    HIGHLIGHT_DIRECTIVES,
+    TABLE_CONTENT_DIRECTIVES
+  ],
+  providers: [ TABLE_CONTENT_PROVIDERS ],
+  host: {
+    '[class.xblog-article-1473861890]': 'true'
+  }
+})
+.Class({
+  constructor: [
     DomSanitizationService,
     cmsArticleService,
+    tableContentService,
 
-    function article1473861890Component(sanitizer, articleService){
+    function (sanitizer, articleService, tableContentService){
       this.id = 1473861890;
       this.sanitizer = sanitizer;
       this.articleService = articleService;
+      this.tableContentService = tableContentService;
     }
-  ];
+  ],
 
-  this.ngOnInit = function() {
+  ngOnInit: function() {
+    this.tableContents = this.tableContentService
+    .getBuilder()
+    .addHeadings([
+      { id: 'ngOnChanges', name: 'ngOnChanges' },
+      { id: 'ngOnInit', name: 'ngOnInit' },
+      { id: 'ngDoCheck', name: 'ngDoCheck' },
+      { id: 'ngAfterContent', name: 'ngAfterContent' },
+      { id: 'ngAfterView', name: 'ngAfterView' },
+      { id: 'ngOnDestroy', name: 'ngOnDestroy' }
+    ])
+    .build();
+
     this.ngOnChanges = {
       sourceCode: {
         exampleComponent: {
@@ -103,26 +136,14 @@ function _article1473861890Component(){
         1: this.getCodeBlock('ng-after-view.html')
       }
     };
-  };
+  },
 
-  this.getCodeBlock = function(fileName) {
+  getCodeBlock: function(fileName, lang) {
+    var _langs = lang ? [ lang ] : ['javascript', 'html', 'css'];
+
     var _codeBlock = this.articleService.getCodeBlock(this.id, fileName); 
-    _codeBlock = highlight.highlightAuto(_codeBlock, ['javascript']).value;
-    return this.sanitizer.bypassSecurityTrustHtml(_codeBlock);
-  };
-}
+    _codeBlock = highlight.highlightAuto(_codeBlock, _langs).value;
 
-export var article1473861890Component = ngCore.Component({
-  selector: 'article',
-  templateUrl: './templates/article-1473861890.html',
-  styleUrls: ['./styles/article-1473861890.scss'],
-  directives: [ 
-    NGX_GRID_DIRECTIVES,
-    CODE_PANEL_DIRECTIVES,
-    HIGHLIGHT_DIRECTIVES
-  ],
-  host: {
-    '[class.xblog-article-1473861890]': 'true'
+    return this.sanitizer.bypassSecurityTrustHtml(_codeBlock);
   }
-})
-.Class(new _article1473861890Component());
+});
