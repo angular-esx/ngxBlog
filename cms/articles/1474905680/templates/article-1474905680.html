@@ -17,7 +17,7 @@
 <h2 id="interpolation" class="section-heading">Interpolation</h2>
 <p>We use interpolation to weave calculated strings into the text between HTML element tags and within attribute assignments.</p>
 <br/>
-<xblog-code-panel lang="javascript" type="no-header">
+<xblog-code-panel type="no-header">
   <xblog-code [innerHtml]="interpolation.codeBlocks[1]"></xblog-code>
 </xblog-code-panel>
 <br/>
@@ -93,7 +93,7 @@
 <br/>
 <p>It can be used with native DOM elements but also with Angular components — in fact, it will work with any custom web component.</p>
 <br/>
-<xblog-code-panel lang="javascript">
+<xblog-code-panel>
   <xblog-title>{{templateRefVariable.sourceCode.name}}</xblog-title>
   <a xblog-source-code [href]="templateRefVariable.sourceCode.link">full code</a>
   <xblog-code [innerHtml]="templateRefVariable.codeBlocks[1]"></xblog-code>
@@ -115,32 +115,32 @@
 <br/>
 <p>For example, we might want to uppercase a title with pipe like this</p> 
 <br/>
-<xblog-code-panel lang="javascript" type="no-header">
+<xblog-code-panel type="no-header">
   <xblog-code [innerHtml]="pipeOperator.codeBlocks[1]"></xblog-code>
 </xblog-code-panel>
 <br/>
 <br/>
 <p>We can chain expressions through multiple pipes</p>
 <br/>
-<xblog-code-panel lang="javascript" type="no-header">
+<xblog-code-panel type="no-header">
   <xblog-code [innerHtml]="pipeOperator.codeBlocks[2]"></xblog-code>
 </xblog-code-panel>
 <br/>
 <br/>
 <p>We can also apply parameters to a pipe</p>
 <br/>
-<xblog-code-panel lang="javascript" type="no-header">
+<xblog-code-panel type="no-header">
   <xblog-code [innerHtml]="pipeOperator.codeBlocks[3]"></xblog-code>
 </xblog-code-panel>
 <br/>
 <br/>
-<p>Moreover, Angular allow you to create custom pipes yourself simply, read <a [href]="pipeOperator.references.pipeArticle">this article</a> to know how you can do that</p>
+<p>Moreover, Angular allow you to create custom pipes yourself simply, read <a [href]="pipeArticleLink">this article</a> to know how you can do that</p>
 <br/>
 <h3 id="the-safe-navigation-operator" class="section-subheading">The safe navigation operator ( ?. )</h3>
 <p>The Angular safe navigation operator <span xblog-highlight>(?.)</span> is a fluent and convenient way to guard against null and undefined values in property paths.</p>
 <p>The expression bails out when it hits the first null value. The display is blank, but the app keeps rolling without errors.</p>
 <br/>
-<xblog-code-panel lang="javascript">
+<xblog-code-panel>
   <xblog-title>{{safeNavOperator.sourceCode.name}}</xblog-title>
   <a xblog-source-code [href]="safeNavOperator.sourceCode.link">full code</a>
   <xblog-code [innerHtml]="safeNavOperator.codeBlocks[1]"></xblog-code>
