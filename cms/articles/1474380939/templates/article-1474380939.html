@@ -1,10 +1,16 @@
+<xblog-table-content [model]="tableContents">
+  <xblog-title>
+    <h5 class="section-subject">Table of Contents</h5>
+  </xblog-title>
+</xblog-table-content>
+<br/>
 <p>Angular ships with its own dependency injection framework and we really can't build an Angular application without it</p>
 <p>An Angular application is a tree of components. Each component instance has its own injector. The tree of components parallels the tree of injectors.</p>
 <p>We can re-configure the injectors at any level of that component tree with interesting and useful results.</p>
 <br/>
 <p>Consider a simple example about TodosComponent</p>
 <br/>
-<xblog-code-panel lang="javascript">
+<xblog-code-panel>
   <xblog-title>{{simpleDI.sourceCode.name}}</xblog-title>
   <a xblog-source-code [href]="simpleDI.sourceCode.link">full code</a>
   <xblog-code [innerHtml]="simpleDI.codeBlocks[1]"></xblog-code>
@@ -24,7 +30,7 @@
 <br/>
 <div class="screen-capture"><img [src]="simpleDI.screenCaptures[1]"/></div>
 <br/>
-<h2 class="section-heading">Injector providers</h2>
+<h2 id="injector-providers" class="section-heading">Injector providers</h2>
 <p>A provider provides the concrete of a dependency value.</p>
 <p>The injector relies on providers to create instances of the services that the injector injects into components and other services.</p>
 <br/>
@@ -33,11 +39,11 @@
 <br/>
 <p>But there are many ways that we can configure the injector with alternative providers that can deliver an object that behaves like logSerivce. We'll expore them now.</p>
 <br/>
-<h2 class="section-heading">Class Provider</h2>
+<h2 id="class-provider" class="section-heading">Class Provider</h2>
 <p>We wrote the providers array like this: <span xblog-highlight>providers: [ logSerivce ]</span></p>
 <p>This is actually a short-hand expression for a provider registration</p>
 <br/>
-<xblog-code-panel lang="javascript" type="no-header">
+<xblog-code-panel type="no-header">
   <xblog-code [innerHtml]="classProvider.codeBlocks[1]"></xblog-code>
 </xblog-code-panel>
 <br/>
@@ -48,7 +54,7 @@
 <p>With this expression, it's easy for us specify another class to provide the service</p>
 <p>For example we have another service is <span xblog-highlight>superLogService</span>, We can register it for todoListComponent with <span xblog-highlight>logSerivce token</span> instead of logSerivce class</p>
 <br/>
-<xblog-code-panel lang="javascript" type="no-header">
+<xblog-code-panel type="no-header">
   <xblog-code [innerHtml]="classProvider.codeBlocks[2]"></xblog-code>
 </xblog-code-panel>
 <br/>
@@ -58,7 +64,7 @@
 <br/>
 <p>The solution for this case is you should use <span xblog-highlight>useExisting</span> with <span xblog-highlight>rootLogService token</span> for register in todosComponent</p>
 <br/>
-<xblog-code-panel lang="javascript">
+<xblog-code-panel>
   <xblog-title>{{classProvider.sourceCode.name}}</xblog-title>
   <a xblog-source-code [href]="classProvider.sourceCode.link">full code</a>
   <xblog-code [innerHtml]="classProvider.codeBlocks[3]"></xblog-code>
@@ -67,11 +73,11 @@
 <br/>
 <div class="screen-capture"><img [src]="classProvider.screenCaptures[1]"/></div>
 <br/>
-<h2 class="section-heading">Value Provider</h2>
+<h2 id="value-provider" class="section-heading">Value Provider</h2>
 <p>Sometimes it's easier to provide a object rather than ask the injector to create it from a class.</p>
 <p>We can re-write superLogService as an object then registering it by using <span xblog-highlight>useValue</span> like this</p>
 <br/>
-<xblog-code-panel lang="javascript" type="no-header">
+<xblog-code-panel type="no-header">
   <xblog-code [innerHtml]="valueProvider.codeBlocks[1]"></xblog-code>
 </xblog-code-panel>
 <br/>
@@ -79,7 +85,7 @@
 <p>Now, you have seen I used a class as the token such as <span xblog-highlight>logService</span>,  <span xblog-highlight>rootLogService</span> for register, acttualy, there's another way for you to get the same result.</p>
 <p>The way I'm mentioning is using <span xblog-highlight>OpaqueToken</span> & <span xblog-highlight>ngCore.Inject</span></p>
 <br/>
-<xblog-code-panel lang="javascript">
+<xblog-code-panel>
   <xblog-title>{{valueProvider.sourceCode.name}}</xblog-title>
   <a xblog-source-code [href]="valueProvider.sourceCode.link">full code</a>
   <xblog-code [innerHtml]="valueProvider.codeBlocks[2]"></xblog-code>
@@ -88,13 +94,13 @@
 <br/>
 <p><span xblog-highlight>OpaqueToken</span> is a good solution for us to inject global variables such as window, localstorage into our component</p>
 <br/>
-<h2 class="section-heading">Factory provider</h2>
+<h2 id="factory-provider" class="section-heading">Factory provider</h2>
 <p>Sometimes we need to create the dependent value dynamically, based on information we won't have until the last possible moment. This situation calls for a factory provider.</p>
 <br/>
 <p>Let's illustrate, we want to implement a logic like that if user is authenticated, superLogService should be injected into our components, otherwise, logSerivce should be used.</p>
 <p>Assume that we have <span xblog-highlight>userService</span> which provide information about authentication. We re-write declaration for providers as below</p>
 <br/>
-<xblog-code-panel lang="javascript">
+<xblog-code-panel>
   <xblog-title>{{factoryProvider.sourceCode.name}}</xblog-title>
   <a xblog-source-code [href]="factoryProvider.sourceCode.link">full code</a>
   <xblog-code [innerHtml]="factoryProvider.codeBlocks[1]"></xblog-code>
@@ -103,26 +109,26 @@
 <br/>
 <p>The <span xblog-highlight>deps</span> property is an array of provider tokens which our factory requires for injection</p>
 <br/>
-<h2 class="section-heading">Optional dependencies</h2>
+<h2 id="optional-dependencies" class="section-heading">Optional dependencies</h2>
 <p>As you know, if Angular can't resolve injection for component, it'll throw an exception.</p> 
 <p>In fact, there're situations, we allow the constructor's arguments to be null. We can tell Angular that the dependency is optional by annotating the constructor argument with <span xblog-highlight>Optional</span></p>
 <p>Of course, your code must be prepared to handle a null value.</p>
 <br/>
-<xblog-code-panel lang="javascript">
+<xblog-code-panel>
   <xblog-title>{{optionalDependency.sourceCode.name}}</xblog-title>
   <a xblog-source-code [href]="optionalDependency.sourceCode.link">full code</a>
   <xblog-code [innerHtml]="optionalDependency.codeBlocks[1]"></xblog-code>
 </xblog-code-panel>
 <br/>
 <br/>
-<h2 class="section-heading">Dependency visibility</h2>
+<h2 id="dependency-visibility" class="section-heading">Dependency visibility</h2>
 <p>Well, as we learned, we can use the <span xblog-highlight>providers</span> property to define providers for its injector.<p/> 
 <p>However, it turns out that there’s another property <span xblog-highlight>viewProviders</span> that basically allows us to do the same thing. What’s the difference between those two them ?</p>
 <br/>
 <p>viewProviders allows us to define injector providers that are only available for a component’s view.</p>
 <p>Let’s take a closer look at what that means by using our TodosComponent example.</p> 
 <br/>
-<xblog-code-panel lang="javascript">
+<xblog-code-panel>
   <xblog-title>{{dependencyVisibility.sourceCode.name}}</xblog-title>
   <a xblog-source-code [href]="dependencyVisibility.sourceCode.link">full code</a>
   <xblog-code [innerHtml]="dependencyVisibility.codeBlocks[1]"></xblog-code>
@@ -144,7 +150,7 @@
 <br/>
 <p>Note that, viewProviders are also only available in components, not in directives. That’s simply because a directive doesn’t have its own view.</p>
 <br/>
-<h2 class="section-heading">Restricting dependency lookup</h2>
+<h2 id="restricting-dependency-lookup" class="section-heading">Restricting dependency lookup</h2>
 <p>We'll go on with the example in <span xblog-highlight>Dependency visibility</span> subject.</p>
 <p>Now, look back again, in the example, todoItemComponent requires <span xblog-highlight>logSerivce</span>, follow DI rules, it will receice <span xblog-highlight>superLogService</span> which is provided by todoListComponent.</p>
 <p>This's so cool, however this can be problematic. Just imagine someone uses our todoItemComponent with their customTodoListComponent which doesn't provide superLogService.</p>
@@ -152,7 +158,7 @@
 <br/>
 <p>If we need to ensure that superLogService instance is always instatiated by our component’s host or an exception should be thrown. <span xblog-highlight>Host</span> dependency is a solution for us.</p>
 <br/>
-<xblog-code-panel lang="javascript">
+<xblog-code-panel>
   <xblog-title>{{hostDependency.sourceCode.name}}</xblog-title>
   <a xblog-source-code [href]="hostDependency.sourceCode.link">full code</a>
   <xblog-code [innerHtml]="hostDependency.codeBlocks[1]"></xblog-code>
