@@ -1,4 +1,4 @@
-import { BaseTask } from './baseTask';
+import { BaseTask } from './base-task';
 
 export class LintTask extends BaseTask {
   run() {

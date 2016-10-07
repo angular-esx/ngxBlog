@@ -1,28 +1,24 @@
 import * as ngCore from '@angular/core';
 
-import { ngxUtils } from 'ngx-bootstrap/cores';
-
 import { ARTICLE_STORE } from '../../../_database';
 
-function _homeService(){
-  var _posts;
+var _POSTS;
 
-  this.constructor = function homeService(){};
+export var homeService = ngCore.Class({
+  constructor: function(){},
 
-  this.getPosts = function(){
-    if(!_posts) {
+  getPosts: function(){
+    if(!_POSTS) {
       var _post;
-      _posts = [];
+      _POSTS = [];
 
-      ngxUtils.forEach(ARTICLE_STORE.LIST, function(article){
-        _post = ngxUtils.shallowCopy({}, article);
+      ARTICLE_STORE.LIST.forEach(function(article){
+        _post = Object.assign({}, article);
 
-        _posts.push(_post);
-      }, this);
+        _POSTS.push(_post);
+      });
     }
 
-    return _posts;
-  };
-}
-
-export var homeService = ngCore.Class(new _homeService());
+    return _POSTS;
+  }
+});

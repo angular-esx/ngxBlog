@@ -1,4 +1,5 @@
-import { BaseTask } from './baseTask';
+import { BaseTask } from './base-task';
+import { Envt } from '../envts';
 
 export class WatchTask extends BaseTask {
   run() {
@@ -6,20 +7,12 @@ export class WatchTask extends BaseTask {
 
     this.gulp.watch([
       './cores/**/*.js',
-      './pages/**/*.js'
-    ], 
-    () => this.runSequence('lint', 'webpack', 'reload'));
-
-    this.gulp.watch([
+      './pages/**/*.js',
+      './cores/**/*.scss',
+      './pages/**/*.scss',
       './cores/**/*.html',
       './pages/**/*.html'
-    ],
-    () => this.runSequence('webpack', 'reload'));
-
-    this.gulp.watch([
-      './cores/**/*.scss',
-      './pages/**/*.scss'
     ], 
-    () => this.runSequence('scss', 'webpack', 'reload'));
+    () => this.runSequence('lint', 'scss', 'webpack', 'reload'));
   }
 }
