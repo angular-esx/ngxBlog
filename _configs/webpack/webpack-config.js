@@ -5,6 +5,8 @@ import { SassConfig } from '../sass/sass-config';
 export class WebpackConfig {
   constructor(gulpPlugins) {
     this.context = path.resolve(__dirname, '../..');
+    this.cache = true,
+    this.devtool = 'source-map',
     this.plugins = [
       new gulpPlugins.webpack.LoaderOptionsPlugin({
         options: {

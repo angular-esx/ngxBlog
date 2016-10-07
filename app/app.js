@@ -6,10 +6,6 @@ import {
   FOOTER_DIRECTIVES
 } from '../cores/components';
 
-function _application (){
-  this.constructor = function application(){};
-}
-
 export var application = ngCore.Component({
   selector: 'xblog',
   template: [
@@ -23,4 +19,6 @@ export var application = ngCore.Component({
     FOOTER_DIRECTIVES
   ]
 })
-.Class(new _application());
+.Class({
+  constructor: function (){}
+});

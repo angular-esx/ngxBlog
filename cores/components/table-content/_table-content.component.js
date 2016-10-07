@@ -1,9 +1,5 @@
 import * as ngCore from '@angular/core';
 
-function _tableContentComponent(){
-  this.constructor = function() {};
-}
-
 export var tableContentComponent = ngCore.Component({
   selector: 'xblog-table-content',
   templateUrl: './templates/table-content.html',
@@ -13,4 +9,6 @@ export var tableContentComponent = ngCore.Component({
     '[class.xblog-table-content]': 'true'
   }
 })
-.Class(new _tableContentComponent());
+.Class({
+  constructor: function(){}
+});
