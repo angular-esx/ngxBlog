@@ -1,4 +1,4 @@
-import { BaseTask } from './baseTask';
+import { BaseTask } from './base-task';
 import { Envt } from '../envts';
 import { WebpackConfig } from '../webpack/webpack-config';
 

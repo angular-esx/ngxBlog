@@ -6,7 +6,7 @@ import { APP_BASE_HREF } from '@angular/common';
 import { provideRouter } from '@angular/router';
 import { prerender } from './angular2-gulp-prerender';
 
-import { BaseTask } from './baseTask';
+import { BaseTask } from './base-task';
 import { Envt } from '../envts';
 
 import { ARTICLE_STORE } from '../../_database';

@@ -11,6 +11,18 @@
     .section-heading {
       margin: $xblog-article-content-section-heading-margin;
     }
+
+    .section-subheading {
+      margin: $xblog-article-content-section-subheading-margin;
+      color: $xblog-article-content-section-subheading-foreground-color;
+    }
+    
+    .section-subject {
+      margin: $xblog-article-content-section-subject-margin;
+      color: $xblog-article-content-section-subject-foreground-color;
+      text-decoration: underline;
+    }
+
     .screen-capture {
       text-align: center;
       overflow-x: auto;

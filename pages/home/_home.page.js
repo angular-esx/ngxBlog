@@ -9,20 +9,6 @@ import {
 
 import { homeService } from './services/home.service';
 
-function _homePage(){
-  this.constructor = [
-    homeService,
-
-    function homePage(homeService){
-      this.homeService = homeService;
-    }
-  ];
-
-  this.ngOnInit = function(){
-    this.posts = this.homeService.getPosts();
-  };
-}
-
 export var homePage = ngCore.Component({
   selector: 'xblog-home',
   templateUrl: './templates/home.html',
@@ -36,4 +22,16 @@ export var homePage = ngCore.Component({
     '[class.xblog-home]': 'true'
   }
 })
-.Class(new _homePage());
+.Class({
+  constructor: [
+    homeService,
+
+    function (homeService){
+      this.homeService = homeService;
+    }
+  ],
+
+  ngOnInit: function(){
+    this.posts = this.homeService.getPosts();
+  }
+});

@@ -1,4 +1,4 @@
-import { BaseTask } from './baseTask';
+import { BaseTask } from './base-task';
 
 import fs from 'fs';
 import { SassConfig } from '../sass/sass-config';
@@ -15,6 +15,7 @@ const _COMPONENT_SRCS = [
   './cores/components/footer/footer.component.js',
   './cores/components/post/post.component.js',
   './cores/components/code-panel/code-panel.component.js',
+  './cores/components/table-content/table-content.component.js',
 
   './pages/home/home.page.js',
   './pages/article/article.page.js'

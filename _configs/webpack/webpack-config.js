@@ -5,10 +5,17 @@ import { SassConfig } from '../sass/sass-config';
 export class WebpackConfig {
   constructor(gulpPlugins) {
     this.context = path.resolve(__dirname, '../..');
-    this.plugins = [];
-    this.sassLoader = new SassConfig();
-    this.postcss = [
-      gulpPlugins.autoprefixer,
+    this.cache = true,
+    this.devtool = 'source-map',
+    this.plugins = [
+      new gulpPlugins.webpack.LoaderOptionsPlugin({
+        options: {
+          postcss: [
+            gulpPlugins.autoprefixer,
+          ],
+          sassLoader: new SassConfig()
+        }
+      })
     ];
     this.module = {
       loaders: [
