@@ -3,30 +3,6 @@ import * as ngCore from '@angular/core';
 import { ngxBaseComponent } from 'ngx-bootstrap/cores';
 import { NGX_CARD_DIRECTIVES } from 'ngx-bootstrap/components';
 
-function _codePanelComponent(){
-  var _base;
-
-  this.extends = ngxBaseComponent;
-
-  this.constructor =  [
-    ngCore.ElementRef,
-    ngCore.Renderer,
-
-    function codePanelComponent(elementRef, renderer) {
-      ngxBaseComponent.apply(this, arguments);
-    }
-  ];
-
-  this.getPrefixClass = function(){
-    return 'xblog-code-panel';
-  };
-
-  function _getBaseInstance(context){ 
-    if(!_base){ _base = context.getBaseInstance(ngxBaseComponent); }
-    return _base;
-  }
-}
-
 export var codePanelComponent = ngCore.Component({
   selector: 'xblog-code-panel',
   template: "<ngx-card><ngx-card-header><ngx-card-title><ng-content select=\"xblog-code-panel > xblog-title\"></ng-content></ngx-card-title><ngx-card-actions><ng-content select=\"a[xblog-source-code]\"></ng-content></ngx-card-actions></ngx-card-header><ngx-card-content><pre>       <code>         <ng-content select=\"xblog-code\"></ng-content>       </code>     </pre></ngx-card-content></ngx-card>",
@@ -39,4 +15,18 @@ export var codePanelComponent = ngCore.Component({
     '[class.xblog-code-panel]': 'true'
   }
 })
-.Class(new _codePanelComponent());
+.Class({
+  extends: ngxBaseComponent,
+  constructor: [
+    ngCore.ElementRef,
+    ngCore.Renderer,
+
+    function (elementRef, renderer) {
+      ngxBaseComponent.apply(this, arguments);
+    }
+  ],
+
+  getPrefixClass: function(){
+    return 'xblog-code-panel';
+  }
+});
