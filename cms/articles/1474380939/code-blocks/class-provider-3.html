@@ -1,38 +1,30 @@
 import * as ngCore from '@angular/core';
 
-function _rootLogService(){
-  this.constructor = function(){};
-}
-export var rootLogService = ngCore.Class(new _rootLogService());
+export var rootLogService = ngCore.Class({
+  constructor: function(){}
+});
 
 /*---------------------------------------------------------*/
 
-function _supperLogService(){
-  this.constructor = function(){
+export var supperLogService = ngCore.Class({
+  constructor: function(){
     this.name = 'supperLogService';
-  };
-}
-export var supperLogService = ngCore.Class(new _supperLogService());
+  }
+});
 
 /*---------------------------------------------------------*/
 
-function _todoItemComponent(){
-  this.constructor = [rootLogService, function(logService){
-    console.log('todoItemComponent', logService.name);
-  }]; 
-};
 export var todoItemComponent = ngCore.Component({
   .....
 })
-.Class(new _todoItemComponent());
+.Class({
+  constructor: [rootLogService, function(logService){
+    console.log('todoItemComponent', logService.name);
+  }]
+});
 
 /*---------------------------------------------------------*/
 
-function _todoListComponent(){
-  this.constructor = [logService, function(logService){
-    console.log('todoListComponent', logService.name + ' is hosted by todoListComponent');
-  }]; 
-};
 export var todoListComponent = ngCore.Component({
   .....
   directives: [ todoItemComponent ],
@@ -40,15 +32,14 @@ export var todoListComponent = ngCore.Component({
     { provide: logService, useClass: supperLogService } 
   ]
 })
-.Class(new _todoListComponent());
+.Class({
+  constructor: [logService, function(logService){
+    console.log('todoListComponent', logService.name + ' is hosted by todoListComponent');
+  }]
+});
 
 /*---------------------------------------------------------*/
 
-function _todosComponent(){ 
-  this.constructor = [logService, function(logService){
-    logService.setName('logService is hosted by todosComponent');
-  }];
-};
 export var todosComponent = ngCore.Component({
   .....
   directives: [ todoListComponent, todoItemComponent ],
@@ -57,4 +48,8 @@ export var todosComponent = ngCore.Component({
     { provide: rootLogService, useExisting: logService }
   ]
 })
-.Class(new _todosComponent());
+.Class({
+  constructor: [logService, function(logService){
+    logService.setName('logService is hosted by todosComponent');
+  }]
+});

@@ -10,30 +10,24 @@ export var WINDOW_PROVIDERS = [
 
 import { WINDOW } from './window.model';
 
-function _logService(){
-  this.constructor = [
+export var logService = ngCore.Class({
+  constructor: [
     ngCore.Inject(WINDOW),
 
     function(window){
       this.window = window;
     }
-  ];
+  ],
 
-  this.log = function(text){
+  log: function(text){
     this.window.console.log(text);
   }
-}
-export var logService = ngCore.Class(new _logService());
+});
 
 /*---------------------------------------------------------*/
 
 import { WINDOW_PROVIDERS } from './window.model';
 
-function _todosComponent(){
-  this.constructor = [logService, function(logService){
-    logService.log('This message is logged by using window.console via DI');
-  }];
-}
 export var todosComponent = ngCore.Component({
   .....
   providers: [ 
@@ -41,5 +35,9 @@ export var todosComponent = ngCore.Component({
     WINDOW_PROVIDERS
   ]
 })
-.Class(new _todosComponent());
+.Class({
+  constructor: [logService, function(logService){
+    logService.log('This message is logged by using window.console via DI');
+  }]
+});
 

@@ -1,26 +1,20 @@
-function _todoTitleComponent(){
-  this.constructor = [logService, function(logService){
-      console.log('todoTitleComponent', logService.name);
-  }];
-}
 export var todoTitleComponent = ngCore.Component({.....})
-.Class(new _todoTitleComponent());
+.Class({
+  constructor: [logService, function(logService){
+      console.log('todoTitleComponent', logService.name);
+  }]
+});
 
 /*---------------------------------------------------------*/
 
-function _todoItemComponent(){
-  this.constructor = [logService, function(logService){
-      console.log('todoItemComponent', logService.name);
-  }];
-}
 export var todoItemComponent = ngCore.Component({.....})
-.Class(new _todoItemComponent());
+.Class({
+  constructor: [logService, function(logService){
+      console.log('todoItemComponent', logService.name);
+  }]
+});
 
 /*---------------------------------------------------------*/
-
-function _todoListComponent(){
-  this.constructor = [logService, function(logService){}];
-}
 
 export var todoListComponent = ngCore.Component({
   .....
@@ -32,13 +26,12 @@ export var todoListComponent = ngCore.Component({
     { provide: logService, useClass: supperLogService }
   ]
 })
-.Class(new _todoListComponent());
+.Class({
+  constructor: [logService, function(logService){}]
+});
 
 /*---------------------------------------------------------*/
 
-function _todosComponent(){
-  this.constructor = [logService, function(logService){}];
-}
 export var todosComponent = ngCore.Component({
   .....
   template: [
@@ -48,4 +41,6 @@ export var todosComponent = ngCore.Component({
   ].join(''),
   providers: [ logService ]
 })
-.Class(new _todosComponent());
+.Class({
+  constructor: [logService, function(logService){}]
+});

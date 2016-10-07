@@ -1,5 +1,6 @@
-function _todoListComponent(){
-  this.constructor = [
+export var todoListComponent = ngCore.Component({.....})
+.Class({
+  constructor: [
     [ new ngCore.Optional(), ngCore.Inject(logService) ], 
     
     function(logService){
@@ -7,7 +8,5 @@ function _todoListComponent(){
         console.log('todoListComponent', 'logService is null');
       }
     }
-  ];
-}
-export var todoListComponent = ngCore.Component({.....})
-.Class(new _todoListComponent());
+  ]
+});
