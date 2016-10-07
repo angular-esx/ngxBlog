@@ -1,4 +1,4 @@
-import { BaseTask } from './baseTask';
+import { BaseTask } from './base-task';
 import { Envt } from '../envts';
 
 export class CreateArticleTask extends BaseTask {
@@ -39,69 +39,70 @@ export class CreateArticleTask extends BaseTask {
 
 function _getComponentFileContent(id) {
   return `import * as ngCore from '@angular/core';
-  import { DomSanitizationService } from '@angular/platform-browser';
-  import highlight from 'highlight.js';
+    import { DomSanitizationService } from '@angular/platform-browser';
+    import highlight from 'highlight.js';
 
-  import { 
-    CODE_PANEL_DIRECTIVES,
-    HIGHLIGHT_DIRECTIVES,
-    TABLE_CONTENT_DIRECTIVES,
-    TABLE_CONTENT_PROVIDERS,
-    tableContentService,
-  } from 'xblog-cores/components';
-  import { resourceUtils } from 'xblog-cores/utils';
-  import { cmsArticleService } from '../../cores/services';
-
-  function _article${id}Component(){
-    this.constructor = [
-      DomSanitizationService,
-      cmsArticleService,
-      tableContentService,
-
-      function article${id}Component(sanitizer, articleService, tableContentService){
-        this.id = ${id};
-        this.sanitizer = sanitizer;
-        this.articleService = articleService;
-        this.tableContentService = tableContentService;
-      }
-    ];
-
-    this.ngOnInit = function() {
-      this.tableContents = this.tableContentService
-      .getBuilder()
-      .addHeadings([
-        { id: 'my-heading', name: 'My heading' }
-      ])
-      .addSubHeadings([
-        { headingId: 'my-heading', id: 'my-subheading', name: 'My subheading' },
-      ])
-      .build();
-
-      this.codeBlock = this.getCodeBlock('code-block.html');
-    };
-
-    this.getCodeBlock = function(fileName) {
-      var _codeBlock = this.articleService.getCodeBlock(this.id, fileName); 
-      _codeBlock = highlight.highlightAuto(_codeBlock, ['javascript']).value;
-      return this.sanitizer.bypassSecurityTrustHtml(_codeBlock);
-    };
-  }
-
-  export var article${id}Component = ngCore.Component({
-    selector: 'article',
-    templateUrl: './templates/article-${id}.html',
-    directives: [ 
+    import { 
       CODE_PANEL_DIRECTIVES,
       HIGHLIGHT_DIRECTIVES,
-      TABLE_CONTENT_DIRECTIVES
-    ],
-    providers: [ TABLE_CONTENT_PROVIDERS ],
-    host: {
-      '[class.xblog-article-${id}]': 'true'
-    }
-  })
-  .Class(new _article${id}Component());
-  `.replace(/^  /gm, '');
+      TABLE_CONTENT_DIRECTIVES,
+      TABLE_CONTENT_PROVIDERS,
+      tableContentService,
+    } from 'xblog-cores/components';
+    import { resourceUtils } from 'xblog-cores/utils';
+    import { cmsArticleService } from '../../cores/services';
+
+    export var article${id}Component = ngCore.Component({
+      selector: 'article',
+      templateUrl: './templates/article-${id}.html',
+      directives: [ 
+        CODE_PANEL_DIRECTIVES,
+        HIGHLIGHT_DIRECTIVES,
+        TABLE_CONTENT_DIRECTIVES
+      ],
+      providers: [ TABLE_CONTENT_PROVIDERS ],
+      host: {
+        '[class.xblog-article-${id}]': 'true'
+      }
+    })
+    .Class({
+      constructor: [
+        DomSanitizationService,
+        cmsArticleService,
+        tableContentService,
+
+        function (sanitizer, articleService, tableContentService){
+          this.id = ${id};
+          this.sanitizer = sanitizer;
+          this.articleService = articleService;
+          this.tableContentService = tableContentService;
+        }
+      ],
+
+      ngOnInit: function() {
+        this.tableContents = this.tableContentService
+        .getBuilder()
+        .addHeadings([
+          { id: 'my-heading', name: 'My heading' }
+        ])
+        .addSubHeadings([
+          { headingId: 'my-heading', id: 'my-subheading', name: 'My subheading' },
+        ])
+        .build();
+
+        this.codeBlock = this.getCodeBlock('code-block.html');
+      },
+
+      getCodeBlock: function(fileName, lang) {
+        var _langs = lang ? [ lang ] : ['javascript', 'html', 'css'];
+
+        var _codeBlock = this.articleService.getCodeBlock(this.id, fileName); 
+        _codeBlock = highlight.highlightAuto(_codeBlock, _langs).value;
+
+        return this.sanitizer.bypassSecurityTrustHtml(_codeBlock);
+      }
+    });
+  `.replace(/^    /gm, '');
 }
 
 function _getIndexFileContent(id, title) {

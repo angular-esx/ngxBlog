@@ -1,9 +1,5 @@
 import * as ngCore from '@angular/core';
 
-function _tableContentComponent(){
-  this.constructor = function() {};
-}
-
 export var tableContentComponent = ngCore.Component({
   selector: 'xblog-table-content',
   template: "<ng-content select=\"xblog-title\"></ng-content><ol><li *ngFor=\"let heading of model\"><a href=\"/#{{heading.id}}\">{{heading.name}}</a><ul *ngIf=\"heading.subHeadings.length > 0\"><li *ngFor=\"let subHeading of heading.subHeadings\"><a href=\"/#{{subHeading.id}}\">{{subHeading.name}}</a></li></ul></li></ol>",
@@ -13,4 +9,6 @@ export var tableContentComponent = ngCore.Component({
     '[class.xblog-table-content]': 'true'
   }
 })
-.Class(new _tableContentComponent());
+.Class({
+  constructor: function(){}
+});
