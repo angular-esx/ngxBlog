@@ -12,21 +12,34 @@ import {
 import { resourceUtils } from 'xblog-cores/utils';
 import { cmsArticleService } from '../../cores/services';
 
-function _article1475677406Component(){
-  this.constructor = [
+export var article1475677406Component = ngCore.Component({
+  selector: 'article',
+  templateUrl: './templates/article-1475677406.html',
+  directives: [ 
+    CODE_PANEL_DIRECTIVES,
+    HIGHLIGHT_DIRECTIVES,
+    TABLE_CONTENT_DIRECTIVES
+  ],
+  providers: [ TABLE_CONTENT_PROVIDERS ],
+  host: {
+    '[class.xblog-article-1475677406]': 'true'
+  }
+})
+.Class({
+  constructor: [
     DomSanitizationService,
     cmsArticleService,
     tableContentService,
 
-    function article1475677406Component(sanitizer, articleService, tableContentService){
+    function (sanitizer, articleService, tableContentService){
       this.id = 1475677406;
       this.sanitizer = sanitizer;
       this.articleService = articleService;
       this.tableContentService = tableContentService;
     }
-  ];
+  ],
 
-  this.ngOnInit = function() {
+  ngOnInit: function() {
     this.componentArticleLink = '#';
 
     this.tableContents = this.tableContentService
@@ -76,29 +89,14 @@ function _article1475677406Component(){
         1: resourceUtils.getImg('viewEncapsulationNative-example-1475677406.png')
       }
     };
-  };
+  },
 
-  this.getCodeBlock = function(fileName, lang) {
+  getCodeBlock: function(fileName, lang) {
     var _langs = lang ? [ lang ] : ['javascript', 'html', 'css'];
 
     var _codeBlock = this.articleService.getCodeBlock(this.id, fileName); 
     _codeBlock = highlight.highlightAuto(_codeBlock, _langs).value;
 
     return this.sanitizer.bypassSecurityTrustHtml(_codeBlock);
-  };
-}
-
-export var article1475677406Component = ngCore.Component({
-  selector: 'article',
-  templateUrl: './templates/article-1475677406.html',
-  directives: [ 
-    CODE_PANEL_DIRECTIVES,
-    HIGHLIGHT_DIRECTIVES,
-    TABLE_CONTENT_DIRECTIVES
-  ],
-  providers: [ TABLE_CONTENT_PROVIDERS ],
-  host: {
-    '[class.xblog-article-1475677406]': 'true'
   }
-})
-.Class(new _article1475677406Component());
+});
