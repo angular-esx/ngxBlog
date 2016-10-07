@@ -1,9 +1,16 @@
+import * as ngCore from '@angular/core';
+
 import { childComponent } from './child.component';
 
-function _ngOnChangesComponent (){
-  this.constructor = function ngOnChangesComponent(){};
+export var ngOnChangesComponent = ngCore.Component({
+  selector: 'my-example',
+  template: '<my-child [title]="title" [model]="model"></my-child>',
+  directives: [ childComponent ]
+})
+.Class({
+  constructor: function(){},
 
-  this.ngOnInit = function() {
+  ngOnInit: function() {
     this.title = 'ngOnChanges';
     this.model = { content: 'This is content of ngOnChanges' };
 
@@ -12,12 +19,5 @@ function _ngOnChangesComponent (){
       _self.title = 'ngOnChanges updated';
       _self.model.content = 'This is content of ngOnChanges';
     }, 3 * 1000);
-  };
-}
-
-export var ngOnChangesComponent = ngCore.Component({
-  selector: 'my-example',
-  template: '<my-child [title]="title" [model]="model"></my-child>',
-  directives: [ childComponent ]
-})
-.Class(new _ngOnChangesComponent());
+  }
+});

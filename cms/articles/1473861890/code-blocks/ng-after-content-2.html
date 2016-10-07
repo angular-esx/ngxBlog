@@ -4,18 +4,6 @@ import { childComponent } from './child.component';
 import { titleComponent } from './title.component';
 import { itemComponent } from './item.component';
 
-function _ngAfterContentComponent (){
-  this.constructor = function ngAfterContentComponent(){};
-
-  this.ngOnInit = function() {
-    this.title = 'ngAfterContent';
-    this.items = [
-      { id: 1, name: 'item 01' },
-      { id: 2, name: 'item 02' }
-    ];
-  };
-}
-
 export var ngAfterContentComponent = ngCore.Component({
   selector: 'my-example',
   template: [
@@ -30,4 +18,14 @@ export var ngAfterContentComponent = ngCore.Component({
     itemComponent
   ]
 })
-.Class(new _ngAfterContentComponent());
+.Class({
+  constructor: function(){},
+
+  ngOnInit: function() {
+    this.title = 'ngAfterContent';
+    this.items = [
+      { id: 1, name: 'item 01' },
+      { id: 2, name: 'item 02' }
+    ];
+  }
+});

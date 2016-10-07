@@ -1,17 +1,5 @@
 import * as ngCore from '@angular/core';
 
-function _childComponent (){
-  this.constructor = function childComponent(){
-    console.log(this.title);
-    console.log(this.model);
-  };
-
-  this.ngOnInit = function(){
-    console.log(this.title);
-    console.log(this.model);
-  };
-}
-
 export var childComponent = ngCore.Component({
   selector: 'my-child',
   template: [
@@ -20,4 +8,14 @@ export var childComponent = ngCore.Component({
   ].join(''),
   properties: ['title', 'model']
 })
-.Class(new _childComponent());
+.Class({
+  constructor: function(){
+    console.log(this.title);
+    console.log(this.model);
+  },
+
+  ngOnInit: function(){
+    console.log(this.title);
+    console.log(this.model);
+  }
+});
