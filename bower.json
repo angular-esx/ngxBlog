@@ -7,7 +7,7 @@
   "license": "MIT",
   "private": true,
   "dependencies": {
-    "ngxBootstrap": "git@github.com:angular-esx/ngx-bootstrap.git#refactor-scss/ngxBootstrap"
+    "ngx": "git@github.com:angular-esx/ngx.git#develop"
   },
   "overrides": {}
 }

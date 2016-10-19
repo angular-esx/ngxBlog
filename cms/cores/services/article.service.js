@@ -1,6 +1,6 @@
-import * as ngCore from '@angular/core';
+import { Class } from '@angular/core';
 
-export var cmsArticleService = ngCore.Class({
+export var cmsArticleService = Class({
   constructor: function (){},
 
   getCodeBlock: function(id, fileName){

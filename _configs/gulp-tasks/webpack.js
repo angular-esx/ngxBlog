@@ -29,7 +29,6 @@ export let WebpackTask = (() => {
       };
 
       _baseConfig.plugins.push(
-        new this.webpack.optimize.DedupePlugin(),
         new this.webpack.optimize.CommonsChunkPlugin({
           name: [
             _getEntry('xblog')

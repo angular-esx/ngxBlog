@@ -32,7 +32,8 @@ gulp.task('build', () => {
 });
 
 gulp.task('preview-article', () => {
-  _plugins.runSequence('clean', ['lint', 'scss', 'resource'], 'inject', 'prerender', 'root-index', 'browser-sync');
+  // _plugins.runSequence('clean', ['lint', 'scss', 'resource'], 'inject', 'prerender', 'root-index', 'browser-sync');
+  _plugins.runSequence('clean', ['lint', 'scss', 'resource'], 'inject', 'prerender', 'root-index');
 });
 
 _registerTask('clean');

@@ -1,10 +1,10 @@
-import * as ngCore from '@angular/core';
+import { Class } from '@angular/core';
 
-import { ARTICLE_STORE } from '../../../_database';
+import { ARTICLE_STORE } from '../../../cms/articles';
 
 var _POSTS;
 
-export var homeService = ngCore.Class({
+export var xblogHomeService = Class({
   constructor: function(){},
 
   getPosts: function(){

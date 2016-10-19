@@ -1,0 +1,16 @@
+@import 'typography.scss';
+@import 'palette.scss';
+
+$xblog-header-foreground-color: xblog-color($xblog-color-white);
+
+$xblog-title-font-size: xblog-h-font-size(h1) * 1.6;
+
+$xblog-subtitle-font-family: $xblog-font-family-sans-serif;
+$xblog-subtitle-font-size: xblog-font-size(lg);
+$xblog-subtitle-font-weight: xblog-font-weight(300);
+$xblog-subtitle-margin: .5rem 0 0;
+
+$xblog-divider-width: 270px;
+$xblog-divider-border-width: 4px;
+$xblog-divider-border-top-color: xblog-color($xblog-color-white);
+$xblog-divider-margin: 20px auto;

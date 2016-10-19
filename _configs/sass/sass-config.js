@@ -7,8 +7,8 @@ export class SassConfig {
       './cores/styles/typography',
       './cores/styles/normalize',
       './cores/resources/icons/fonts',
-      './cores/components/highlight/styles',
-      './node_modules/ngx-bootstrap/cores/scss'
+      './cores/modules/highlight/styles',
+      './node_modules/ngx-framework/cores/styles'
     ];
   }
 }

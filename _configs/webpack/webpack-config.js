@@ -8,6 +8,17 @@ export class WebpackConfig {
     this.cache = true,
     this.devtool = 'source-map',
     this.plugins = [
+      /*
+        Disabled temporarily this plugin to solve the issue:
+        Template cannot be applied as TemplateArgument: HarmonyImportDependency
+       */
+      //new gulpPlugins.webpack.optimize.DedupePlugin(),
+      /*
+        This plugin is used temporarily to solve the issue:
+        WARNING in ./~/@angular/core/src/linker/system_js_ng_module_factory_loader.js 
+        Critical dependency: the request of a dependency is an expression 
+      */
+      new gulpPlugins.webpack.ContextReplacementPlugin(/angular(\\|\/)core(\\|\/)(esm(\\|\/)src|src)(\\|\/)linker/, __dirname),
       new gulpPlugins.webpack.LoaderOptionsPlugin({
         options: {
           postcss: [

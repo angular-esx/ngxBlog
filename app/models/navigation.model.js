@@ -1,13 +1,13 @@
-import { ngxUtils } from 'ngx-bootstrap/cores';
+import { ngxUtils } from 'ngx-framework/cores';
 
 import { 
-  homePage, 
-  articlePage 
+  xblogHomePage, 
+  xblogArticlePage 
 } from '../../pages';
 
 export var NAVIGATIONS = [
-  new _navigation('blog', homePage, null, true),
-  new _navigation('blog/articles/:id', articlePage)
+  new _navigation('blog', xblogHomePage, null, true),
+  new _navigation('blog/articles/:id', xblogArticlePage)
 ];
 
 function _navigation(path, page, params, useAsDefault){

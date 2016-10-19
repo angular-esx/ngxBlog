@@ -1,21 +1,26 @@
-import 'angular2-universal/polyfills';
-import * as ngCore from '@angular/core';
+import 'angular2-universal-polyfills';
+import { Class } from '@angular/core';
 import { REQUEST_URL, ORIGIN_URL, NODE_LOCATION_PROVIDERS } from 'angular2-universal';
 import { enableProdMode } from '@angular/core';
 import { APP_BASE_HREF } from '@angular/common';
-import { provideRouter } from '@angular/router';
+import { provideRoutes } from '@angular/router';
 import { prerender } from './angular2-gulp-prerender';
 
 import { BaseTask } from './base-task';
 import { Envt } from '../envts';
 
-import { ARTICLE_STORE } from '../../_database';
+import { ARTICLE_STORE } from '../../cms/articles';
 
 import { cmsArticleService } from '../../cms/cores/services';
 
-import { application } from '../../app/app';
-import { homeService, articleService } from '../../pages';
+import { 
+  xblogHomeService, 
+  xblogArticleService 
+} from '../../pages';
+
+import { xblogApp } from '../../app/app';
 import { router } from '../../app/router';
+
 
 export class PrerenderTask extends BaseTask {
   run() {
@@ -26,7 +31,7 @@ export class PrerenderTask extends BaseTask {
     enableProdMode();
 
     if(this.args.action === 'paginate') {
-       return _getPrerenderStream(this, _envt, router, [ homeService ], _src, _envt.getBlogDest('index.html'));
+       return _getPrerenderStream(this, _envt, router, [ xblogHomeService ], _src, _envt.getBlogDest('index.html'));
     }
     else if (this.args.action.indexOf('detail-') > -1) {
       _article = ARTICLE_STORE[this.args.action.split('-').pop()];
@@ -36,7 +41,7 @@ export class PrerenderTask extends BaseTask {
         _envt,
         _getRouter(_article, router), 
         [ 
-          articleService,
+          xblogArticleService,
           { provide: cmsArticleService, useClass: _getCmsArticleService() }
         ], 
         _src, 
@@ -60,7 +65,7 @@ function _getRouter(article, router){
 }
 
 function _getCmsArticleService(){
-  return ngCore.Class(new _cmsArticleService());
+  return Class(new _cmsArticleService());
 }
 
 function _getPrerenderStream(context, envt, router, providers, src, dest){
@@ -70,13 +75,13 @@ function _getPrerenderStream(context, envt, router, providers, src, dest){
 
   let _stream = context.gulp.src(src)
   .pipe(prerender({
-    directives: [ application ],
+    directives: [ xblogApp ],
     platformProviders: [
       { provide: ORIGIN_URL, useValue: '/'},
       { provide: APP_BASE_HREF, useValue: '/'},
     ],
     providers: [
-      provideRouter(router),
+      provideRoutes(router),
       { provide: REQUEST_URL, useValue: '/' },
       NODE_LOCATION_PROVIDERS
     ].concat(providers),

@@ -1,8 +1,8 @@
-import * as ngCore from '@angular/core';
+import { Class } from '@angular/core';
 
-import { ARTICLE_STORE } from '../../../_database';
+import { ARTICLE_STORE } from '../../../cms/articles';
 
-export var articleService = ngCore.Class({
+export var xblogArticleService = Class({
   constructor: function(){},
 
   getArticle: function(id){

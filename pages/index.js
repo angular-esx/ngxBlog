@@ -1,2 +1,11 @@
-export { homePage, homeService } from './home';
-export { articlePage, articleService } from './article';
+export { 
+  xblogHomePageModule,
+  xblogHomeService,
+  xblogHomePage
+} from './home';
+
+export { 
+  xblogArticlePageModule,
+  xblogArticleService,
+  xblogArticlePage
+} from './article';
