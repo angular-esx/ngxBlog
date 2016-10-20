@@ -1,10 +1,10 @@
-import { BaseTask } from './base-task';
-import { Envt } from '../envts';
+import { baseTask } from './base-task';
+import { envtFactory } from '../envts';
 
-export class CleanTask extends BaseTask {
+export class cleanTask extends baseTask {
   run() {
-    let _envt = new Envt(this.args);
+    let _envt = envtFactory.getEnvt(this.args);
 
-     this.del.sync([`${_envt.distPath}/**`]);
+    this.del.sync([`${_envt.distPath}/**`]);
   }
 }

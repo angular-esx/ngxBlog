@@ -1,19 +1,10 @@
-import { bootstrap } from '@angular/platform-browser-dynamic';
-import { provideRouter } from '@angular/router';
+import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { prebootComplete } from 'angular2-universal';
 
-import { cmsArticleService } from '../cms/cores/services';
-
-import { application } from './app';
-import { homeService, articleService } from '../pages';
-import { router } from './router';
+import { xblogModule } from './app.module';
 
 document.addEventListener('DOMContentLoaded', function(){
-  bootstrap(application, [
-    provideRouter(router),
-    homeService,
-    articleService,
-    cmsArticleService
-  ])
+  platformBrowserDynamic()
+  .bootstrapModule(xblogModule)
   .then(prebootComplete);
 });

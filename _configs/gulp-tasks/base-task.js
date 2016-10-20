@@ -1,4 +1,4 @@
-export class BaseTask {
+export class baseTask {
   constructor(params) {
     Object.keys(params).map(prop => {
       if(prop === 'plugins'){

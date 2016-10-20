@@ -23,7 +23,7 @@ function _createIndexRoute(navigation){
   };
 }
 
-function _createRoute(navigation, useAsDefault){
+function _createRoute(navigation){
   return {
     path: navigation.path,
     component: navigation.component
