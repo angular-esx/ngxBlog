@@ -6,7 +6,7 @@ import {
 } from '../../pages';
 
 export var NAVIGATIONS = [
-  new _navigation('blog', xblogHomePage, null, true),
+  new _navigation('blog/articles/:pageNum/index.html', xblogHomePage, null, true),
   new _navigation('blog/articles/:id', xblogArticlePage)
 ];
 

@@ -1,6 +1,10 @@
 import { Component } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+
+import { HOMEPAGE_PAGE_SIZE as PAGE_SIZE } from 'xblog-cores/constants';
 
 import { xblogHomeService } from './services/home.service';
+
 
 export var xblogHomePage = Component({
   selector: 'xblog-home',
@@ -12,14 +16,20 @@ export var xblogHomePage = Component({
 })
 .Class({
   constructor: [
+    ActivatedRoute,
     xblogHomeService,
 
-    function (homeService){
+    function (activatedRoute, homeService){
+      this.activatedRoute = activatedRoute;
       this.homeService = homeService;
     }
   ],
 
   ngOnInit: function(){
-    this.posts = this.homeService.getPosts();
+    var _self = this;
+
+    this.subscription = this.activatedRoute.params.subscribe(function(params) {
+      _self.posts = _self.homeService.getPosts(params.pageNum || 1, PAGE_SIZE);
+    });
   }
 });

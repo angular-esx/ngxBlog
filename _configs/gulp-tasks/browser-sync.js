@@ -1,9 +1,9 @@
-import { BaseTask } from './base-task';
-import { Envt } from '../envts';
+import { baseTask } from './base-task';
+import { envtFactory } from '../envts';
 
-export class BrowserSyncTask extends BaseTask {
+export class browserSyncTask extends baseTask {
   run() {
-    let _envt = new Envt(this.args);
+    let _envt = envtFactory.getEnvt(this.args);
 
     this.browserSync({
       server: {

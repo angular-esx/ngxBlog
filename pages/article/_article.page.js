@@ -5,6 +5,7 @@ import { ngxComponentPortal } from 'ngx-framework/cores';
 
 import { xblogArticleService } from './services/article.service';
 
+
 export var xblogArticlePage = Component({
   selector: 'xblog-article',
   templateUrl: './templates/article.html',

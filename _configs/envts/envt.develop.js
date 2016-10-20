@@ -1,5 +1,5 @@
-import { BaseEnvt } from './_envt';
+import { baseEnvt } from './_envt';
 
-export class DeverlopEnvt extends BaseEnvt {
+export class deverlopEnvt extends baseEnvt {
 
 }

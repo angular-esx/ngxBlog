@@ -1,15 +1,23 @@
 import { Class } from '@angular/core';
 
-import { ARTICLE_STORE } from '../../../cms/articles';
+import { xblogArticleStoreService } from 'xblog-store';
 
 export var xblogArticleService = Class({
-  constructor: function(){},
+  constructor: [
+    xblogArticleStoreService,
+
+    function(articleStoreService){
+      this.articleStoreService = articleStoreService;
+    }
+  ],
 
   getArticle: function(id){
     if(!id) { throw 'id is required for article'; }
 
-    if(!ARTICLE_STORE[id]) { throw 'Not found articleId: ' + id; }
+    var _article = this.articleStoreService.getArticle(id);
 
-    return Object.assign({}, ARTICLE_STORE[id]);
+    if(!_article) { throw 'Not found articleId: ' + id; }
+
+    return _article;
   }
 });

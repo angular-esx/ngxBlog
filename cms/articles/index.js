@@ -8,8 +8,6 @@ import {
   xblogTableContentService
 } from 'xblog-cores/modules';
 
-import { cmsArticleService } from '../cores/services';
-
 import { article1476250476 } from './1476250476';
 
 var _ARTICLES = [
@@ -32,8 +30,7 @@ export var cmsArticlesModule = NgModule({
   ],
   declarations: _ARTICLE_COMPONENTS,
   providers: [ 
-    xblogTableContentService,
-    cmsArticleService 
+    xblogTableContentService
   ],
   entryComponents: _ARTICLE_COMPONENTS,
   exports: _ARTICLE_COMPONENTS

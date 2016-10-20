@@ -3,6 +3,8 @@ import { CommonModule }  from '@angular/common';
 
 import { ngxPortalModule } from 'ngx-framework/cores';
 
+import { xblogArticleStoreService } from 'xblog-store';
+
 import {
   ngxGridModule,
   ngxCardModule
@@ -31,7 +33,10 @@ export var xblogArticlePageModule = NgModule({
     cmsArticlesModule
   ],
   declarations: [ xblogArticlePage ],
-  providers: [ xblogArticleService ],
+  providers: [
+    xblogArticleStoreService, 
+    xblogArticleService 
+  ],
   exports: [ xblogArticlePage ]
 })
 .Class({

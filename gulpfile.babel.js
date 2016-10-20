@@ -2,14 +2,14 @@ import gulpLoadPlugins from 'gulp-load-plugins';
 import gulp from 'gulp';
 
 import * as gulpTasks from './_configs/gulp-tasks';
-import { Envt } from './_configs/envts';
+import { envtFactory } from './_configs/envts';
 
 let _plugins = gulpLoadPlugins({
   pattern: [
     'yargs', 'del', 'gulp-jshint', 'jshint-stylish', 'gulp-sass',
-    'gulp-rename', 'run-sequence', 'merge-stream', 'browser-sync', 'webpack',
-    'autoprefixer', 'q', 'gulp-inject', 'unminified-webpack-plugin', 'gulp-concat',
-    'gulp-inline-ng2-template', 'html-minifier', 'node-sass', 'gulp-file', 'gulp-htmlmin'
+    'gulp-rename', 'run-sequence', 'merge-stream', 'browser-sync',
+    'webpack', 'gulp-inject', 'gulp-concat', 'gulp-inline-ng2-template', 
+    'html-minifier', 'node-sass', 'gulp-file', 'gulp-htmlmin'
   ],
   renameFn: (name) => {  
     return name
@@ -19,21 +19,30 @@ let _plugins = gulpLoadPlugins({
 });
 
 gulp.task('start', () => {
-  _plugins.runSequence('clean', ['lint', 'scss', 'resource', 'polyfill'], 'webpack', ['inject', 'browser-sync']);
+  if(_plugins.yargs.argv.mode === 'prerender'){
+    _plugins.runSequence('clean', ['lint', 'scss', 'resource'], 'inject', 'prerender', 'root-index', 'browser-sync');
+  }
+  else {
+    _plugins.runSequence('clean', ['lint', 'scss', 'resource', 'polyfill'], 'spa-bundle', ['inject', 'browser-sync']);
+  }
 });
 
-gulp.task('build', () => {
-  if(_plugins.yargs.argv.mode === 'universal'){
-    _plugins.runSequence('clean', ['lint', 'scss', 'resource'], 'inject');
+gulp.task('build', ['prebuild'], () => {
+  if(_plugins.yargs.argv.mode === 'prerender'){
+     if(_plugins.yargs.argv.envt === 'production'){
+       _plugins.runSequence('clean', ['lint', 'scss', 'resource'], 'inject', 'prerender', 'minify-html', 'root-index');
+     }
+     else{
+       _plugins.runSequence('clean', ['lint', 'scss', 'resource'], 'inject', 'prerender', 'root-index');
+     }
   }
   else { 
-    _plugins.runSequence('clean', ['lint', 'scss', 'resource', 'polyfill'], 'webpack', 'inject');
+    _plugins.runSequence('clean', ['lint', 'scss', 'resource', 'polyfill'], 'spa-bundle', 'inject');
   }
 });
 
 gulp.task('preview-article', () => {
-  // _plugins.runSequence('clean', ['lint', 'scss', 'resource'], 'inject', 'prerender', 'root-index', 'browser-sync');
-  _plugins.runSequence('clean', ['lint', 'scss', 'resource'], 'inject', 'prerender', 'root-index');
+  _plugins.runSequence('clean', ['lint', 'scss', 'resource'], 'inject', 'prerender', 'root-index', 'browser-sync');
 });
 
 _registerTask('clean');
@@ -52,7 +61,7 @@ _registerTask('browser-sync');
 
 _registerTask('watch');
 
-_registerTask('webpack');
+_registerTask('spa-bundle');
 
 _registerTask('prebuild');
 
@@ -65,22 +74,37 @@ gulp.task('reload', () => {
 });
 
 gulp.task('root-index', () => {
-  let _envt = new Envt(_plugins.yargs.argv);
-  let _arg = _plugins.yargs.argv.article;
-
-  if(_arg || _plugins.yargs.argv.action.indexOf('detail-') > -1){
+  let _envt = envtFactory.getEnvt(_plugins.yargs.argv);
+  
+  let _arg;
+  if(_plugins.yargs.argv.action.indexOf('detail-') > -1){
     _arg = _plugins.yargs.argv.action.split('-').pop();
 
-    return gulp.src(_envt.getBlogDest(`articles/*-${_arg}.html`))
+    return gulp.src(_envt.getArticleDest(`*-${_arg}.html`))
     .pipe(_plugins.rename('index.html'))
     .pipe(gulp.dest(_envt.distPath));
   }
-  else {
-    return gulp.src(_envt.getBlogDest('index.html'))
+  else if(_plugins.yargs.argv.action.indexOf('paginate-') > -1){
+    return gulp.src(_envt.getArticleDest('1/index.html'))
     .pipe(_plugins.rename(file => file.dirname = ''))
     .pipe(gulp.dest(_envt.distPath));
   }
 });
+
+gulp.task('minify-html', () => {
+  let _envt = envtFactory.getEnvt(_plugins.yargs.argv);
+
+  return gulp.src(_envt.getArticleDest('**/*.html'))
+  .pipe(_plugins.htmlmin({
+    collapseBooleanAttributes: true,
+    collapseWhitespace: true,
+    minifyURLs: true,
+    removeComments: true,
+    removeEmptyAttributes: true,
+    removeRedundantAttributes: true
+  }))
+  .pipe(gulp.dest(_envt.getArticleDest()));
+})
 
 function _registerTask(taskName, dependencies) {
   if(dependencies){
@@ -93,7 +117,7 @@ function _registerTask(taskName, dependencies) {
 
 function _getTask(taskName) {
   var _taskName = taskName.toLowerCase().replace(/-([a-z])/g, (x, y) => { return y.toUpperCase(); });
-  _taskName = `${_taskName.charAt(0).toUpperCase()}${_taskName.slice(1)}Task`;
+  _taskName = `${_taskName.charAt(0).toLowerCase()}${_taskName.slice(1)}Task`;
 
   return new gulpTasks[_taskName]({
     gulp: gulp,

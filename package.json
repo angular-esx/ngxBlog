@@ -2,8 +2,7 @@
   "name": "ngx-blog",
   "version": "1.0.0",
   "scripts": {
-    "universal-dev-build": "gulp build --mode universal && gulp prerender --action paginate && gulp prerender --action detail-1 && gulp prerender --action detail-2 && gulp prerender --action detail-3 && gulp prerender --action detail-4 && gulp prerender --action detail-5 && gulp prerender --action detail-6 && gulp prerender --action detail-7 && gulp prerender --action detail-8 && gulp prerender --action detail-9 && gulp prerender --action detail-10 && gulp root-index",
-    "universal-prod-build": "gulp build --mode universal --envt production && gulp prerender --envt production --action paginate && gulp prerender --envt production --action detail-1 && gulp prerender --envt production --action detail-2 && gulp prerender --envt production --action detail-3 && gulp prerender --envt production --action detail-4 && gulp prerender --envt production --action detail-5 && gulp prerender --envt production --action detail-6 && gulp prerender --envt production --action detail-7 && gulp prerender --envt production --action detail-8 && gulp prerender --envt production --action detail-9 && gulp prerender --envt production --action detail-10 && gulp root-index"
+    "prerender-prepublish": "gulp build --mode prerender --action paginate-1000 --envt production"
   },
   "license": "ISC",
   "dependencies": {
@@ -15,7 +14,8 @@
     "@angular/platform-browser": "2.0.2",
     "@angular/platform-browser-dynamic": "2.0.2",
     "@angular/router": "3.0.0-rc.2",
-    "angular2-universal": "0.104.5",
+    "angular2-universal": "2.1.0-rc.1",
+    "angular2-universal-polyfills": "^2.1.0-rc.1",
     "es6-promise": "3.1.2",
     "es6-shim": "0.35.0",
     "highlight.js": "9.6.0",
@@ -28,7 +28,6 @@
     "autoprefixer": "6.5.0",
     "babel-core": "6.17.0",
     "babel-preset-es2015": "6.16.0",
-    "beeper": "^1.1.0",
     "browser-sync": "2.17.1",
     "del": "2.2.2",
     "font-awesome": "4.6.3",
@@ -53,8 +52,6 @@
     "merge-stream": "1.0.0",
     "node-sass": "3.10.1",
     "postcss-loader": "0.9.1",
-    "preboot": "2.1.2",
-    "q": "1.4.1",
     "run-sequence": "1.2.2",
     "sass-loader": "3.2.3",
     "unminified-webpack-plugin": "1.1.1",

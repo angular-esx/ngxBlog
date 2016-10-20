@@ -9,8 +9,6 @@ import {
 } from 'xblog-cores/modules';
 
 import { 
-  xblogHomeService, 
-  xblogArticleService,
   xblogHomePageModule,
   xblogArticlePageModule
 } from '../pages';
@@ -27,11 +25,7 @@ export var xblogModule = NgModule({
     xblogArticlePageModule
   ],
   declarations: [ xblogApp ],
-  providers: [ 
-    cmsArticleService,
-    xblogHomeService,
-    xblogArticleService
-  ],
+  providers: [ cmsArticleService ],
   bootstrap: [ xblogApp ]
 })
 .Class({

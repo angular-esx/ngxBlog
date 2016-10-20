@@ -1,9 +1,9 @@
-import { BaseTask } from './base-task';
-import { Envt } from '../envts';
+import { baseTask } from './base-task';
+import { envtFactory } from '../envts';
 
-export class CreateArticleTask extends BaseTask {
+export class createArticleTask extends baseTask {
   run() {
-    let _envt = new Envt(this.args);
+    let _envt = envtFactory.getEnvt(this.args);
     let _indent = { tabs: true, amount: 1 };
 
     let _id = Math.round(new Date().getTime() / 1000);

@@ -1,7 +1,7 @@
-import { BaseTask } from './base-task';
+import { baseTask } from './base-task';
 
 import fs from 'fs';
-import { SassConfig } from '../sass/sass-config';
+import { sassConfig } from '../sass/sass-config';
 
 const _COMPONENT_SRCS = [
   './bower_components/ngx/projects/ngx-framework/modules/navbar/navbar.component.js',
@@ -21,9 +21,9 @@ const _COMPONENT_SRCS = [
   './pages/article/article.page.js'
 ];
 
-const _INCLUDE_PATHS = new SassConfig().includePaths;
+const _INCLUDE_PATHS = new sassConfig().includePaths;
 
-export class PrebuildTask extends BaseTask {
+export class prebuildTask extends baseTask {
   run() {
     let _stream = [];
 

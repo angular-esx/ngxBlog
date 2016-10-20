@@ -1,24 +1,18 @@
 import { Class } from '@angular/core';
 
-import { ARTICLE_STORE } from '../../../cms/articles';
+import { xblogArticleStoreService } from 'xblog-store';
 
-var _POSTS;
 
 export var xblogHomeService = Class({
-  constructor: function(){},
+  constructor: [
+    xblogArticleStoreService,
 
-  getPosts: function(){
-    if(!_POSTS) {
-      var _post;
-      _POSTS = [];
-
-      ARTICLE_STORE.LIST.forEach(function(article){
-        _post = Object.assign({}, article);
-
-        _POSTS.push(_post);
-      });
+    function(articleStoreService){
+      this.articleStoreService = articleStoreService;
     }
+  ],
 
-    return _POSTS;
+  getPosts: function(pageNumber, pageSize){
+    return this.articleStoreService.getArticles(pageNumber, pageSize);
   }
 });

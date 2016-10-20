@@ -1,4 +1,4 @@
-export class SassConfig {
+export class sassConfig {
   constructor() {
     this.includePaths = [
       './cores/styles/breakpoint',
