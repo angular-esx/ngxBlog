@@ -1,10 +1,42 @@
+import { NgModule } from '@angular/core';
+import { BrowserModule }  from '@angular/platform-browser';
+
+import {
+  xblogCodePanelModule,
+  xblogHighlightModule,
+  xblogTableContentModule,
+  xblogTableContentService
+} from 'xblog-cores/modules';
+
 import { article1475677406 } from './1475677406';
 
-let _ARTICLES = [
+var _ARTICLES = [
   article1475677406
 ];
 
 export var ARTICLE_STORE = _init();
+
+var _ARTICLE_COMPONENTS = ARTICLE_STORE.LIST.map(function(article){
+  return article.content;
+});
+
+export var cmsArticlesModule = NgModule({
+  imports: [ 
+    BrowserModule,
+    xblogCodePanelModule,
+    xblogHighlightModule,
+    xblogTableContentModule
+  ],
+  declarations: _ARTICLE_COMPONENTS,
+  providers: [ 
+    xblogTableContentService
+  ],
+  entryComponents: _ARTICLE_COMPONENTS,
+  exports: _ARTICLE_COMPONENTS
+})
+.Class({
+  constructor: function(){}
+});
 
 function _init() {
   let _list = [];

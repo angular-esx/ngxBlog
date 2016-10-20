@@ -1,3 +1,5 @@
-export * from './services/article.service';
+export { xblogArticlePageModule } from './article.page.module';
 
-export * from './article.page';
+export { xblogArticleService } from './services/article.service';
+
+export { xblogArticlePage } from './article.page';

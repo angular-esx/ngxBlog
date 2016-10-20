@@ -1,3 +1,5 @@
-export * from './services/home.service';
+export { xblogHomePageModule } from './home.page.module';
 
-export * from './home.page';
+export { xblogHomeService } from './services/home.service';
+
+export { xblogHomePage } from './home.page';

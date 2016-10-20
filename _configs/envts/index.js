@@ -1,36 +1,21 @@
-import { BaseEnvt } from './_envt';
-import { DeverlopEnvt } from './envt.develop';
-import { ProductionEnvt } from './envt.production';
+import { baseEnvt } from './_envt';
+import { deverlopEnvt } from './envt.develop';
+import { productionEnvt } from './envt.production';
 
-export class Envt extends BaseEnvt {
-  constructor(options) {
-    super(options);
-    
-    let _envt;
-
+export let envtFactory = {
+  getEnvt: function(options){
     if(!options.envt){ 
-      _envt = new DeverlopEnvt(); 
+      return new deverlopEnvt(); 
     }
     else{
       switch(options.envt){
         case 'develop':
-          _envt = new DeverlopEnvt();
-          break;
+          return new deverlopEnvt();
         case 'production':
-          _envt = new ProductionEnvt();
-          break;
+          return new productionEnvt();
         default:
           throw `Not found envt: ${options.envt}`;
       }
     }
-
-    Object.keys(_envt).map(prop => {
-      if(_envt[prop] && options[prop]){
-        this[prop] = options[prop];
-      }
-      else if(_envt[prop] && !options[prop]){
-        this[prop] = _envt[prop];
-      }
-    });
   }
-}
+};

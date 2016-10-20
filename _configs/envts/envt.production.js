@@ -1,6 +1,6 @@
-import { BaseEnvt } from './_envt';
+import { baseEnvt } from './_envt';
 
-export class ProductionEnvt extends BaseEnvt {
+export class productionEnvt extends baseEnvt {
   constructor() {
     super();
 

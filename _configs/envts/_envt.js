@@ -1,4 +1,4 @@
-export class BaseEnvt {
+export class baseEnvt {
   constructor() {
     this.minify = false;
     this.distPath = './dist';
