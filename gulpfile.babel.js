@@ -19,7 +19,7 @@ let _plugins = gulpLoadPlugins({
 });
 
 gulp.task('start', () => {
-  if(_plugins.yargs.argv.mode === 'prerender'){
+  if(_plugins.yargs.argv.action){
     _plugins.runSequence('clean', ['lint', 'scss', 'resource'], 'inject', 'prerender', 'root-index', 'browser-sync');
   }
   else {
@@ -28,7 +28,7 @@ gulp.task('start', () => {
 });
 
 gulp.task('build', () => {
-  if(_plugins.yargs.argv.mode === 'prerender'){
+  if(_plugins.yargs.argv.action){
      if(_plugins.yargs.argv.envt === 'production'){
        _plugins.runSequence('clean', ['lint', 'scss', 'resource'], 'inject', 'prerender', 'minify-html', 'root-index');
      }

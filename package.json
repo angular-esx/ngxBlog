@@ -2,7 +2,7 @@
   "name": "ngx-blog",
   "version": "1.0.0",
   "scripts": {
-    "prerender-prepublish": "gulp build --mode prerender --action paginate-1000 --envt production"
+    "prerender-prepublish": "gulp build --action paginate-1000 --envt production"
   },
   "license": "ISC",
   "dependencies": {
