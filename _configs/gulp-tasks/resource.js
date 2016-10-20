@@ -1,9 +1,9 @@
-import { BaseTask } from './base-task';
-import { Envt } from '../envts';
+import { baseTask } from './base-task';
+import { envtFactory } from '../envts';
 
-export class ResourceTask extends BaseTask {
+export class resourceTask extends baseTask {
   run() {
-    let _envt = new Envt(this.args);
+    let _envt = envtFactory.getEnvt(this.args);
 
     let _iconFontStream = this.gulp
     .src([

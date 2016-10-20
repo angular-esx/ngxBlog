@@ -1,9 +1,9 @@
-import { BaseTask } from './base-task';
-import { Envt } from '../envts';
+import { baseTask } from './base-task';
+import { envtFactory } from '../envts';
 
-export class InjectTask extends BaseTask {
+export class injectTask extends baseTask {
   run() {
-    let _envt = new Envt(this.args);
+    let _envt = envtFactory.getEnvt(this.args);
     let _notReadOption = { read: false };
     
     let _xBlogJs = this.gulp.src(_envt.getJsDest('xblog.js'), _notReadOption);

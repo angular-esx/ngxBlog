@@ -1,34 +1,15 @@
-import * as ngCore from '@angular/core';
+import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
-import { 
-  ngxComponentPortal,
-  ngxPortalHostDirective
-} from 'ngx-bootstrap/cores';
-import { 
-  NGX_GRID_DIRECTIVES,
-  NGX_CARD_DIRECTIVES
-} from 'ngx-bootstrap/components';
+import { ngxComponentPortal } from 'ngx-framework/cores';
 
-import { 
-  HEADER_DIRECTIVES,
-  POST_DIRECTIVES 
-} from 'xblog-cores/components';
+import { xblogArticleService } from './services/article.service';
 
-import { articleService } from './services/article.service';
 
-export var articlePage = ngCore.Component({
+export var xblogArticlePage = Component({
   selector: 'xblog-article',
   templateUrl: './templates/article.html',
   styleUrls: ['./styles/article.scss'],
-  directives: [
-    ngxPortalHostDirective,
-    NGX_GRID_DIRECTIVES,
-    NGX_CARD_DIRECTIVES,
-    HEADER_DIRECTIVES,
-    POST_DIRECTIVES
-  ],
-  providers: [ articleService ],
   host: {
     '[class.xblog-article]': 'true'
   }
@@ -36,7 +17,7 @@ export var articlePage = ngCore.Component({
 .Class({
   constructor: [
     ActivatedRoute,
-    articleService,
+    xblogArticleService,
 
     function articlePage(activatedRoute, articleService){
       this.activatedRoute = activatedRoute;
