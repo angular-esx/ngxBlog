@@ -27,7 +27,7 @@ gulp.task('start', () => {
   }
 });
 
-gulp.task('build', ['prebuild'], () => {
+gulp.task('build', () => {
   if(_plugins.yargs.argv.mode === 'prerender'){
      if(_plugins.yargs.argv.envt === 'production'){
        _plugins.runSequence('clean', ['lint', 'scss', 'resource'], 'inject', 'prerender', 'minify-html', 'root-index');
