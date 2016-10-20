@@ -1,7 +1,7 @@
 @import './_variables.scss';
 
 :host(.xblog-article) {
-  > .xblog-article-content-section {
+  /deep/ > .xblog-article-content-section {
     margin: $xblog-article-content-section-margin;
 
     p {
