@@ -10,6 +10,6 @@ export var article1476250476 = {
   routeLink: resourceUtils.getArticleRouteLink('change-detection-1476250476.html'),
   relatedArticles: [],
   tags: [],
-  description: 'n Angular world, Zone plays very nicely with what Angular needs in order to perform change detection in our applications. Each component has its own change detector and an Angular application consists of a component tree, the logical result is that we’re having a change detector tree too.',
+  description: 'In Angular world, Zone plays very nicely with what Angular needs in order to perform change detection in our applications. Each component has its own change detector and an Angular application consists of a component tree, the logical result is that we’re having a change detector tree too.',
   content: article1476250476Component,
 };
