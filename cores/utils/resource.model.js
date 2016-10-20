@@ -4,11 +4,15 @@ function _resourceUtils(){
   };
 
   this.getImg = function(path){
-    return 'blog/resources/images/' + path;
+    return '/blog/resources/images/' + path;
+  };
+
+  this.getHomeRouteLink = function(pageNum){
+    return '/blog/articles/' + pageNum + '/index.html';
   };
 
   this.getArticleRouteLink = function(path){
-    return 'blog/articles/' + path;
+    return '/blog/articles/' + path;
   };
 }
 

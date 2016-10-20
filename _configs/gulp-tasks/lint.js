@@ -1,6 +1,6 @@
-import { BaseTask } from './base-task';
+import { baseTask } from './base-task';
 
-export class LintTask extends BaseTask {
+export class lintTask extends baseTask {
   run() {
     return this.gulp
     .src([

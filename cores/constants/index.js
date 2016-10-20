@@ -1,0 +1,1 @@
+export var HOMEPAGE_PAGE_SIZE = 10;

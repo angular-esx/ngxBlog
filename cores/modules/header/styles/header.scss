@@ -1,0 +1,44 @@
+@import 'breakpoint.scss';
+
+@import './_variables.scss';
+
+:host(.xblog-header){
+  display: block;
+  color: $xblog-header-foreground-color;
+
+  /deep/ > .ngx-jumbotron {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    background-size: cover;
+    background-attachment: scroll;
+    background-repeat: no-repeat;
+    background-position: center center;
+    min-height: 50vh;
+
+    > .ngx-grid {
+      width: 100%;
+
+      & h1[xblog-title] {
+        text-align: center;
+        font-size: $xblog-title-font-size;
+      }
+
+      & hr[xblog-divider] {
+        width: $xblog-divider-width;
+        margin: $xblog-divider-margin;
+        border-width: $xblog-divider-border-width;
+        border-top-color: $xblog-divider-border-top-color !important;
+      }
+
+      & xblog-subtitle {
+        display: block;
+        text-align: center;
+        font-family: $xblog-subtitle-font-family;
+        font-size: $xblog-subtitle-font-size;
+        font-weight: $xblog-subtitle-font-weight;
+        margin: $xblog-subtitle-margin;
+      }
+    }
+  }
+}

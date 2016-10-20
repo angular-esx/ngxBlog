@@ -1,9 +1,9 @@
-import { BaseTask } from './base-task';
-import { Envt } from '../envts';
+import { baseTask } from './base-task';
+import { envtFactory } from '../envts';
 
-export class CreateArticleTask extends BaseTask {
+export class createArticleTask extends baseTask {
   run() {
-    let _envt = new Envt(this.args);
+    let _envt = envtFactory.getEnvt(this.args);
     let _indent = { tabs: true, amount: 1 };
 
     let _id = Math.round(new Date().getTime() / 1000);
@@ -38,38 +38,28 @@ export class CreateArticleTask extends BaseTask {
 }
 
 function _getComponentFileContent(id) {
-  return `import * as ngCore from '@angular/core';
-    import { DomSanitizationService } from '@angular/platform-browser';
+  return `import { Component } from '@angular/core';
+    import { DomSanitizer } from '@angular/platform-browser';
     import highlight from 'highlight.js';
 
-    import { 
-      CODE_PANEL_DIRECTIVES,
-      HIGHLIGHT_DIRECTIVES,
-      TABLE_CONTENT_DIRECTIVES,
-      TABLE_CONTENT_PROVIDERS,
-      tableContentService,
-    } from 'xblog-cores/components';
+    import { xblogTableContentService } from 'xblog-cores/modules';
     import { resourceUtils } from 'xblog-cores/utils';
+
     import { cmsArticleService } from '../../cores/services';
 
-    export var article${id}Component = ngCore.Component({
+
+    export var article1476250476Component = Component({
       selector: 'article',
-      templateUrl: './templates/article-${id}.html',
-      directives: [ 
-        CODE_PANEL_DIRECTIVES,
-        HIGHLIGHT_DIRECTIVES,
-        TABLE_CONTENT_DIRECTIVES
-      ],
-      providers: [ TABLE_CONTENT_PROVIDERS ],
+      templateUrl: './templates/article-1476250476.html',
       host: {
-        '[class.xblog-article-${id}]': 'true'
+        '[class.xblog-article-1476250476]': 'true'
       }
     })
     .Class({
       constructor: [
-        DomSanitizationService,
+        DomSanitizer,
         cmsArticleService,
-        tableContentService,
+        xblogTableContentService,
 
         function (sanitizer, articleService, tableContentService){
           this.id = ${id};

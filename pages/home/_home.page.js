@@ -1,37 +1,35 @@
-import * as ngCore from '@angular/core';
+import { Component } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
-import { NGX_GRID_DIRECTIVES } from 'ngx-bootstrap/components';
+import { HOMEPAGE_PAGE_SIZE as PAGE_SIZE } from 'xblog-cores/constants';
 
-import { 
-  HEADER_DIRECTIVES,
-  POST_DIRECTIVES
-} from 'xblog-cores/components';
+import { xblogHomeService } from './services/home.service';
 
-import { homeService } from './services/home.service';
 
-export var homePage = ngCore.Component({
+export var xblogHomePage = Component({
   selector: 'xblog-home',
   templateUrl: './templates/home.html',
   styleUrls: ['./styles/home.scss'],
-  directives: [
-    NGX_GRID_DIRECTIVES,
-    HEADER_DIRECTIVES,
-    POST_DIRECTIVES
-  ],
   host: {
     '[class.xblog-home]': 'true'
   }
 })
 .Class({
   constructor: [
-    homeService,
+    ActivatedRoute,
+    xblogHomeService,
 
-    function (homeService){
+    function (activatedRoute, homeService){
+      this.activatedRoute = activatedRoute;
       this.homeService = homeService;
     }
   ],
 
   ngOnInit: function(){
-    this.posts = this.homeService.getPosts();
+    var _self = this;
+
+    this.subscription = this.activatedRoute.params.subscribe(function(params) {
+      _self.posts = _self.homeService.getPosts(params.pageNum || 1, PAGE_SIZE);
+    });
   }
 });

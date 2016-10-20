@@ -1,11 +1,11 @@
-import { BaseTask } from './base-task';
-import { Envt } from '../envts';
-import { SassConfig } from '../sass/sass-config';
+import { baseTask } from './base-task';
+import { envtFactory } from '../envts';
+import { sassConfig } from '../sass/sass-config';
 
-export class ScssTask extends BaseTask {
+export class scssTask extends baseTask {
   run() {
-    let _envt = new Envt(this.args);
-    let _paths = new SassConfig().includePaths;
+    let _envt = envtFactory.getEnvt(this.args);
+    let _paths = new sassConfig().includePaths;
 
     let _xBlogCssStream = this.gulp.src('./cores/styles/xblog.scss');
     if(_envt.minify){
