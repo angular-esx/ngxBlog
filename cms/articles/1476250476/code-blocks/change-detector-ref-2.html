@@ -1,0 +1,31 @@
+import * as ngCore from '@angular/core';
+
+export var childComponent = ngCore.Component({
+  .....
+  changeDetection: ngCore.ChangeDetectionStrategy.OnPush
+})
+.Class({
+  constructor: [
+    ngCore.ChangeDetectorRef,
+
+    function(changeDetectorRef){
+      this.changeDetectorRef = changeDetectorRef;
+    }
+  ],
+
+  ngOnInit: function(){
+    var _self = this;
+    setTimeout(function(){
+       console.log('Changing Model');
+
+      _self.model =  {
+        firstName: 'Christ',
+        lastName: 'Kennedy'
+      };
+
+      _self.changeDetectorRef.markForCheck();
+    }, 3 * 1000);
+  }
+
+  .....
+});

@@ -1,29 +1,29 @@
-import { BaseTask } from './base-task';
+import { baseTask } from './base-task';
 
 import fs from 'fs';
-import { SassConfig } from '../sass/sass-config';
+import { sassConfig } from '../sass/sass-config';
 
 const _COMPONENT_SRCS = [
-  './bower_components/ngxBootstrap/components/navbar/navbar.component.js',
-  './bower_components/ngxBootstrap/components/jumbotron/jumbotron.component.js',
-  './bower_components/ngxBootstrap/components/grid/grid.component.js',
-  './bower_components/ngxBootstrap/components/card/card-header.component.js',
-  './bower_components/ngxBootstrap/components/card/card.component.js',
+  './bower_components/ngx/projects/ngx-framework/modules/navbar/navbar.component.js',
+  './bower_components/ngx/projects/ngx-framework/modules/jumbotron/jumbotron.component.js',
+  './bower_components/ngx/projects/ngx-framework/modules/grid/grid.component.js',
+  './bower_components/ngx/projects/ngx-framework/modules/card/card-header.component.js',
+  './bower_components/ngx/projects/ngx-framework/modules/card/card.component.js',
 
-  './cores/components/navbar/navbar.component.js',
-  './cores/components/header/header.component.js',
-  './cores/components/footer/footer.component.js',
-  './cores/components/post/post.component.js',
-  './cores/components/code-panel/code-panel.component.js',
-  './cores/components/table-content/table-content.component.js',
+  './cores/modules/navbar/navbar.component.js',
+  './cores/modules/header/header.component.js',
+  './cores/modules/footer/footer.component.js',
+  './cores/modules/post/post.component.js',
+  './cores/modules/code-panel/code-panel.component.js',
+  './cores/modules/table-content/table-content.component.js',
 
   './pages/home/home.page.js',
   './pages/article/article.page.js'
 ];
 
-const _INCLUDE_PATHS = new SassConfig().includePaths;
+const _INCLUDE_PATHS = new sassConfig().includePaths;
 
-export class PrebuildTask extends BaseTask {
+export class prebuildTask extends baseTask {
   run() {
     let _stream = [];
 
