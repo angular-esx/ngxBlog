@@ -1,35 +1,24 @@
-import * as ngCore from '@angular/core';
-import { DomSanitizationService } from '@angular/platform-browser';
+import { Component } from '@angular/core';
+import { DomSanitizer } from '@angular/platform-browser';
 import highlight from 'highlight.js';
 
-import { 
-  CODE_PANEL_DIRECTIVES,
-  HIGHLIGHT_DIRECTIVES,
-  TABLE_CONTENT_DIRECTIVES,
-  TABLE_CONTENT_PROVIDERS,
-  tableContentService,
-} from 'xblog-cores/components';
+import { xblogTableContentService } from 'xblog-cores/modules';
 import { resourceUtils } from 'xblog-cores/utils';
+
 import { cmsArticleService } from '../../cores/services';
 
-export var article1475677406Component = ngCore.Component({
+export var article1475677406Component = Component({
   selector: 'article',
   templateUrl: './templates/article-1475677406.html',
-  directives: [ 
-    CODE_PANEL_DIRECTIVES,
-    HIGHLIGHT_DIRECTIVES,
-    TABLE_CONTENT_DIRECTIVES
-  ],
-  providers: [ TABLE_CONTENT_PROVIDERS ],
   host: {
     '[class.xblog-article-1475677406]': 'true'
   }
 })
 .Class({
   constructor: [
-    DomSanitizationService,
+    DomSanitizer,
     cmsArticleService,
-    tableContentService,
+    xblogTableContentService,
 
     function (sanitizer, articleService, tableContentService){
       this.id = 1475677406;
