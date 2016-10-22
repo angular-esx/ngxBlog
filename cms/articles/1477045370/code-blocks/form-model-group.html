@@ -1,0 +1,19 @@
+<form (ngSubmit)="onSubmit(form.value)">
+  <div ngModelGroup="name">
+    <label>Firstname:</label>
+    <input type="text" name="firstname" [(ngModel)]="model.firstname">
+
+    <label>Lastname:</label>
+    <input type="text" name="lastname" [(ngModel)]="model.lastname">
+  </div>
+
+  <div ngModelGroup="contact">
+    <label>Email:</label >
+    <input type="text" name="email" [(ngModel)]="model.email">
+
+    <label>Phone:</label>
+    <input type="text" name="phone" [(ngModel)]="model.phone">
+  </div>
+
+  <button type="submit">Submit</button>
+</form>

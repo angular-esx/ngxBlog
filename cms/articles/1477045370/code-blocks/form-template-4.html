@@ -1,0 +1,12 @@
+<form (ngSubmit)="onSubmit(form.value)">
+  <label>Firstname:</label>
+  <input type="text" name="firstname" 
+    [(ngModel)]="model.firstname"
+    #firstname="ngModel"
+    required
+  >
+  <div class="error-message" [hidden]="firstname.valid || firstname.pristine">
+    Firstname is required
+  </div>
+  .....
+</form>
