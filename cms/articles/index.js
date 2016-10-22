@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule }  from '@angular/platform-browser';
 
+import { ngxGridModule } from 'ngx-framework/modules';
+
 import {
   xblogCodePanelModule,
   xblogHighlightModule,
@@ -20,6 +22,9 @@ var _ARTICLE_COMPONENTS = ARTICLE_STORE.LIST.map(function(article){
 export var cmsArticlesModule = NgModule({
   imports: [ 
     BrowserModule,
+
+    ngxGridModule,
+
     xblogCodePanelModule,
     xblogHighlightModule,
     xblogTableContentModule
