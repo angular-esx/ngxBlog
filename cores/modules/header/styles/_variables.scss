@@ -1,16 +1,13 @@
-@import 'typography.scss';
-@import 'palette.scss';
+$xblog-header-foreground-color: xblog-color($xblog-color-white) !default;
 
-$xblog-header-foreground-color: xblog-color($xblog-color-white);
+$xblog-title-font-size: xblog-h-font-size(h1) * 1.6 !default;
 
-$xblog-title-font-size: xblog-h-font-size(h1) * 1.6;
+$xblog-subtitle-font-family: $xblog-font-family-sans-serif !default;
+$xblog-subtitle-font-size: xblog-font-size(lg) !default;
+$xblog-subtitle-font-weight: xblog-font-weight(300) !default;
+$xblog-subtitle-margin: .5rem 0 0 !default;
 
-$xblog-subtitle-font-family: $xblog-font-family-sans-serif;
-$xblog-subtitle-font-size: xblog-font-size(lg);
-$xblog-subtitle-font-weight: xblog-font-weight(300);
-$xblog-subtitle-margin: .5rem 0 0;
-
-$xblog-divider-width: 270px;
-$xblog-divider-border-width: 4px;
-$xblog-divider-border-top-color: xblog-color($xblog-color-white);
-$xblog-divider-margin: 20px auto;
+$xblog-divider-width: 270px !default;
+$xblog-divider-border-width: 4px !default;
+$xblog-divider-border-top-color: xblog-color($xblog-color-white) !default;
+$xblog-divider-margin: 20px auto !default;

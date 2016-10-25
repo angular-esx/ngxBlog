@@ -1,0 +1,3 @@
+@function xblog-post-config($config-name){
+  @return map-get($xblog-post-configs, $config-name);
+}

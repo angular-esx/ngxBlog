@@ -1,9 +1,18 @@
-import { Directive } from '@angular/core';
+import { 
+  Class,
+  Directive 
+} from '@angular/core';
 
 
-export var xblogCodePanelTitleDirective = Directive({
-  selector: 'xblog-code-panel > xblog-title'
-})
+export var xblogCodePanelTitleDirectiveMetadata = Class({
+  constructor: function xblogCodePanelTitleDirectiveMetadata(){
+    Object.assign(this, {
+      selector: 'xblog-code-panel > xblog-title'
+    });
+  }
+});
+
+export var xblogCodePanelTitleDirective = Directive(new xblogCodePanelTitleDirectiveMetadata())
 .Class({
-  constructor: function(){}
+  constructor: function xblogCodePanelTitleDirective(){}
 });

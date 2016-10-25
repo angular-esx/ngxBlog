@@ -4,11 +4,6 @@ import { RouterModule } from '@angular/router';
 
 import { cmsArticleService } from '../cms/cores/services';
 
-import {
-  xblogNavbarModule,
-  xblogFooterModule
-} from 'xblog-cores/modules';
-
 import { 
   xblogHomePageModule,
   xblogArticlePageModule
@@ -21,8 +16,6 @@ export var xblogModule = NgModule({
   imports: [ 
     BrowserModule,
     RouterModule.forRoot(router),
-    xblogNavbarModule,
-    xblogFooterModule,
     xblogHomePageModule,
     xblogArticlePageModule
   ],
@@ -31,5 +24,5 @@ export var xblogModule = NgModule({
   bootstrap: [ xblogApp ]
 })
 .Class({
-  constructor: function(){}
+  constructor: function xblogModule(){}
 });

@@ -6,7 +6,7 @@ export var xblogArticleService = Class({
   constructor: [
     xblogArticleStoreService,
 
-    function(articleStoreService){
+    function xblogArticleService(articleStoreService){
       this.articleStoreService = articleStoreService;
     }
   ],

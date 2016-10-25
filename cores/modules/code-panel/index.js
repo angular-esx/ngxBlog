@@ -1,9 +1,24 @@
-export { xblogCodePanelModule } from './code-panel.module';
+export { 
+  xblogCodePanelModuleMetadata,
+  xblogCodePanelModule 
+} from './code-panel.module';
 
-export { xblogCodePanelTitleDirective } from './code-panel-title.directive';
+export { 
+  xblogCodePanelTitleDirectiveMetadata,
+  xblogCodePanelTitleDirective 
+} from './code-panel-title.directive';
 
-export { xblogCodePanelLinkDirective } from './code-panel-link.directive';
+export { 
+  xblogCodePanelLinkDirectiveMetadata,
+  xblogCodePanelLinkDirective 
+} from './code-panel-link.directive';
 
-export { xblogCodePanelContentDirective } from './code-panel-content.directive';
+export { 
+  xblogCodePanelContentDirectiveMetadata,
+  xblogCodePanelContentDirective 
+} from './code-panel-content.directive';
 
-export { xblogCodePanelComponent } from './code-panel.component';
+export { 
+  xblogCodePanelComponentMetadata,
+  xblogCodePanelComponent 
+} from './code-panel.component';

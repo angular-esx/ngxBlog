@@ -1,3 +1,9 @@
-export { xblogFooterModule } from './footer.module';
+export { 
+  xblogFooterModuleMetadata,
+  xblogFooterModule 
+} from './footer.module';
 
-export { xblogFooterComponent } from './footer.component';
+export { 
+  xblogFooterComponentMetadata,
+  xblogFooterComponent 
+} from './footer.component';
