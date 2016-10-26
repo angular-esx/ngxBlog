@@ -9,7 +9,7 @@ import { xblogArticleService } from './services/article.service';
 export var xblogArticlePage = Component({
   selector: 'xblog-article',
   templateUrl: './templates/article.html',
-  styleUrls: ['./styles/article.scss'],
+  styleUrls: ['./styles/index.scss'],
   host: {
     '[class.xblog-article]': 'true'
   }

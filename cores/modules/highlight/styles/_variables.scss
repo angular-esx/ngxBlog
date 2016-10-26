@@ -1,6 +1,4 @@
-@import 'typography.scss';
-
-$xblog-highlight-font-size: xblog-font-size(xs);
-$xblog-highlight-padding: .125rem .25rem;
-$xblog-highlight-background-color: #6272a4;
-$xblog-highlight-foreground-color: #50fa7b;
+$xblog-highlight-font-size: xblog-font-size(xs) !default;
+$xblog-highlight-padding: .125rem .25rem !default;
+$xblog-highlight-background-color: #6272a4 !default;
+$xblog-highlight-foreground-color: #50fa7b !default;

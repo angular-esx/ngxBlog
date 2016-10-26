@@ -1,11 +1,21 @@
-import { Directive } from '@angular/core';
+import { 
+  Class,
+  Directive 
+} from '@angular/core';
 
-export var xblogHighlightDirective = Directive({
-  selector: '[xblog-highlight]',
-  host: {
-    '[class.xblog-highlight]': 'true'
+
+export var xblogHighlightDirectiveMetadata = Class({
+  constructor: function xblogHighlightDirectiveMetadata(){
+    Object.assign(this, {
+      selector: '[xblog-highlight]',
+      host: {
+        '[class.xblog-highlight]': 'true'
+      }
+    });
   }
-})
+});
+
+export var xblogHighlightDirective = Directive(new xblogHighlightDirectiveMetadata())
 .Class({
-  constructor: function(){}
+  constructor: function xblogHighlightDirective(){}
 });

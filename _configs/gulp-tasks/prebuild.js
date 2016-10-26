@@ -18,7 +18,17 @@ const _COMPONENT_SRCS = [
   './cores/modules/table-content/table-content.component.js',
 
   './pages/home/home.page.js',
-  './pages/article/article.page.js'
+  './pages/home/shared/cores/post/post.component.js',
+  './pages/home/shared/vendors/card/card.component.js',
+  './pages/home/shared/vendors/grid/grid.component.js',
+  './pages/home/shared/vendors/navbar/navbar.component.js',
+
+  './pages/article/article.page.js',
+  './pages/article/shared/cores/post/post.component.js',
+  './pages/article/shared/cores/code-panel/code-panel.component.js',
+  './pages/article/shared/vendors/card/card.component.js',
+  './pages/article/shared/vendors/grid/grid.component.js',
+  './pages/article/shared/vendors/navbar/navbar.component.js'
 ];
 
 const _INCLUDE_PATHS = new sassConfig().includePaths;
@@ -87,10 +97,11 @@ function _getPrebuildStream(context, src, isFirstPrebuild) {
     styleProcessor: (path, ext, file, callback) => {
       context.nodeSass.render({
         file: path,
-        outputStyle: 'compressed',
         includePaths: _INCLUDE_PATHS,
+        outputStyle: 'compressed'
       }, 
       (ex, result) => {
+        if(ex){ console.log(ex); }
         callback(ex, result ? result.css : null);
       });
     }

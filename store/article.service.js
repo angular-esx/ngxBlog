@@ -1,6 +1,6 @@
 import { Class } from '@angular/core';
 
-import { ARTICLE_STORE } from '../cms/articles';
+import { ARTICLE_STORE } from 'xblog-cms/articles';
 
 
 export var xblogArticleStoreService = Class({

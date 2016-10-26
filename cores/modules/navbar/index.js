@@ -1,3 +1,9 @@
-export { xblogNavbarModule } from './navbar.module';
+export { 
+  xblogNavbarModuleMetadata,
+  xblogNavbarModule 
+} from './navbar.module';
 
-export { xblogNavbarComponent } from './navbar.component';
+export { 
+  xblogNavbarComponentMetadata,
+  xblogNavbarComponent 
+} from './navbar.component';

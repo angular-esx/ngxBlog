@@ -14,11 +14,6 @@ import { HOMEPAGE_PAGE_SIZE as PAGE_SIZE } from 'xblog-cores/constants';
 
 import { resourceUtils } from 'xblog-cores/utils';
 
-import {
-  xblogNavbarModule,
-  xblogFooterModule
-} from 'xblog-cores/modules';
-
 import { 
   xblogHomePageModule,
   xblogArticlePageModule
@@ -132,8 +127,6 @@ function _getModule(router){
   return NgModule({
     imports: [ 
       RouterModule.forRoot(router),
-      xblogNavbarModule,
-      xblogFooterModule,
       xblogHomePageModule,
       xblogArticlePageModule,
       UniversalModule

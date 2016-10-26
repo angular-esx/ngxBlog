@@ -3,19 +3,18 @@ import { CommonModule }  from '@angular/common';
 
 import { ngxPortalModule } from 'ngx-framework/cores';
 
+import { xblogFooterModule } from 'xblog-cores/modules';
+
 import { xblogArticleStoreService } from 'xblog-store';
 
 import {
   ngxGridModule,
-  ngxCardModule
-} from 'ngx-framework/modules';
-
-import { 
+  xblogNavbarModule,
   xblogHeaderModule,
-  xblogPostModule 
-} from 'xblog-cores/modules';
-
-import { cmsArticlesModule } from '../../cms/articles';
+  xblogPostModule,
+  xblogCodePanelModule,
+  cmsArticlesModule
+} from './shared';
 
 import { xblogArticlePage } from './article.page';
 
@@ -27,9 +26,11 @@ export var xblogArticlePageModule = NgModule({
     CommonModule,
     ngxPortalModule,
     ngxGridModule,
-    ngxCardModule,
+    xblogNavbarModule,
     xblogHeaderModule,
+    xblogFooterModule,
     xblogPostModule,
+    xblogCodePanelModule,
     cmsArticlesModule
   ],
   declarations: [ xblogArticlePage ],

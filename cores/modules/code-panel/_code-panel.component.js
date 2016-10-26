@@ -1,4 +1,5 @@
 import {
+  Class,
   Component,
   ElementRef,
   Renderer,
@@ -7,15 +8,22 @@ import {
 
 import { ngxBaseComponent } from 'ngx-framework/cores';
 
-export var xblogCodePanelComponent = Component({
-  selector: 'xblog-code-panel',
-  templateUrl: './templates/code-panel.html',
-  styleUrls: ['./styles/code-panel.scss'],
-  inputs: [ 'type' ],
-  host: {
-    '[class.xblog-code-panel]': 'true'
+
+export var xblogCodePanelComponentMetadata = Class({
+  constructor: function xblogCodePanelComponentMetadata(){
+    Object.assign(this, {
+      selector: 'xblog-code-panel',
+      templateUrl: './templates/code-panel.html',
+      styleUrls: ['./styles/index.scss'],
+      inputs: [ 'type' ],
+      host: {
+        '[class.xblog-code-panel]': 'true'
+      }
+    });
   }
-})
+});
+
+export var xblogCodePanelComponent = Component(new xblogCodePanelComponentMetadata())
 .Class({
   extends: ngxBaseComponent,
   
@@ -23,7 +31,7 @@ export var xblogCodePanelComponent = Component({
     ElementRef,
     Renderer,
 
-    function (elementRef, renderer) {
+    function xblogCodePanelComponent(elementRef, renderer) {
       ngxBaseComponent.apply(this, arguments);
     }
   ],

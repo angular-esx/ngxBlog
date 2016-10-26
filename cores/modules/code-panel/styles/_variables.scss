@@ -1,17 +1,14 @@
-@import 'palette.scss';
-@import 'typography.scss';
+$xblog-code-panel-box-shadow: 0 1px 4px 0 rgba(0,0,0,0.14) !default;
 
-$xblog-code-panel-box-shadow: 0 1px 4px 0 rgba(0,0,0,0.14);
+$xblog-code-panel-title-font-size: xblog-h-font-size(h5) !default;
+$xblog-code-panel-title-font-weight: xblog-font-weight(bold-2) !default;
+$xblog-code-panel-title-foreground-color: xblog-color($xblog-color-black, dark) !default;
 
-$xblog-code-panel-title-font-size: xblog-h-font-size(h5);
-$xblog-code-panel-title-font-weight: xblog-font-weight(bold-2);
-$xblog-code-panel-title-foreground-color: xblog-color($xblog-color-black, dark);
+$xblog-code-panel-source-code-foreground-color: xblog-color($xblog-color-green) !default;
 
-$xblog-code-panel-source-code-foreground-color: xblog-color($xblog-color-green);
+$xblog-code-panel-card-content-margin: .5rem -1.25rem -3.5rem -1.25rem !default;
+$xblog-code-panel-card-content-foreground-color: xblog-color($xblog-color-white, light) !default;
+$xblog-code-panel-card-content-background-color: #3C4556 !default;
 
-$xblog-code-panel-card-content-margin: .5rem -1.25rem -3.5rem -1.25rem;
-$xblog-code-panel-card-content-foreground-color: xblog-color($xblog-color-white, light);
-$xblog-code-panel-card-content-background-color: #3C4556;
-
-$xblog-code-panel-code-font-size: xblog-font-size(sm);
-$xblog-code-panel-code-padding: 1rem 1.25rem;
+$xblog-code-panel-code-font-size: xblog-font-size(sm) !default;
+$xblog-code-panel-code-padding: 1rem 1.25rem !default;

@@ -1,5 +1,3 @@
-@import './_variables.scss';
-
 @function xblog-font-size($size-name){
   @return map-get($xblog-font-sizes, $size-name);
 }

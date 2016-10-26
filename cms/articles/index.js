@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { Class } from '@angular/core';
 import { BrowserModule }  from '@angular/platform-browser';
 
 import { ngxGridModule } from 'ngx-framework/modules';
@@ -23,26 +23,29 @@ var _ARTICLE_COMPONENTS = ARTICLE_STORE.LIST.map(function(article){
   return article.content;
 });
 
-export var cmsArticlesModule = NgModule({
-  imports: [ 
-    BrowserModule,
 
-    ngxGridModule,
+export var cmsArticlesModuleMetadata = Class({
+  constructor: function cmsArticlesModuleMetadata(){
+    Object.assign(this, {
+      imports: [ 
+        BrowserModule,
 
-    xblogCodePanelModule,
-    xblogHighlightModule,
-    xblogTableContentModule
-  ],
-  declarations: _ARTICLE_COMPONENTS,
-  providers: [ 
-    xblogTableContentService
-  ],
-  entryComponents: _ARTICLE_COMPONENTS,
-  exports: _ARTICLE_COMPONENTS
-})
-.Class({
-  constructor: function(){}
+        ngxGridModule,
+
+        xblogCodePanelModule,
+        xblogHighlightModule,
+        xblogTableContentModule
+      ],
+      declarations: _ARTICLE_COMPONENTS,
+      providers: [ 
+        xblogTableContentService
+      ],
+      entryComponents: _ARTICLE_COMPONENTS,
+      exports: _ARTICLE_COMPONENTS
+    });
+  }
 });
+
 
 function _init() {
   let _list = [];
