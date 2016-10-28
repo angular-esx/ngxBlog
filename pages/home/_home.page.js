@@ -29,7 +29,7 @@ export var xblogHomePage = Component({
     var _self = this;
 
     this.subscription = this.activatedRoute.params.subscribe(function(params) {
-      _self.posts = _self.homeService.getPosts(params.pageNum || 1, PAGE_SIZE);
+      _self.posts$ = _self.homeService.getPosts$(params.pageNum || 1, PAGE_SIZE);
     });
   }
 });
