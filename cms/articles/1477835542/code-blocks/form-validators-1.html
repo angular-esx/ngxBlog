@@ -1,0 +1,31 @@
+import * as ngCore from '@angular/core';
+import {
+  FormBuilder,
+  Validators
+} from '@angular/forms';
+
+export var exampleComponent = ngCore.Component({
+  .....
+})
+.Class({
+  constructor: [
+    FormBuilder,
+
+    function(formBuilder){
+      this.formBuilder = formBuilder;
+    }
+  ],
+
+  ngOnInit: function(){
+    this.myForm = this.formBuilder.group({
+      name: this.formBuilder.group({
+        firstname: ['Leon', Validators.required],
+        lastname: ['Kennedy', Validators.required],
+      }),
+      contact: this.formBuilder.group({
+        email: ['leon.kennedy@mail.com', Validators.required],
+        phone: ''
+      })
+    });
+  }
+});

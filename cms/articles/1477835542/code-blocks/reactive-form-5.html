@@ -1,0 +1,17 @@
+<form [formGroup]="myForm">
+  <div formGroupName="name">
+    <label>Firstname:</label>
+    <input type="text" formControlName="firstname">
+
+    <label>Lastname:</label>
+    <input type="text" formControlName="lastname">
+  </div>
+
+  <div formGroupName="contact">
+    <label>Email:</label>
+    <input type="text" formControlName="emal">
+
+    <label>Phone:</label>
+    <input type="text" formControlName="phone">
+  </div>
+</form>

@@ -1,0 +1,15 @@
+export var exampleComponent = ngCore.Component({
+  .....
+})
+.Class({
+  .....
+
+  ngOnInit: function(){
+    .....
+    
+    this.addressControl = new FormControl();
+    this.addressControl.valueChanges.subscribe(function(value){
+      console.log(value);
+    });
+  }
+});
