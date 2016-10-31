@@ -1,0 +1,32 @@
+import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { FormBuilder, Validators, ReactiveFormsModule } from '@angular/forms';
+
+export var appModule = NgModule({
+  imports: [BrowserModule, ReactiveFormsModule],
+  .....
+})
+.Class({
+  constructor: [
+    FormBuilder,
+
+    function(formBuilder){
+      this.formBuilder = formBuilder;
+    }
+  ],
+
+  ngOnInit: function() {
+    this.myForm = this.formBuilder.group({
+      firstname: ['', Validators.required],
+      lastname: ['', Validators.required],
+      email: ['', Validators.pattern(.....)], // Email regex is here
+      address: ['', [ Validators.minLength(3), Validators.maxLength(50) ]]
+    });
+  }
+});
+
+/*--------------------------------------------------------------*/
+
+<form [formGroup]="myform">
+  .....
+</form>

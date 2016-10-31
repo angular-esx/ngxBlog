@@ -1,0 +1,18 @@
+import * as ngCore from '@angular/core';
+
+export var emailValidator = ngCore.Directive({
+  selector: '[emailValidator][ngModel],[emailValidator][formControl]',
+})
+.Class({
+  constructor: function(){},
+
+  validate: function(formControl) {
+    var EMAIL_REGEXP = ...;
+
+    return EMAIL_REGEXP.test(formControl.value) ? null : {
+      emailValidator: {
+        valid: false
+      }
+    };
+  }
+});

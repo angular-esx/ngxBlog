@@ -1,0 +1,9 @@
+import { NG_VALIDATORS } from '@angular/forms';
+
+export var emailValidator = ngCore.Directive({
+  selector: '[emailValidator][ngModel],[emailValidator][formControl]',
+  providers: [
+    { provide: NG_VALIDATORS, useExisting: ngCore.forwardRef(function(){ return emailValidator; }), multi: true }
+  ]
+})
+.Class({.....});

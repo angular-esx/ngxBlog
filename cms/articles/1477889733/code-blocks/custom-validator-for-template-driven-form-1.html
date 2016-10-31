@@ -1,0 +1,18 @@
+import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
+
+export var appModule = NgModule({
+  imports: [BrowserModule, FormsModule],
+  .....
+})
+.Class({ ..... });
+
+/*--------------------------------------------------------------*/
+
+<form>
+  <input type="text" name="firstname" ngModel required>
+  <input type="text" name="lastname" ngModel required>
+  <input type="text" name="email" ngModel pattern="....."> // Email regex is here
+  <input type="text" name="address" ngModel minlength="3" maxlength="50">
+</form>

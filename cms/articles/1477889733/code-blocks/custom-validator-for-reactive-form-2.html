@@ -1,0 +1,28 @@
+import * as ngCore from '@angular/core';
+
+export var emailValidator = ngCore.Class({
+  constructor: function(){},
+
+  validate: function(formControl) {
+    var EMAIL_REGEXP = ...;
+
+    return EMAIL_REGEXP.test(formControl.value) ? null : {
+      emailValidator: {
+        valid: false
+      }
+    };
+  }
+});
+
+/*--------------------------------------------------------------*/
+
+import { emailValidator } from '.....';
+
+.....
+
+ngOnInit: function() {
+  this.myForm = this.formBuilder.group({
+    .....
+    email: ['', new emailValidator().validate]
+  });
+}
