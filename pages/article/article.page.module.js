@@ -5,8 +5,6 @@ import { ngxPortalModule } from 'ngx-framework/cores';
 
 import { xblogFooterModule } from 'xblog-cores/modules';
 
-import { xblogArticleStoreService } from 'xblog-store';
-
 import {
   ngxGridModule,
   xblogNavbarModule,
@@ -35,7 +33,6 @@ export var xblogArticlePageModule = NgModule({
   ],
   declarations: [ xblogArticlePage ],
   providers: [
-    xblogArticleStoreService, 
     xblogArticleService 
   ],
   exports: [ xblogArticlePage ]

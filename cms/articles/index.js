@@ -6,6 +6,9 @@ import { ngxGridModule } from 'ngx-framework/modules';
 import {
   xblogCodePanelModule,
   xblogHighlightModule,
+  xblogSectionModule,
+  xblogPostModule,
+  xblogTableModule,
   xblogTableContentModule,
   xblogTableContentService
 } from 'xblog-cores/modules';
@@ -34,7 +37,10 @@ export var cmsArticlesModuleMetadata = Class({
 
         xblogCodePanelModule,
         xblogHighlightModule,
-        xblogTableContentModule
+        xblogTableModule,
+        xblogTableContentModule,
+        xblogSectionModule,
+        xblogPostModule
       ],
       declarations: _ARTICLE_COMPONENTS,
       providers: [ 
@@ -49,12 +55,12 @@ export var cmsArticlesModuleMetadata = Class({
 
 function _init() {
   let _list = [];
-  let _models = {};
+  let _map = {};
 
   _ARTICLES.forEach((article, index) => {
     if(_validate(article, index)){ 
-      if(!_models[article.id]){
-        _models[article.id] = article;
+      if(!_map[article.id]){
+        _map[article.id] = article;
         _list.push(article);
       }
     }
@@ -62,7 +68,7 @@ function _init() {
 
   _list.sort((article1, article2) => article2.id - article1.id);
 
-  return Object.assign({ LIST: _list }, _models);
+  return { LIST: _list, MAP: _map };
 }
 
 function _validate(article, index) {
