@@ -61,3 +61,10 @@ export {
   xblogTableContentComponent,
   xblogTableContentService
 } from './table-content';
+
+export { 
+  xblogSectionModuleMetadata,
+  xblogSectionModule,
+  xblogSectionComponentMetadata,
+  xblogSectionComponent
+} from './section';

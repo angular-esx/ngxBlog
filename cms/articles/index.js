@@ -6,6 +6,8 @@ import { ngxGridModule } from 'ngx-framework/modules';
 import {
   xblogCodePanelModule,
   xblogHighlightModule,
+  xblogSectionModule,
+  xblogPostModule,
   xblogTableContentModule,
   xblogTableContentService
 } from 'xblog-cores/modules';
@@ -30,7 +32,9 @@ export var cmsArticlesModuleMetadata = Class({
 
         xblogCodePanelModule,
         xblogHighlightModule,
-        xblogTableContentModule
+        xblogTableContentModule,
+        xblogSectionModule,
+        xblogPostModule
       ],
       declarations: _ARTICLE_COMPONENTS,
       providers: [ 
