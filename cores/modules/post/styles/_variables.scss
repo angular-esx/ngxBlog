@@ -10,7 +10,7 @@ $xblog-post-title-height-small: xblog-max-height(xblog-line-height(base), 2) !de
 
 $xblog-post-title: (
   hover: (
-    foreground-color: xblog-color($xblog-color-green)
+    foreground-color: xblog-color($xblog-color-primary)
   ),
   default: (
     foreground-color: xblog-color($xblog-color-black, dark)
