@@ -78,31 +78,33 @@
 <h2 id="track-change-state" class="section-heading">Track change-state</h2>
 <p>Using <span xblog-highlight>ngModel</span> in a form gives us more than just two way data binding. It also tells us if the user touched the control, if the value changed, or if the value became invalid by updating the control with special Angular CSS classes that reflect the state.</p>
 <br/>
-<ngx-grid>
-  <ngx-grid-row class="xblog-article-grid-header">
-    <ngx-grid-col size="xs-4">State</ngx-grid-col>
-    <ngx-grid-col size="xs-4">Class if true</ngx-grid-col>
-    <ngx-grid-col size="xs-4">Class if false</ngx-grid-col>
-  </ngx-grid-row>
+<xblog-table>
+  <ngx-grid xblog-table-width="500px">
+    <ngx-grid-row xblog-table-header>
+      <ngx-grid-col size="xs-4">State</ngx-grid-col>
+      <ngx-grid-col size="xs-4">Class if true</ngx-grid-col>
+      <ngx-grid-col size="xs-4">Class if false</ngx-grid-col>
+    </ngx-grid-row>
 
-  <ngx-grid-row>
-    <ngx-grid-col size="xs-4">Control has been visited</ngx-grid-col>
-    <ngx-grid-col size="xs-4">ng-touched</ngx-grid-col>
-    <ngx-grid-col size="xs-4">ng-untouched</ngx-grid-col>
-  </ngx-grid-row>
+    <ngx-grid-row>
+      <ngx-grid-col size="xs-4">Control has been visited</ngx-grid-col>
+      <ngx-grid-col size="xs-4">ng-touched</ngx-grid-col>
+      <ngx-grid-col size="xs-4">ng-untouched</ngx-grid-col>
+    </ngx-grid-row>
 
-  <ngx-grid-row>
-    <ngx-grid-col size="xs-4">Control's value has changed</ngx-grid-col>
-    <ngx-grid-col size="xs-4">ng-dirty</ngx-grid-col>
-    <ngx-grid-col size="xs-4">ng-pristine</ngx-grid-col>
-  </ngx-grid-row>
+    <ngx-grid-row>
+      <ngx-grid-col size="xs-4">Control's value has changed</ngx-grid-col>
+      <ngx-grid-col size="xs-4">ng-dirty</ngx-grid-col>
+      <ngx-grid-col size="xs-4">ng-pristine</ngx-grid-col>
+    </ngx-grid-row>
 
-  <ngx-grid-row>
-    <ngx-grid-col size="xs-4">Control's value is valid</ngx-grid-col>
-    <ngx-grid-col size="xs-4">ng-valid</ngx-grid-col>
-    <ngx-grid-col size="xs-4">ng-invalid</ngx-grid-col>
-  </ngx-grid-row>
-</ngx-grid>
+    <ngx-grid-row>
+      <ngx-grid-col size="xs-4">Control's value is valid</ngx-grid-col>
+      <ngx-grid-col size="xs-4">ng-valid</ngx-grid-col>
+      <ngx-grid-col size="xs-4">ng-invalid</ngx-grid-col>
+    </ngx-grid-row>
+  </ngx-grid>
+</xblog-table>
 <br/>
 <p>Turn back our form, now we'll implement validation for it. There're 3 steps we need to follow:</p>
 <br/>
