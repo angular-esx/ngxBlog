@@ -8,6 +8,7 @@ import {
   xblogHighlightModule,
   xblogSectionModule,
   xblogPostModule,
+  xblogTableModule,
   xblogTableContentModule,
   xblogTableContentService
 } from 'xblog-cores/modules';
@@ -32,6 +33,7 @@ export var cmsArticlesModuleMetadata = Class({
 
         xblogCodePanelModule,
         xblogHighlightModule,
+        xblogTableModule,
         xblogTableContentModule,
         xblogSectionModule,
         xblogPostModule

@@ -68,3 +68,14 @@ export {
   xblogSectionComponentMetadata,
   xblogSectionComponent
 } from './section';
+
+export {
+  xblogTableModuleMetadata,
+  xblogTableModule,
+  xblogTableHeaderDirectiveMetadata,
+  xblogTableHeaderDirective,
+  xblogTableWidthDirectiveMetadata,
+  xblogTableWidthDirective,
+  xblogTableComponentMetadata,
+  xblogTableComponent
+} from './table';
