@@ -1,0 +1,19 @@
+export var counterInputComponent = Component({.....})
+.Class({
+  .....
+  registerOnChange: function(fnc) {
+    this.onChange = fnc;
+  },
+
+  registerOnTouched: function() {},
+
+  increment: function() {
+    this.value++;
+    this.onChange(this.value);
+  },
+
+  decrement: function() {
+    this.value--;
+    this.onChange(this.value);
+  }
+});

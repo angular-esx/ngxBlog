@@ -1,0 +1,28 @@
+import { Component } from '@angular/core';
+
+
+export var counterInputComponent = Component({
+  selector: 'counter-input',
+  template: [
+    '<button (click)="increment()">+</button>',
+      '{{value}}',
+    '<button (click)="decrement()">-</button>'
+  ].join('')
+})
+.Class({
+  constructor: function(){},
+
+  ngOnInit: function(){
+    this.value = 0;
+  },
+
+  increment: function() {
+    this.value++;
+    this.onChange(this.value);
+  },
+
+  decrement: function() {
+    this.value--;
+    this.onChange(this.value);
+  }
+});
