@@ -1,0 +1,39 @@
+import {
+  Component,
+  trigger,
+  state,
+  style,
+  transition,
+  animate
+} from '@angular/core';
+
+
+export var exampleComponent = Component({
+  .....
+  animations: [
+    trigger('myState', [
+      state('false', style({
+        color: 'black',
+        backgroundColor: 'white',
+        transform: 'translateX(0) scale(1)'
+      })),
+      state('true',   style({
+        color: 'white',
+        backgroundColor: 'green',
+        transform: 'translateX(0) scale(1.5)'
+      })),
+      // We'll define transitions at here
+    ])
+  ]
+})
+.Class({
+  constructor: function(){},
+
+  ngOnInit: function(){
+    this.isActive = false;
+  },
+
+  toggle: function(){
+    this.isActive = !this.isActive;
+  }
+});
