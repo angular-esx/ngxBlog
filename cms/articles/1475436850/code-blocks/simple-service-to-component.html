@@ -1,0 +1,11 @@
+import { Class } from '@angular/core';
+
+export var HeroService = Class({
+  constructor: function() {
+    this.heroes = [];
+  }
+
+  getHeroes: function() {
+    return this.heroes;
+  }
+});

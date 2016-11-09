@@ -1,0 +1,52 @@
+import * as ngCore from '@angular/core';
+
+function _logService(){ 
+  this.constructor = function(){
+    this.name = 'logService';
+  };
+
+  this.setName = function(name){
+    this.name = name;
+  };
+};
+export var logService = ngCore.Class(new _logService());
+
+/*---------------------------------------------------------*/
+
+function _todoItemComponent(){
+  this.constructor = [logService, function(logService){
+    console.log('todoItemComponent', logService.name);
+  }]; 
+};
+export var todoItemComponent = ngCore.Component({
+  .....
+  providers: [ logService ]
+})
+.Class(new _todoItemComponent());
+
+/*---------------------------------------------------------*/
+
+function _todoListComponent(){
+  this.constructor = [logService, function(logService){
+    console.log('todoListComponent', logService.name);
+  }]; 
+};
+export var todoListComponent = ngCore.Component({
+  .....
+  directives: [ todoItemComponent ]
+})
+.Class(new _todoListComponent());
+
+/*---------------------------------------------------------*/
+
+function _todosComponent(){ 
+  this.constructor = [logService, function(logService){
+    logService.setName('logService is hosted by todosComponent');
+  }];
+};
+export var todosComponent = ngCore.Component({
+  .....
+  providers: [ logService ],
+  directives: [ todoListComponent, todoItemComponent ]
+})
+.Class(new _todosComponent());

@@ -1,0 +1,42 @@
+function _userService(){
+  this.constructor = function(){};
+
+  this.setAuth = function(isAuth){
+    this.isAuth = isAuth;
+  };
+}
+export var userService = ngCore.Class(new _userService());
+
+/*---------------------------------------------------------*/
+
+function _todoListComponent(){
+  this.constructor = [logService, function(logService){
+    console.log('todoListComponent', logService.name);
+  }];
+}
+export var todoListComponent = ngCore.Component({
+  .....
+  providers: [
+    { 
+      provide: logService, 
+      useFactory: function(userService){
+        return userService.isAuth ? new supperLogService() : new logService();
+      },
+      deps: [userService] 
+    }
+  ]
+})
+.Class(new _todoListComponent());
+
+/*---------------------------------------------------------*/
+
+function _todosComponent(){
+  this.constructor = [userService, function(userService){
+    this.userService.setAuth(true);
+  }];
+}
+export var todosComponent = ngCore.Component({
+  .....
+  providers: [ userService ]
+})
+.Class(new _todosComponent());
