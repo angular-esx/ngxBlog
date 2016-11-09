@@ -1,9 +1,0 @@
-import { HeroService } from './hero.service';
-
-export var HeroListComponent = Core({
-  ....
-}).Class({
-  constructor: [HeroService, function(heroService){
-    this.heroes = heroService.getHeroes();
-  }]
-})

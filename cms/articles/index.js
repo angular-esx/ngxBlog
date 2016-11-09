@@ -14,25 +14,11 @@ import {
 } from 'xblog-cores/modules';
 
 import { article1477045370 } from './1477045370';
-import { article1476738850 } from './1476738850';
-import { article1476538850 } from './1476538850';
-import { article1475436850 } from './1475436850';
-import { article1475426750 } from './1475426750';
-import { article1474905680 } from './1474905680';
-import { article1474380939 } from './1474380939';
-import { article1473861890 } from './1473861890';
-
 
 var _ARTICLES = [
-  article1477045370,
-  article1476738850,
-  article1475436850,
-  article1476538850,
-  article1475426750,
-  article1474905680,
-  article1474380939,
-  article1473861890
+  article1477045370
 ];
+
 
 export var ARTICLE_STORE = _init();
 
