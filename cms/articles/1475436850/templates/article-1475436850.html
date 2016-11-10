@@ -6,26 +6,34 @@
 
 <p>If you have an Angular 1 background you’ll welcome this simplification in the Angular conceptual model: there’s no more service/factory/constant/provider conumdrum. In Angular 2 there’s only services, and they are just vanilla ES6 classes.</p>
 
+<br/>
+
 <h3>Creating a simple Service</h3>
 
-```
-Simple Service
-```
+<xblog-code-panel type="no-header">
+  <xblog-code [innerHtml]="templateServices.codeBlocks[1]"></xblog-code>
+</xblog-code-panel>
 
-<h3>Using Angular 2 DI to Inject Our Hero Service in the Hero List Component<h3>
+<br/><br/><br/>
 
-The we inject it into the HeroListComponent via its constructor:
+<h3>Inject Service to Component</h3>
 
-```
-Inject Service to Component
-```
+<p>Using Angular 2 DI to Inject Our Hero Service to the Hero List Component. We inject it into the HeroListComponent via its constructor:</p>
+
+<xblog-code-panel type="no-header">
+  <xblog-code [innerHtml]="templateServices.codeBlocks[2]"></xblog-code>
+</xblog-code-panel>
+
+<br/><br/><br/>
 
 <h3>Register Services at the Module Level</h3>
 
 <p>With the NgModule decorator in RC5 and the new concept of Angular 2 Modules you can now register services to be used throughout a whole module. You can achieve that via the providers property of the NgModule decorator:</p>
 
-```
-Inject Service to Module
-```
+<xblog-code-panel type="no-header">
+  <xblog-code [innerHtml]="templateServices.codeBlocks[3]"></xblog-code>
+</xblog-code-panel>
+
+<br/><br/>
 
 <p>When would you want to do that? – you may wonder. Well, whenever you want to use the same instance of a service for your whole application.</p>
