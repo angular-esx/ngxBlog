@@ -53,7 +53,7 @@
 </xblog-code-panel>
 <br/>
 <br/>
-<p>It look good, but how about if we need a JSON object with structure as below before send it to remote server</p>
+<p>It look good, but how about if we need a JSON object with structure as below before send it to remote server.</p>
 <br/>
 <xblog-code-panel type="no-header">
   <xblog-code [innerHtml]="templateDrivenForms.codeBlocks[7]"></xblog-code>
@@ -79,7 +79,7 @@
 <p>Using <span xblog-highlight>ngModel</span> in a form gives us more than just two way data binding. It also tells us if the user touched the control, if the value changed, or if the value became invalid by updating the control with special Angular CSS classes that reflect the state.</p>
 <br/>
 <xblog-table>
-  <ngx-grid xblog-table-width="500px">
+  <ngx-grid xblog-table-width="36rem">
     <ngx-grid-row xblog-table-header>
       <ngx-grid-col size="xs-4">State</ngx-grid-col>
       <ngx-grid-col size="xs-4">Class if true</ngx-grid-col>
@@ -123,7 +123,7 @@
 <br/>
 <h2 id="ng-submit" class="section-heading">ngSubmit directive</h2>
 <p>At this point, we're ready to submit the form. Look back our form, you can see we're using <span xblog-highlight>ngSubmit</span>. There's a reason we decide to use it at there.</p>
-<p>Because <span xblog-highlight>ngSubmit</span> ensures that the form doesn’t submit when the handler code throws and causes an actual http post request, so we should use it as this is the best practice</p>
+<p>Because <span xblog-highlight>ngSubmit</span> ensures that the form doesn’t submit when the handler code throws and causes an actual http post request, so we should use it as this is the best practice.</p>
 <br/>
 <p>We can now use the template reference variable <span xblog-highlight>form</span> to access the form’s value and it’s validity state.</p>
 <p>In order to get JSON object, we pass <span xblog-highlight>form.value</span> as a argument to the handler <span xblog-highlight>onSubmit</span>. We also use <span xblog-highlight>form.valid</span> to disable submit button if there's any form control is still invalid.</p>
