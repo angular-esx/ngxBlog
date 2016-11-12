@@ -12,8 +12,8 @@
 <br/>
 <p>Exactly, a <span xblog-highlight>ControlValueAccessor</span> is an interface in Angular. It takes care of two important things:</p>
 <br/>
-<p>- Writing a value from the form model into the view/DOM</p>
-<p>- Informing other form directives and controls when the view/DOM changes</p>
+<p>- Writing a value from the form model into the view/DOM.</p>
+<p>- Informing other form directives and controls when the view/DOM changes.</p>
 <br/>
 <p>If you're familiar with OOP, when we said "ControlValueAccessor is an interface", we believe that you'll guess why Angular make it as an interface.</p>
 <p>Yes, the reason is because the way how DOM elements need to be updated can vary across input types.</p>
@@ -21,7 +21,7 @@
 <p>In the fact, there's a <span xblog-highlight>ControlValueAccessor</span> for every input type which knows how to update its view/DOM.</p>
 <p>There’s the <span xblog-highlight>DefaultValueAccessor</span> that takes care of text inputs and textareas, the <span xblog-highlight>SelectControlValueAccessor</span> that handles select inputs, or the <span xblog-highlight>CheckboxControlValueAccessor</span> that deals with checkboxes, and many more.</p>
 <br/>
-<p>The <span xblog-highlight>ControlValueAccessor</span> interface looks like this</p>
+<p>The <span xblog-highlight>ControlValueAccessor</span> interface looks like this.</p>
 <br/>
 <xblog-code-panel type="no-header">
   <xblog-code [innerHtml]="controlValueAccessor.codeBlocks[1]"></xblog-code>
