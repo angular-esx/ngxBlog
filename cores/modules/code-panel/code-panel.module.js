@@ -1,4 +1,7 @@
-import { NgModule } from '@angular/core';
+import {
+  Class, 
+  NgModule 
+} from '@angular/core';
 
 import { ngxCardModule } from 'ngx-framework/modules';
 
@@ -7,22 +10,26 @@ import { xblogCodePanelLinkDirective } from './code-panel-link.directive';
 import { xblogCodePanelContentDirective } from './code-panel-content.directive';
 import { xblogCodePanelComponent } from './code-panel.component';
 
+var _DIRECTIVES = [
+  xblogCodePanelTitleDirective,
+  xblogCodePanelLinkDirective,
+  xblogCodePanelContentDirective,
+  xblogCodePanelComponent
+];
 
-export var xblogCodePanelModule = NgModule({
-  imports: [ ngxCardModule ],
-  declarations: [ 
-    xblogCodePanelTitleDirective,
-    xblogCodePanelLinkDirective,
-    xblogCodePanelContentDirective,
-    xblogCodePanelComponent 
-  ],
-  exports: [ 
-    xblogCodePanelTitleDirective,
-    xblogCodePanelLinkDirective,
-    xblogCodePanelContentDirective,
-    xblogCodePanelComponent 
-   ]
-})
+
+export var xblogCodePanelModuleMetadata = Class({
+  constructor: function xblogCodePanelModuleMetadata(){
+    Object.assign(this, {
+      imports: [ ngxCardModule ],
+      declarations: [].concat(_DIRECTIVES),
+      exports: [].concat(_DIRECTIVES)
+    });
+  }
+});
+
+
+export var xblogCodePanelModule = NgModule(new xblogCodePanelModuleMetadata())
 .Class({
-  constructor: function(){}
+  constructor: function xblogCodePanelModule(){}
 });

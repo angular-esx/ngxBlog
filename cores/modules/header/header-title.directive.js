@@ -1,9 +1,18 @@
-import { Directive } from '@angular/core';
+import { 
+  Class,
+  Directive 
+} from '@angular/core';
 
 
-export var xblogHeaderTitleDirective = Directive({
-  selector: 'xblog-header > h1[xblog-title]'
-})
+export var xblogHeaderTitleDirectiveMetadata = Class({
+  constructor: function xblogHeaderTitleDirectiveMetadata(){
+    Object.assign(this, {
+      selector: 'xblog-header > h1[xblog-title]'
+    });
+  }
+});
+
+export var xblogHeaderTitleDirective = Directive(new xblogHeaderTitleDirectiveMetadata())
 .Class({
-  constructor: function(){}
+  constructor: function xblogHeaderTitleDirective(){}
 });

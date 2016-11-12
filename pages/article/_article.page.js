@@ -9,7 +9,7 @@ import { xblogArticleService } from './services/article.service';
 export var xblogArticlePage = Component({
   selector: 'xblog-article',
   templateUrl: './templates/article.html',
-  styleUrls: ['./styles/article.scss'],
+  styleUrls: ['./styles/index.scss'],
   host: {
     '[class.xblog-article]': 'true'
   }
@@ -29,8 +29,12 @@ export var xblogArticlePage = Component({
     var _self = this;
 
     this.subscription = this.activatedRoute.params.subscribe(function(params) {
-      _self.article = _self.articleService.getArticle(params.id.split('-').pop().replace('.html', ''));
-      _self.contentComponent = new ngxComponentPortal(_self.article.content);
+      _self.articleService
+      .getArticle$(params.id.split('-').pop().replace('.html', ''))
+      .subscribe(function(article){
+        _self.article = article;
+        _self.contentComponent = new ngxComponentPortal(article.content);
+      });
     });
   },
 

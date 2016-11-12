@@ -1,0 +1,1 @@
+export { cmsArticlesModule } from './articles';

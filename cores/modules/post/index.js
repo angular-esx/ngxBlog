@@ -1,3 +1,9 @@
-export { xblogPostModule } from './post.module';
+export { 
+  xblogPostModuleMetadata,
+  xblogPostModule 
+} from './post.module';
 
-export { xblogPostComponent } from './post.component';
+export { 
+  xblogPostComponentMetadata,
+  xblogPostComponent 
+} from './post.component';

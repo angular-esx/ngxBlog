@@ -1,14 +1,14 @@
 import { NgModule } from '@angular/core';
 import { CommonModule }  from '@angular/common';
 
-import { ngxGridModule } from 'ngx-framework/modules';
-
-import { xblogArticleStoreService } from 'xblog-store';
+import { xblogFooterModule } from 'xblog-cores/modules';
 
 import { 
+  ngxGridModule,
+  xblogNavbarModule,
   xblogHeaderModule,
-  xblogPostModule 
-} from 'xblog-cores/modules';
+  xblogPostModule
+} from './shared';
 
 import { xblogHomePage } from './home.page';
 
@@ -19,12 +19,13 @@ export var xblogHomePageModule = NgModule({
   imports: [ 
     CommonModule,
     ngxGridModule,
+    xblogNavbarModule,
     xblogHeaderModule,
-    xblogPostModule
+    xblogPostModule,
+    xblogFooterModule
   ],
   declarations: [ xblogHomePage ],
   providers: [
-    xblogArticleStoreService, 
     xblogHomeService 
   ],
   exports: [ xblogHomePage ]

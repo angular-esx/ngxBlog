@@ -1,0 +1,1 @@
+export { ngxGridModule } from './grid.module';
