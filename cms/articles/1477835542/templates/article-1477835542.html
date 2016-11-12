@@ -15,7 +15,7 @@
 </xblog-code-panel>
 <br/>
 <br/>
-<p>Next, we need to create a form model that represents that DOM structure in our component. One way to do that is to use the low level APIs for <span xblog-highlight>FormGroup</span> and <span xblog-highlight>FormControl</span>.</p>
+<p>Next, we need to create a form model that represents that DOM structure in our component. One way to do that is to use the low level APIs for <span xblog-highlight>FormGroup</span> and <span xblog-highlight>FormControl</span></p>
 <br/>
 <xblog-code-panel>
   <xblog-title>{{reactiveForms.sourceCode.name}}</xblog-title>
@@ -24,13 +24,13 @@
 </xblog-code-panel>
 <br/>
 <br/>
-<p>We created a component property <span xblog-highlight>myForm</span> which represents the <span xblog-highlight>FormGroup</span>, which is our form. For each field in the form, we’ve created a <span xblog-highlight>FormControl</span>.</p>
+<p>We created a component property <span xblog-highlight>myForm</span> which represents the <span xblog-highlight>FormGroup</span>, which is our form. For each field in the form, we’ve created a <span xblog-highlight>FormControl</span></p>
 <p>We also created two nested FormGroup <span xblog-highlight>name</span> and <span xblog-highlight>contact</span> which each of them is a collection of form controls.</p>
 <br/>
 <p>We’ve just finished our first form model, let’s associate it to our template.</p>
 <br/>
 <h2 id="form-group-n-form-group-name-n-form-control-name" class="section-heading">formGroup & formGroupName & formControlName</h2>
-<p>By using <span xblog-highlight>formGroup</span> directive we can connect the model with the form template</p>
+<p>By using <span xblog-highlight>formGroup</span> directive we can connect the model with the form template.</p>
 <br/>
 <xblog-code-panel type="no-header">
   <xblog-code [innerHtml]="reactiveForms.codeBlocks[3]"></xblog-code>
@@ -52,7 +52,7 @@
 <br/>
 <br/>
 <p>Done, we've bound our form model to template completely.</p>
-<p>Before show you how to add validators for our form controls, we should make code more readable by replacing <span xblog-highlight>FormGroup</span> and <span xblog-highlight>FormControl</span> with <span xblog-highlight>FormBuilder</span>.</p>
+<p>Before show you how to add validators for our form controls, we should make code more readable by replacing <span xblog-highlight>FormGroup</span> and <span xblog-highlight>FormControl</span> with <span xblog-highlight>FormBuilder</span></p>
 <br/>
 <h2 id="form-builder" class="section-heading">FormBuilder</h2>
 <p><span xblog-highlight>FormBuilder</span> is like a factory that creates FormGroup and FormControl for us.</p>
@@ -80,7 +80,7 @@
 <p>A <span xblog-highlight>FormControl</span> takes a value as first, a synchronous validator as second and an asynchronous validator as third parameter.</p>
 <p>We can also pass a collection of validators which causes Angular to compose them for us.</p>
 <br/>
-<p>Now, we can access the validity state of a form control like this</p>
+<p>Now, we can access the validity state of a form control like this.</p>
 <br/>
 <xblog-code-panel type="no-header">
   <xblog-code [innerHtml]="reactiveForms.codeBlocks[8]"></xblog-code>
@@ -99,7 +99,7 @@
 <br/>
 <br/>
 <p>Actually, Angular comes with a directive <span xblog-highlight>formControl</span> which doesn’t have to be inside a <span xblog-highlight>formGroup</span></p>
-<p>So we can listen reactively for changes that are happening to that control by subscribing to <span xblog-highlight>valuesChanges()</span> - An Observable property of formControl</p>
+<p>So we can listen reactively for changes that are happening to that control by subscribing to <span xblog-highlight>valuesChanges()</span> - An Observable property of formControl.</p>
 <br/>
 <xblog-code-panel>
   <xblog-title>{{reactiveForms.sourceCode.name}}</xblog-title>
