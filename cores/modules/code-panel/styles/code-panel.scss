@@ -1,28 +1,40 @@
-@import 'state.scss';
-
-@import './_variables.scss';
-
 :host(.xblog-code-panel){
   display: block;
   box-shadow: $xblog-code-panel-box-shadow;
+
+  @if xblog-code-panel-config(type-no-header) {
+    &.xblog-code-panel-type-no-header {
+      /deep/ > .ngx-card {
+        padding-top: 0;
+        
+        > .ngx-card-header {
+          display: none;
+        }
+      }
+    }
+  }
 
   /deep/ > .ngx-card {
     border-radius: 0;
     border: none;
 
-    & xblog-title {
-      font-weight: $xblog-code-panel-title-font-weight;
-      color: $xblog-code-panel-title-foreground-color;
+    @if xblog-code-panel-config(type-no-header) {
+      & xblog-title {
+        font-weight: $xblog-code-panel-title-font-weight;
+        color: $xblog-code-panel-title-foreground-color;
+      }
     }
 
-    & a[xblog-source-code] {
-      font-style: italic;
-      font-weight: $xblog-code-panel-title-font-weight;
-      text-decoration: none;
-      text-transform: lowercase;
+    @if xblog-code-panel-config(type-no-header) {
+      & a[xblog-source-code] {
+        font-style: italic;
+        font-weight: $xblog-code-panel-title-font-weight;
+        text-decoration: none;
+        text-transform: lowercase;
 
-      @include xblog-state('a[xblog-source-code]', 'focus hover') {
-        color: $xblog-code-panel-source-code-foreground-color;
+        @include xblog-state('a[xblog-source-code]', 'focus hover') {
+          color: $xblog-code-panel-source-code-foreground-color;
+        }
       }
     }
 
@@ -41,16 +53,6 @@
           font-size: $xblog-code-panel-code-font-size;
           padding: $xblog-code-panel-code-padding;
         }
-      }
-    }
-  }
-
-  &.xblog-code-panel-type-no-header {
-    /deep/ > .ngx-card {
-      padding-top: 0;
-      
-      > .ngx-card-header {
-        display: none;
       }
     }
   }

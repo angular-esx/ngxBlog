@@ -1,0 +1,1 @@
+export { xblogNavbarModule } from './navbar.module';

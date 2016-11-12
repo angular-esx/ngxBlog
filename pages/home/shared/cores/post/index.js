@@ -1,0 +1,1 @@
+export { xblogPostModule } from './post.module';

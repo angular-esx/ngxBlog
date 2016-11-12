@@ -1,0 +1,34 @@
+:host(.xblog-table){
+  display: block;
+  overflow-x: auto;
+
+  /deep/ > .ngx-grid {
+    font-size: $xblog-table-font-size;
+    padding: $xblog-table-padding;
+    box-shadow: $xblog-table-box-shadow;
+
+    > .ngx-grid-row {
+      background-color: $xblog-table-row-background-color;
+
+      &.xblog-table-header {
+        background-color: $xblog-table-header-background-color;
+
+        > .ngx-grid-col {
+          font-weight: $xblog-table-header-col-font-weight;
+
+          &:not(:last-child){
+            border-right: $xblog-table-header-col-border-right;
+          }
+        }
+      }
+
+      &:not(:last-child) {
+        border-bottom: $xblog-table-row-border-bottom;
+      }
+
+      > .ngx-grid-col {
+        padding: $xblog-table-col-padding;
+      }
+    }
+  }
+}

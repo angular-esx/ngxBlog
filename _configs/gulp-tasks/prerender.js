@@ -3,9 +3,13 @@ import { Class, NgModule } from '@angular/core';
 import { UniversalModule } from 'angular2-universal';
 import { RouterModule } from '@angular/router';
 
+import { StoreModule } from '@ngrx/store';
+
 import { baseTask } from './base-task';
 import { envtFactory } from '../envts';
 import { prerenderWebpackFactory } from '../webpacks';
+
+import { xblogReducer } from 'xblog-store';
 
 import { ARTICLE_STORE } from '../../cms/articles';
 import { cmsArticleService } from '../../cms/cores/services';
@@ -13,11 +17,6 @@ import { cmsArticleService } from '../../cms/cores/services';
 import { HOMEPAGE_PAGE_SIZE as PAGE_SIZE } from 'xblog-cores/constants';
 
 import { resourceUtils } from 'xblog-cores/utils';
-
-import {
-  xblogNavbarModule,
-  xblogFooterModule
-} from 'xblog-cores/modules';
 
 import { 
   xblogHomePageModule,
@@ -50,7 +49,7 @@ export class prerenderTask extends baseTask {
       return Promise.all(_prerenderPromises);
     }
     else if (this.args.action.indexOf('detail-') > -1){ 
-     let _article = ARTICLE_STORE[this.args.action.split('-').pop()];  
+     let _article = ARTICLE_STORE.MAP[this.args.action.split('-').pop()];  
 
      return _getArticlePagePrerenderPromise(this, _envt, _article);
     }
@@ -132,8 +131,7 @@ function _getModule(router){
   return NgModule({
     imports: [ 
       RouterModule.forRoot(router),
-      xblogNavbarModule,
-      xblogFooterModule,
+      StoreModule.provideStore(xblogReducer),
       xblogHomePageModule,
       xblogArticlePageModule,
       UniversalModule
