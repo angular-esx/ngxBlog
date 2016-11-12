@@ -55,7 +55,7 @@
 <br/>
 <p>In above example, first, we injected <span xblog-highlight>NgZone</span> into <span xblog-highlight>exampleComponent</span>.</p>
 <p>Next, inside of exampleComponent's <span xblog-highlight>process()</span> we execution something logic by using <span xblog-highlight>runOutsideAngularZone()</span></p>
-<p>If you change any application state at here, Angular will not perform any change detection, it mean that there aren't' any updates for the UI</p>
+<p>If you change any application state at here, Angular will not perform any change detection, it mean that there aren't' any updates for the UI.</p>
 <p>However, once our logic is done, we run another task inside Angular’s zone again using <span xblog-highlight>run()</span> which in turn causes Angular to perform change detection which will update the UI.</p>
 <br/>
 <p>At this point, we hope you got basic knowledges about how to use NgZone in Angular 2.</p>
@@ -67,9 +67,9 @@
 <p>This tree can also be viewed as a directed graph where data always flows from top to bottom.</p>
 <p>The reason why data flows from top to bottom, is because change detection is also always performed from top to bottom for every single component, every single time, starting from the root component. This is awesome, as unidirectional data flow is more predictable than cycles.</p>
 <br/>
-<p>By default, even if we have to check every single component every single time an event happens, Angular is very fast. It can perform hundreds of thousands of checks within a couple of milliseconds</p>
+<p>By default, even if we have to check every single component every single time an event happens, Angular is very fast. It can perform hundreds of thousands of checks within a couple of milliseconds.</p>
 <br/>
-<p>Look at a simple example</p>
+<p>Look at a simple example.</p>
 <br/>
 <xblog-code-panel type="no-header">
   <xblog-code [innerHtml]="onPush.codeBlocks[1]"></xblog-code>
@@ -79,7 +79,7 @@
 <p>As you can see, we have a component tree that <span xblog-highlight>exampleComponent</span> is parent of <span xblog-highlight>childComponent</span>, and <span xblog-highlight>childComponent</span> is parent of <span xblog-highlight>infoComponent</span></p>
 <p>In exampleComponent, we created a <span xblog-highlight>model</span> then bound it to childComponent & infoComponent.</p>
 <p>When <span xblog-highlight>changeModel()</span> is triggered, we'll set new value to <span xblog-highlight>text</span> property of exampleComponent.</p>
-<p>Our example is very simple, right ? Now run it and look at the result below</p>
+<p>Our example is very simple, right ? Now run it and look at the result below.</p>
 <br/>
 <div class="screen-capture"><img [src]="onPush.screenCaptures[1]"/></div>
 <br/>
@@ -95,12 +95,12 @@
 </xblog-code-panel>
 <br/>
 <br/>
-<p>Now run our example again, you'll see Angular skip entire change detection subtrees of childComponent when input properties don’t change</p>
+<p>Now run our example again, you'll see Angular skip entire change detection subtrees of childComponent when input properties don’t change.</p>
 <br/>
 <div class="screen-capture"><img [src]="onPush.screenCaptures[2]"/></div>
 <br/>
 <h2 id="immutable-objects" class="section-heading">Immutable objects</h2>
-<p>In this subject, we'll do a little changes to our example, just like that</p>
+<p>In this subject, we'll do a little changes to our example, just like that.</p>
 <br/>
 <xblog-code-panel type="no-header">
   <xblog-code [innerHtml]="immutable.codeBlocks[1]"></xblog-code>
