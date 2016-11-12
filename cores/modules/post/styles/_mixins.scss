@@ -2,14 +2,18 @@
   @if $size == small {
     &.xblog-post-size-small {
       /deep/ .ngx-card {
+        @media(min-width: xblog-breakpoint(sm)){
+          height: $xblog-post-height-sm;
+        }
+
         & ngx-card-title {
-          display: flex;
-          align-items: center;
-          height: $xblog-post-title-height-small;
-          margin: 0;
-          
           > a {
             font-size: $xblog-post-title-font-size-small;
+          }
+
+          @media(min-width: xblog-breakpoint(sm)){
+            max-height: $xblog-post-title-max-height-sm;
+            overflow: hidden;
           }
         }
 
@@ -27,15 +31,14 @@
     &.xblog-post-size-large {
       /deep/ ngx-card-title > a {
         font-size: $xblog-post-title-font-size-large;
-        
-        > p {
-          white-space: nowrap;
-          text-overflow: ellipsis;
-        }
       }
 
       /deep/ ngx-card-subtitle {
         font-size: $xblog-post-subtitle-font-size-large;
+      }
+
+      & ngx-card-text > p {
+        font-size: $xblog-post-description-font-size-large;
       }
     }
   }
