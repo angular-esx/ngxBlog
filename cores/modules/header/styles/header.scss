@@ -18,6 +18,7 @@
       & h1[xblog-title] {
         text-align: center;
         font-size: $xblog-title-font-size;
+        text-transform: uppercase;
       }
 
       & hr[xblog-divider] {
@@ -30,8 +31,6 @@
       & xblog-subtitle {
         display: block;
         text-align: center;
-        font-family: $xblog-subtitle-font-family;
-        font-size: $xblog-subtitle-font-size;
         font-weight: $xblog-subtitle-font-weight;
         margin: $xblog-subtitle-margin;
       }

@@ -3,7 +3,7 @@ $xblog-footer-padding: 2.5rem 0 3.25rem !default;
 $xblog-footer-social-link-padding: 0 .25rem !default;
 $xblog-footer-social-link: (
   hover: (
-    foreground-color: xblog-color($xblog-color-green)
+    foreground-color: xblog-color($xblog-color-primary)
   ),
   default: (
     foreground-color: xblog-color($xblog-color-black, dark)
