@@ -48,11 +48,11 @@ function _getComponentFileContent(id) {
     import { cmsArticleService } from '../../cores/services';
 
 
-    export var article1476250476Component = Component({
+    export var article${id}Component = Component({
       selector: 'article',
-      templateUrl: './templates/article-1476250476.html',
+      templateUrl: './templates/article-${id}.html',
       host: {
-        '[class.xblog-article-1476250476]': 'true'
+        '[class.xblog-article-${id}]': 'true'
       }
     })
     .Class({

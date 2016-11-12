@@ -1,9 +1,18 @@
-import { Directive } from '@angular/core';
+import { 
+  Class,
+  Directive 
+} from '@angular/core';
 
 
-export var xblogHeaderDividerDirective = Directive({
-  selector: 'xblog-header > hr[xblog-divider]'
-})
+export var xblogHeaderDividerDirectiveMetadata = Class({
+  constructor: function xblogHeaderDividerDirectiveMetadata(){
+    Object.assign(this, {
+      selector: 'xblog-header > hr[xblog-divider]'
+    });
+  }
+});
+
+export var xblogHeaderDividerDirective = Directive(new xblogHeaderDividerDirectiveMetadata())
 .Class({
-  constructor: function(){}
+  constructor: function xblogHeaderDividerDirective(){}
 });

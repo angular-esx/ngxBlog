@@ -1,3 +1,5 @@
+<xblog-navbar></xblog-navbar>
+
 <xblog-header [cover]="article.cover">
   <h1 xblog-title>{{article.title}}</h1>
 
@@ -20,10 +22,12 @@
   <ngx-grid-row>
     <ngx-grid-col size="lg-10" offset="lg-2">
       <ngx-grid-row>
-        <ngx-grid-col *ngFor="let relatedArticle of article.relatedArticles" size="xs-12 md-6 lg-4">
+        <ngx-grid-col class="xblog-article-related-post-container" *ngFor="let relatedArticle of article.relatedArticles" size="xs-12 sm-6 xl-4">
           <xblog-post size="small" [model]="relatedArticle"></xblog-post>
         </ngx-grid-col>
       </ngx-grid-row>
     </ngx-grid-col>
   </ngx-grid-row>
 </ngx-grid>
+
+<xblog-footer></xblog-footer>

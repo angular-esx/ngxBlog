@@ -1,4 +1,5 @@
 import {
+  Class,
   Component,
   ElementRef,
   Renderer,
@@ -7,16 +8,23 @@ import {
 
 import { ngxBaseComponent, ngxUtils } from 'ngx-framework/cores';
 
-export var xblogPostComponent = Component({
-  selector: 'xblog-post',
-  templateUrl: './templates/post.html',
-  styleUrls: ['./styles/post.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  inputs: [ 'size', 'model' ],
-  host: {
-    '[class.xblog-post]': 'true'
+
+export var xblogPostComponentMetadata = Class({
+  constructor: function xblogPostComponentMetadata(){
+    Object.assign(this, {
+      selector: 'xblog-post',
+      templateUrl: './templates/post.html',
+      styleUrls: ['./styles/index.scss'],
+      changeDetection: ChangeDetectionStrategy.OnPush,
+      inputs: [ 'size', 'model' ],
+      host: {
+        '[class.xblog-post]': 'true'
+      }
+    });
   }
-})
+});
+
+export var xblogPostComponent = Component(new xblogPostComponentMetadata())
 .Class({
   extends: ngxBaseComponent,
 
@@ -24,7 +32,7 @@ export var xblogPostComponent = Component({
     ElementRef,
     Renderer,
 
-    function (elementRef, renderer) {
+    function xblogPostComponent(elementRef, renderer) {
       ngxBaseComponent.apply(this, arguments);
     }
   ],

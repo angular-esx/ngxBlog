@@ -6,8 +6,8 @@ import { sassConfig } from '../sass/sass-config';
 
 export class baseWebpack {
   constructor() {
-    this.context = path.resolve(__dirname, '../..');
     this.cache = true,
+    this.context = path.resolve(__dirname, '../..');
 
     this.plugins = [
       /*
@@ -30,7 +30,7 @@ export class baseWebpack {
         }
       })
     ];
-
+    
     this.module = {
       loaders: [
         {
@@ -44,9 +44,9 @@ export class baseWebpack {
           test: /\.(scss|sass)$/,
           loader: [
             './_configs/webpacks/loaders/clean-code-loader',
-            '!sass-loader',
-            '!postcss-loader'
-          ].join('')
+            'sass-loader',
+            'postcss-loader',
+          ]
         }
       ]
     };

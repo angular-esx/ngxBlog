@@ -1,0 +1,14 @@
+html {
+  font-size: xblog-font-size(root);
+}
+
+body {
+  font-family: $xblog-font-family-serif;
+  font-size: xblog-font-size(base);
+  background-color: xblog-color($xblog-color-gray, light-1);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: $xblog-font-family-sans-serif;
+  font-weight: xblog-font-weight(bold-2);
+}

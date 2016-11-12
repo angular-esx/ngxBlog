@@ -2,12 +2,11 @@ import { NgModule } from '@angular/core';
 import { BrowserModule }  from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 
-import { cmsArticleService } from '../cms/cores/services';
+import { StoreModule } from '@ngrx/store';
 
-import {
-  xblogNavbarModule,
-  xblogFooterModule
-} from 'xblog-cores/modules';
+import { xblogReducer } from 'xblog-store';
+
+import { cmsArticleService } from '../cms/cores/services';
 
 import { 
   xblogHomePageModule,
@@ -21,8 +20,7 @@ export var xblogModule = NgModule({
   imports: [ 
     BrowserModule,
     RouterModule.forRoot(router),
-    xblogNavbarModule,
-    xblogFooterModule,
+    StoreModule.provideStore(xblogReducer),
     xblogHomePageModule,
     xblogArticlePageModule
   ],
@@ -31,5 +29,5 @@ export var xblogModule = NgModule({
   bootstrap: [ xblogApp ]
 })
 .Class({
-  constructor: function(){}
+  constructor: function xblogModule(){}
 });

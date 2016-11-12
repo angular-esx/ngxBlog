@@ -9,7 +9,7 @@ import { xblogHomeService } from './services/home.service';
 export var xblogHomePage = Component({
   selector: 'xblog-home',
   templateUrl: './templates/home.html',
-  styleUrls: ['./styles/home.scss'],
+  styleUrls: ['./styles/index.scss'],
   host: {
     '[class.xblog-home]': 'true'
   }
@@ -19,7 +19,7 @@ export var xblogHomePage = Component({
     ActivatedRoute,
     xblogHomeService,
 
-    function (activatedRoute, homeService){
+    function xblogHomePage(activatedRoute, homeService){
       this.activatedRoute = activatedRoute;
       this.homeService = homeService;
     }
@@ -29,7 +29,7 @@ export var xblogHomePage = Component({
     var _self = this;
 
     this.subscription = this.activatedRoute.params.subscribe(function(params) {
-      _self.posts = _self.homeService.getPosts(params.pageNum || 1, PAGE_SIZE);
+      _self.posts$ = _self.homeService.getPosts$(params.pageNum || 1, PAGE_SIZE);
     });
   }
 });
