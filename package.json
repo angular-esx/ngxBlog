@@ -14,6 +14,8 @@
     "@angular/platform-browser": "2.0.2",
     "@angular/platform-browser-dynamic": "2.0.2",
     "@angular/router": "3.0.0-rc.2",
+    "@ngrx/core": "1.2.0",
+    "@ngrx/store": "2.2.1",
     "angular2-universal": "2.1.0-rc.1",
     "angular2-universal-polyfills": "^2.1.0-rc.1",
     "es6-promise": "3.1.2",
@@ -55,7 +57,7 @@
     "run-sequence": "1.2.2",
     "sass-loader": "3.2.3",
     "unminified-webpack-plugin": "1.1.1",
-    "webpack": "^2.1.0-beta.25",
+    "webpack": "2.1.0-beta.25",
     "yargs": "3.32.0"
   }
 }

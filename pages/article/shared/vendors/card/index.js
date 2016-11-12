@@ -1,0 +1,1 @@
+export { ngxCardModule } from './card.module';

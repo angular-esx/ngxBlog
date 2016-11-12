@@ -1,3 +1,9 @@
-export { xblogHighlightModule } from './highlight.module';
+export { 
+  xblogHighlightModuleMetadata,
+  xblogHighlightModule 
+} from './highlight.module';
 
-export { xblogHighlightDirective } from './highlight.directive';
+export { 
+  xblogHighlightDirectiveMetadata,
+  xblogHighlightDirective 
+} from './highlight.directive';
