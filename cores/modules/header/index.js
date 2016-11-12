@@ -1,9 +1,24 @@
-export { xblogHeaderModule } from './header.module';
+export { 
+  xblogHeaderModuleMetadata,
+  xblogHeaderModule 
+} from './header.module';
 
-export { xblogHeaderTitleDirective } from './header-title.directive';
+export { 
+  xblogHeaderTitleDirectiveMetadata,
+  xblogHeaderTitleDirective 
+} from './header-title.directive';
 
-export { xblogHeaderSubtitleDirective } from './header-subtitle.directive';
+export { 
+  xblogHeaderSubtitleDirectiveMetadata,
+  xblogHeaderSubtitleDirective 
+} from './header-subtitle.directive';
 
-export { xblogHeaderDividerDirective } from './header-divider.directive';
+export { 
+  xblogHeaderDividerDirectiveMetadata,
+  xblogHeaderDividerDirective 
+} from './header-divider.directive';
 
-export { xblogHeaderComponent } from './header.component';
+export { 
+  xblogHeaderComponentMetadata,
+  xblogHeaderComponent 
+} from './header.component';

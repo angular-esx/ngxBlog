@@ -1,5 +1,3 @@
-@import './_variables.scss';
-
 @function xblog-font-size($size-name){
   @return map-get($xblog-font-sizes, $size-name);
 }
@@ -16,6 +14,20 @@
   @return map-get($xblog-font-weights, $font-weight-name);
 }
 
-@function xblog-max-height($line-height, $line-number, $unit: em){
-  @return #{$line-height * $line-number}$unit;
+@function xblog-max-height($line-height, $line-number, $unit: em, $font-size: null){
+  $max-height: $line-height * $line-number;
+
+  @if $font-size {
+    $max-height: $max-height + $max-height*($font-size - map-get($xblog-font-sizes, base));
+  }
+
+  @return #{xblog-strip-unit($max-height)}$unit;
+}
+
+@function xblog-strip-unit($number) {
+  @if type-of($number) == 'number' and not unitless($number) {
+    @return $number / ($number * 0 + 1);
+  }
+
+  @return $number;
 }

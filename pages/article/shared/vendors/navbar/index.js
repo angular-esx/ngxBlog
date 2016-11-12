@@ -1,0 +1,1 @@
+export { ngxNavbarModule } from './navbar.module';

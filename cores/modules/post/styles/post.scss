@@ -1,7 +1,3 @@
-@import 'state.scss';
-
-@import './_variables.scss';
-
 :host(.xblog-post){
   display: block;
   box-shadow: $xblog-post-box-shadow;
@@ -11,6 +7,7 @@
     border: none;
 
     & ngx-card-title > a {
+      font-family: $xblog-post-title-font-family;
       font-weight: $xblog-post-title-font-weight;
       text-decoration: none;
       color: xblog-component($xblog-post-title, default, foreground-color);
@@ -21,7 +18,6 @@
 
       > p {
         margin: 0;
-        overflow: hidden;
       }
     }
 
@@ -35,41 +31,7 @@
     }
   }
 
-  &.xblog-post-size-large {
-    /deep/ ngx-card-title > a {
-      font-size: $xblog-post-title-font-size-large;
-      
-      > p {
-        white-space: nowrap;
-        text-overflow: ellipsis;
-      }
-    }
-
-    /deep/ ngx-card-subtitle {
-      font-size: $xblog-post-subtitle-font-size-large;
-    }
-  }
-
-  &.xblog-post-size-small {
-    /deep/ .ngx-card {
-      & ngx-card-title {
-        display: flex;
-        align-items: center;
-        height: $xblog-post-title-height-small;
-        margin: 0;
-        
-        > a {
-          font-size: $xblog-post-title-font-size-small;
-        }
-      }
-
-      & ngx-card-subtitle {
-        font-size: $xblog-post-subtitle-font-size-small;
-      }
-
-      & ngx-card-text > p {
-        font-size: $xblog-post-description-font-size-small;
-      }
-    }
+  @each $size in xblog-post-config(sizes){
+    @include xblog-post-size($size);
   }
 }
