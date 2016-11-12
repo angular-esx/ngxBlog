@@ -1,4 +1,8 @@
 :host(.xblog-article) {
+  > .xblog-header {
+    margin: $xblog-article-header-margin;
+  }
+
   /deep/ > .xblog-article-content-section {
     margin: $xblog-article-content-section-margin;
 
@@ -7,15 +11,21 @@
     }
 
     .section-heading {
+      font-size: $xblog-article-content-section-heading-font-size;
+      font-weight: $xblog-article-content-section-heading-font-weight;
       margin: $xblog-article-content-section-heading-margin;
     }
 
     .section-subheading {
+      font-size: $xblog-article-content-section-subheading-font-size;
+      font-weight: $xblog-article-content-section-subheading-font-weight;
       margin: $xblog-article-content-section-subheading-margin;
       color: $xblog-article-content-section-subheading-foreground-color;
     }
     
     .section-subject {
+      font-size: $xblog-article-content-section-subject-font-size;
+      font-weight: $xblog-article-content-section-subject-font-weight;
       margin: $xblog-article-content-section-subject-margin;
       color: $xblog-article-content-section-subject-foreground-color;
       text-decoration: underline;
@@ -33,5 +43,9 @@
 
   > .xblog-article-related-posts-section {
     margin: $xblog-article-related-posts-section-margin;
+
+    & .xblog-article-related-post-container {
+      padding: $xblog-article-related-post-container-padding;
+    }
   }
 }

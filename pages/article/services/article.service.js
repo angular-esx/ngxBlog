@@ -25,7 +25,12 @@ export var xblogArticleService = Class({
       var _article = map[id];
 
       if(!_article) { throw 'Not found articleId: ' + id; }
-
+      _article.relatedArticles.push(_article);
+      _article.relatedArticles.push(_article);
+      _article.relatedArticles.push(_article);
+      _article.relatedArticles.push(_article);
+      _article.relatedArticles.push(_article);
+      _article.relatedArticles.push(_article);
       return _article;
     });
   }
