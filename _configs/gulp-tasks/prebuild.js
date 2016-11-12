@@ -16,6 +16,8 @@ const _COMPONENT_SRCS = [
   './cores/modules/post/post.component.js',
   './cores/modules/code-panel/code-panel.component.js',
   './cores/modules/table-content/table-content.component.js',
+  './cores/modules/table/table.component.js',
+  './cores/modules/section/section.component.js',
 
   './pages/home/home.page.js',
   './pages/home/shared/cores/post/post.component.js',

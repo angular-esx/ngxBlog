@@ -1,0 +1,13 @@
+$xblog-table-font-size: xblog-font-size(xs) !default;
+$xblog-table-padding: 0 1rem  !default;
+$xblog-table-box-shadow: 0 1px 4px 0 rgba(0,0,0,0.14) !default;
+
+$xblog-table-header-background-color: xblog-color($xblog-color-white, dark) !default;
+
+$xblog-table-header-col-font-weight: xblog-font-weight(bold-3) !default;
+$xblog-table-header-col-border-right: 2px solid xblog-color($xblog-color-gray, light-1) !default;
+
+$xblog-table-row-background-color: xblog-color($xblog-color-white, light) !default;
+$xblog-table-row-border-bottom: 1px solid xblog-color($xblog-color-gray, light-1) !default;
+
+$xblog-table-col-padding: 1rem !default;
