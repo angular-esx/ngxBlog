@@ -8,7 +8,7 @@
 
         & ngx-card-title {
           > a {
-            font-size: $xblog-post-title-font-size-small;
+            font-size: $xblog-post-title-font-size;
           }
 
           @media(min-width: xblog-breakpoint(sm)){
@@ -18,11 +18,11 @@
         }
 
         & ngx-card-subtitle {
-          font-size: $xblog-post-subtitle-font-size-small;
+          font-size: $xblog-post-subtitle-font-size;
         }
 
         & ngx-card-text > p {
-          font-size: $xblog-post-description-font-size-small;
+          font-size: $xblog-post-description-font-size;
         }
       }
     }
@@ -30,15 +30,15 @@
   @else if $size == large {
     &.xblog-post-size-large {
       /deep/ ngx-card-title > a {
-        font-size: $xblog-post-title-font-size-large;
+        font-size: $xblog-post-title-font-size;
       }
 
       /deep/ ngx-card-subtitle {
-        font-size: $xblog-post-subtitle-font-size-large;
+        font-size: $xblog-post-subtitle-font-size;
       }
 
       & ngx-card-text > p {
-        font-size: $xblog-post-description-font-size-large;
+        font-size: $xblog-post-description-font-size;
       }
     }
   }
