@@ -8,65 +8,72 @@
 <p>After component's constructor is called to create an instance, Angular calls its lifecycle hook methods in following sequence.</p>
 <p>Angular only calls a hook method if it is defined.</p>
 <br/>
-<ngx-grid>
-  <ngx-grid-row>
-    <ngx-grid-col size="xs-4">ngOnChanges</ngx-grid-col>
-    <ngx-grid-col size="xs-8">
-      Before ngOnInit and when a data-bound input property value changes.   
-    </ngx-grid-col>
-  </ngx-grid-row>
+<xblog-table>
+  <ngx-grid xblog-table-width="45rem">
+    <ngx-grid-row xblog-table-header>
+      <ngx-grid-col size="xs-4">Hooks</ngx-grid-col>
+      <ngx-grid-col size="xs-8">Timing</ngx-grid-col>
+    </ngx-grid-row>
 
-  <ngx-grid-row>
-    <ngx-grid-col size="xs-4">ngOnInit</ngx-grid-col>
-    <ngx-grid-col size="xs-8">
-      After the first ngOnChanges.   
-    </ngx-grid-col>
-  </ngx-grid-row>
+    <ngx-grid-row>
+      <ngx-grid-col size="xs-4">ngOnChanges</ngx-grid-col>
+      <ngx-grid-col size="xs-8">
+        Before ngOnInit and when a data-bound input property value changes.
+      </ngx-grid-col>
+    </ngx-grid-row>
 
-  <ngx-grid-row>
-    <ngx-grid-col size="xs-4">ngDoCheck</ngx-grid-col>
-    <ngx-grid-col size="xs-8">
-      During every Angular change detection cycle.   
-    </ngx-grid-col>
-  </ngx-grid-row>
+    <ngx-grid-row>
+      <ngx-grid-col size="xs-4">ngOnInit</ngx-grid-col>
+      <ngx-grid-col size="xs-8">
+        After the first ngOnChanges.
+      </ngx-grid-col>
+    </ngx-grid-row>
 
-  <ngx-grid-row>
-    <ngx-grid-col size="xs-4">ngAfterContentInit</ngx-grid-col>
-    <ngx-grid-col size="xs-8">
-      After projecting content into the component.   
-    </ngx-grid-col>
-  </ngx-grid-row>
+    <ngx-grid-row>
+      <ngx-grid-col size="xs-4">ngDoCheck</ngx-grid-col>
+      <ngx-grid-col size="xs-8">
+        During every Angular change detection cycle.
+      </ngx-grid-col>
+    </ngx-grid-row>
 
-  <ngx-grid-row>
-    <ngx-grid-col size="xs-4">ngAfterContentChecked</ngx-grid-col>
-    <ngx-grid-col size="xs-8">
-      After every check of projected component content.  
-    </ngx-grid-col>
-  </ngx-grid-row>
+    <ngx-grid-row>
+      <ngx-grid-col size="xs-4">ngAfterContentInit</ngx-grid-col>
+      <ngx-grid-col size="xs-8">
+        After projecting content into the component.
+      </ngx-grid-col>
+    </ngx-grid-row>
 
-  <ngx-grid-row>
-    <ngx-grid-col size="xs-4">ngAfterViewInit</ngx-grid-col>
-    <ngx-grid-col size="xs-8">
-      After initializing the component's views and child views.  
-    </ngx-grid-col>
-  </ngx-grid-row>
+    <ngx-grid-row>
+      <ngx-grid-col size="xs-4">ngAfterContentChecked</ngx-grid-col>
+      <ngx-grid-col size="xs-8">
+        After every check of projected component content.
+      </ngx-grid-col>
+    </ngx-grid-row>
 
-  <ngx-grid-row>
-    <ngx-grid-col size="xs-4">ngAfterViewChecked</ngx-grid-col>
-    <ngx-grid-col size="xs-8">
-      After every check of the component's views and child views.  
-    </ngx-grid-col>
-  </ngx-grid-row>
+    <ngx-grid-row>
+      <ngx-grid-col size="xs-4">ngAfterViewInit</ngx-grid-col>
+      <ngx-grid-col size="xs-8">
+        After initializing the component's views and child views.
+      </ngx-grid-col>
+    </ngx-grid-row>
 
-  <ngx-grid-row>
-    <ngx-grid-col size="xs-4">ngOnDestroy</ngx-grid-col>
-    <ngx-grid-col size="xs-8">
-      Just before Angular destroys the directive/component.  
-    </ngx-grid-col>
-  </ngx-grid-row>
-</ngx-grid>
+    <ngx-grid-row>
+      <ngx-grid-col size="xs-4">ngAfterViewChecked</ngx-grid-col>
+      <ngx-grid-col size="xs-8">
+        After every check of the component's views and child views.
+      </ngx-grid-col>
+    </ngx-grid-row>
+
+    <ngx-grid-row>
+      <ngx-grid-col size="xs-4">ngOnDestroy</ngx-grid-col>
+      <ngx-grid-col size="xs-8">
+        Just before Angular destroys the directive/component.
+      </ngx-grid-col>
+    </ngx-grid-row>
+  </ngx-grid>
+</xblog-table>
 <br/>
-<p>We'll detail each lifecycle hook and find out how we should work with them<p/>
+<p>We'll detail each lifecycle hook and find out how we should work with them.<p/>
 <br/>
 <xblog-table-content [model]="tableContents">
   <xblog-title>
@@ -75,10 +82,10 @@
 </xblog-table-content>
 <br/>
 <h2 id="ngOnChanges" class="section-heading">ngOnChanges</h2>
-<p>This hook method executes before ngOnInit and when a data-bound input property value changes.</p>
+<p>This hook method executes before <span xblog-highlight>ngOnInit</span> and when a data-bound input property value changes.</p>
 <p>The method receives a object of current and previous values, I call it is <span xblog-highlight>changeRecord</span></p>
 <br/>
-<p>For example, I have <span xblog-highlight>ngOnChangesComponent</span> as below</p>
+<p>For example, I have <span xblog-highlight>ngOnChangesComponent</span> as below.</p>
 <br/>
 <xblog-code-panel>
   <xblog-title>{{ngOnChanges.sourceCode.exampleComponent.name}}</xblog-title>
@@ -87,19 +94,20 @@
 </xblog-code-panel>
 <br/>
 <br/>
-<p>There're 2 binding, <span xblog-highlight>title</span> is a primitive value, <span xblog-highlight>model</span> is an object</p>
+<p>There're 2 binding, <span xblog-highlight>title</span> is a primitive value, <span xblog-highlight>model</span> is an object.</p>
 <p>Because I bound data to <span xblog-highlight>childComponent</span> so after its constructor executed, its <span xblog-highlight>ngOnChanges</span> will be fired.</p>
 <p>3 seconds later, its ngOnChanges fires one more time because I've changed data-bound property values</p>
 <p>As you see the below image, although ngOnChanges fires twice, but its <span xblog-highlight>changeRecord</span> is not same.</p>  
 <p>In the second changes, changeRecord only contains current and previous values of <span xblog-highlight>title</span></p>
 <p>The value of <span xblog-highlight>model</span> property is the reference to the object. Angular doesn't care if any its property's value changed.</p>
-<p>If you really want Angular to fire ngOnChanges for every changes of model. <a href="https://facebook.github.io/immutable-js/" rel="nofollow">Immutable</a> will be a solution for you</p>
+<p>If you really want Angular to fire ngOnChanges for every changes of model. <a href="https://facebook.github.io/immutable-js/" rel="nofollow">Immutable</a> will be a solution for you.</p>
 <br/>
 <div class="screen-capture"><img [src]="ngOnChanges.screenCaptures[1]"/></div>
 <br/>
 <h2 id="ngOnInit" class="section-heading">ngOnInit</h2>
-<p>This hook method executes after the first ngOnChanges</p>
-<p>We turn to ngOnInit for 2 reasons</p>
+<p>This hook method executes after the first <span xblog-highlight>ngOnChanges</span></p>
+<p>We turn to <span xblog-highlight>ngOnInit</span> for 2 reasons:</p>
+<br/>
 <p>- To perform complex initializations shortly after construction</p>
 <p>- To set up the component after Angular sets the input properties</p>
 <br/>
@@ -116,13 +124,13 @@
 </xblog-code-panel>
 <br/>
 <br/>
-<p>And this is a screen capture for result</p>
+<p>And this is a screen capture for result.</p>
 <br/>
 <div class="screen-capture"><img [src]="ngOnInit.screenCaptures[1]"/></div>
 <br/>
 <h2 id="ngDoCheck" class="section-heading">ngDoCheck</h2>
-<p>It is called with enormous frequency, Angular fires it after every change detection cycle no matter where the change occurred</p>
-<p>Look at below sample, when you type something into textbox ngDoCheck will be called.</p> 
+<p>It is called with enormous frequency, Angular fires it after every change detection cycle no matter where the change occurred.</p>
+<p>Look at below sample, when you type something into textbox <span xblog-highlight>ngDoCheck</span> will be called.</p> 
 <p>Even, you move out of textbox, it's also called.</p>
 <br/>
 <xblog-code-panel>
@@ -134,18 +142,18 @@
 <br/>
 <div class="screen-capture"><img [src]="ngDoCheck.screenCaptures[1]"/></div>
 <br/>
-<p>Clearly, if you decide to implement your logic in there, make sure implementation must be very lightweight or the user experience may suffer</p>
+<p>Clearly, if you decide to implement your logic in there, make sure implementation must be very lightweight or the user experience may suffer.</p>
 <br/>
 <h2 id="ngAfterContent" class="section-heading">ngAfterContent</h2>
 <p>The <span xblog-highlight>ngAfterContentInit</span> and <span xblog-highlight>ngAfterContentChecked</span> hooks that Angular calls after Angular projects external content into the component.</p>
-<p>Angular calls both ngAfterContent hooks before calling either of the ngAfterView hooks.</p>
+<p>Angular calls both ngAfterContent hooks before calling either of the <span xblog-highlight>ngAfterView</span> hooks.</p>
 <br/>
 <p>The hooks take action based on changing values in a content child which we can only reach by querying for it via <span xblog-highlight>ContentChild</span></p>
-<p>The ngAfterContent hooks concern <span xblog-highlight>ContentChildren</span>, the child components that Angular projected into the component</p>
+<p>The ngAfterContent hooks concern <span xblog-highlight>ContentChildren</span>, the child components that Angular projected into the component.</p>
 <br/>
-<p>Using <span xblog-highlight>ng-content</span> is a way to import Html from outside the component and insert content into component's template in a designated spot</p>
+<p>Using <span xblog-highlight>ng-content</span> is a way to import Html from outside the component and insert content into component's template in a designated spot.</p>
 <br/>
-<p>I have an exemple with <span xblog-highlight>childComponent</span> which use <span xblog-highlight>ng-content</span> like this</p>
+<p>I have an exemple with <span xblog-highlight>childComponent</span> which use <span xblog-highlight>ng-content</span> like this.</p>
 <br/>
 <xblog-code-panel>
   <xblog-title>{{ngAfterContent.sourceCode.childComponent.name}}</xblog-title>
@@ -154,7 +162,7 @@
 </xblog-code-panel>
 <br/>
 <br/>
-<p>In <span xblog-highlight>exampleComponent</span> I've' projected <span xblog-highlight>titleComponent</span> and <span xblog-highlight>itemComponent</span> into childComponent like this</p>
+<p>In <span xblog-highlight>exampleComponent</span> I've' projected <span xblog-highlight>titleComponent</span> and <span xblog-highlight>itemComponent</span> into childComponent like this.</p>
 <br/>
 <xblog-code-panel>
   <xblog-title>{{ngAfterContent.sourceCode.exampleComponent.name}}</xblog-title>
@@ -163,7 +171,7 @@
 </xblog-code-panel>
 <br/>
 <br/>
-<p>So you can see result in the below image, I've queried instances of titleComponent & itemComponent</p>
+<p>So you can see result in the below image, I've queried instances of <span xblog-highlight>titleComponent</span> & <span xblog-highlight>itemComponent</span></p>
 <br/>
 <div class="screen-capture"><img [src]="ngAfterContent.screenCaptures[1]"/></div>
 <br/>
@@ -171,12 +179,12 @@
 <p>We still have a window of opportunity to modify that view.</p>
 <br/>
 <h2 id="ngAfterView" class="section-heading">ngAfterView</h2>
-<p>The <span xblog-highlight>ngAfterViewInit</span> and <span xblog-highlight>ngAfterViewChecked</span> execute after initializing the component's views and child views</p>
+<p>The <span xblog-highlight>ngAfterViewInit</span> and <span xblog-highlight>ngAfterViewChecked</span> execute after initializing the component's views and child views.</p>
 <br/>
 <p>The hooks take action based on changing values within the child view which we can only reach by querying for the child view via <span xblog-highlight>ViewChild</span></p>
 <p>The AfterView hooks concern <span xblog-highlight>ViewChildren</span>, the child components whose element tags appear within the component's template.</p>
 <br/>
-<p>Have a look at <span xblog-highlight>exampleComponent</span> & the result below</p>
+<p>Have a look at <span xblog-highlight>exampleComponent</span> & the result below.</p>
 <br/>
 <xblog-code-panel>
   <xblog-title>{{ngAfterView.sourceCode.exampleComponent.name}}</xblog-title>
@@ -193,9 +201,8 @@
 <p>Notice that we must adhere to Angular's unidirectional data flow rule which says that we may not update the view after it has been composed.</p> 
 <p>Both hooks fire after the component's view has been composed.</p>
 <br/>
-<p>For <span xblog-highlight>ngAfterViewChecked</span>, Angular frequently calls it, even when there are no changes of interest. Write lean hook methods to avoid performance problems</p>
+<p>For <span xblog-highlight>ngAfterViewChecked</span>, Angular frequently calls it, even when there are no changes of interest. Write lean hook methods to avoid performance problems.</p>
 <br/>
 <h2 id="ngOnDestroy" class="section-heading">ngOnDestroy</h2>
 <p>This hook run just before Angular destroys the directive/component.</p>
-<p>This is the place to free resources that won't be garbage collected automatically</p>
-<p>Such as Unsubscribe from observables and DOM events. Stop interval timers etc</p>
+<p>This is the place to free resources that won't be garbage collected automatically such as unsubscribe from observables and DOM events, stop interval timers etc.</p>

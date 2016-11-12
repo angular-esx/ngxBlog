@@ -11,7 +11,6 @@ import { cmsArticleService } from '../../cores/services';
 export var article1473861890Component = Component({
   selector: 'article',
   templateUrl: './templates/article-1473861890.html',
-  styleUrls: ['./styles/article-1473861890.scss'],
   host: {
     '[class.xblog-article-1473861890]': 'true'
   }
