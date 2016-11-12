@@ -1,5 +1,9 @@
 html {
   font-size: xblog-font-size(root);
+
+  @media(min-width: xblog-breakpoint(xl)){
+    font-size: xblog-font-size(root-1);
+  }
 }
 
 body {

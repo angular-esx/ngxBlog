@@ -10,7 +10,8 @@ export var xblogTableWidthDirectiveMetadata = Class({
       selector: '[xblog-table-width]',
       inputs: [ 'width:xblog-table-width' ],
       host: {
-        '[style.width]': 'width'
+        '[style.width]': 'width',
+        '[style.max-width]': '"initial"'
       }
     });
   }

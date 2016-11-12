@@ -1,11 +1,23 @@
+$xblog-article-header-margin: 54px 0 2.5rem;
+
 $xblog-article-content-section-margin: 5rem 0;
 
+$xblog-article-content-section-heading-font-size: xblog-h-font-size(h3);
+$xblog-article-content-section-heading-font-weight: xblog-font-weight(bold-2);
 $xblog-article-content-section-heading-margin: 1rem 0;
 
+$xblog-article-content-section-subheading-font-size: xblog-h-font-size(h4);
+$xblog-article-content-section-subheading-font-weight: xblog-font-weight(bold-2);
 $xblog-article-content-section-subheading-foreground-color: xblog-color($xblog-color-gray, light);
 $xblog-article-content-section-subheading-margin: 1rem 0;
 
+$xblog-article-content-section-subject-font-size: xblog-h-font-size(h6);
+$xblog-article-content-section-subject-font-weight: xblog-font-weight(bold);
 $xblog-article-content-section-subject-foreground-color: xblog-color($xblog-color-gray, light);
 $xblog-article-content-section-subject-margin: 1rem 0;
 
+
 $xblog-article-related-posts-section-margin: 3rem 0;
+
+
+$xblog-article-related-post-container-padding: .9375rem;
