@@ -10,6 +10,6 @@ export var article1475436850 = {
   routeLink: resourceUtils.getArticleRouteLink('services-1475436850.html'),
   relatedArticles: [],
   tags: [],
-  description: 'Hello world',
+  description: 'If a piece of code is needed by many components in our application. A good practice is to create a single reusable service.',
   content: article1475436850Component,
 };

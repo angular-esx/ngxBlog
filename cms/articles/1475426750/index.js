@@ -10,6 +10,6 @@ export var article1475426750 = {
   routeLink: resourceUtils.getArticleRouteLink('components-services-in-angular-2-1475426750.html'),
   relatedArticles: [],
   tags: [],
-  description: 'Hello world',
+  description: 'A Component is a special kind of directive that uses a simpler configuration which is suitable for a component-based application structure',
   content: article1475426750Component,
 };

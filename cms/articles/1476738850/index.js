@@ -10,6 +10,6 @@ export var article1476738850 = {
   routeLink: resourceUtils.getArticleRouteLink('Binding-syntax-1476738850.html'),
   relatedArticles: [],
   tags: [],
-  description: 'Hello world',
+  description: 'Data binding is the mechanism used to ensure the linking between what a user see on the screen and the data value in our class. (Front <-> Back)',
   content: article1476738850Component,
 };

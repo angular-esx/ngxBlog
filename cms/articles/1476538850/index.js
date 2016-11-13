@@ -10,6 +10,6 @@ export var article1476538850 = {
   routeLink: resourceUtils.getArticleRouteLink('ngmodule-1476538850.html'),
   relatedArticles: [],
   tags: [],
-  description: 'Hello world',
+  description: 'Angular Modules help organize an application into cohesive blocks of functionality. An Angular Module is a class adorned with the @NgModule decorator function.',
   content: article1476538850Component,
 };
