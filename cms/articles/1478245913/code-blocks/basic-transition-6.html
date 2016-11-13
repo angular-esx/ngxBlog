@@ -1,0 +1,16 @@
+animations: [
+  trigger('myState', [
+    transition('0 => 1', [
+      style({
+        color: 'black',
+        backgroundColor: 'white',
+        transform: 'translateX(0) scale(1)'
+      }),
+      animate('80ms ease-in', style({
+        color: 'white',
+        backgroundColor: 'green',
+        transform: 'translateX(0) scale(1.5)'
+      }))
+    ]),
+  ])
+]
