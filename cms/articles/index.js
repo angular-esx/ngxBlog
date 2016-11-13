@@ -22,6 +22,7 @@ import { article1474905680 } from './1474905680';
 import { article1474380939 } from './1474380939';
 import { article1473861890 } from './1473861890';
 import { article1478245913 } from './1478245913';
+import { article1476250476 } from './1476250476';
 
 var _ARTICLES = [
   article1477045370,
@@ -32,8 +33,10 @@ var _ARTICLES = [
   article1474905680,
   article1474380939,
   article1473861890,
-  article1478245913
+  article1478245913,
+  article1476250476
 ];
+
 
 export var ARTICLE_STORE = _init();
 

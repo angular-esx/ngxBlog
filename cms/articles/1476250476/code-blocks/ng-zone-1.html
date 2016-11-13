@@ -1,0 +1,12 @@
+ObservableWrapper.subscribe(this.zone.onTurnDone, () => {
+  this.zone.run(() => {
+    this.tick();
+  });
+});
+
+tick() {
+  // perform change detection
+  this.changeDetectorRefs.forEach((detector) => {
+    detector.detectChanges();
+  });
+}
