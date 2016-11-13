@@ -1,12 +1,11 @@
+$xblog-post-height-sm: 14.375rem;
 $xblog-post-box-shadow: 0 1px 4px 0 rgba(0,0,0,0.14) !default;
 
 
-$xblog-post-title-font-size-large: xblog-h-font-size(h3) !default;
-$xblog-post-title-font-size-small: xblog-h-font-size(h5) !default;
-
+$xblog-post-title-font-family: $xblog-font-family-sans-serif !default;
+$xblog-post-title-font-size: xblog-h-font-size(h5) !default;
 $xblog-post-title-font-weight: xblog-font-weight(bold-2) !default;
-
-$xblog-post-title-height-small: xblog-max-height(xblog-line-height(base), 2) !default;
+$xblog-post-title-max-height-sm: xblog-max-height(xblog-line-height(base), 2, $font-size: $xblog-post-title-font-size) !default;
 
 $xblog-post-title: (
   hover: (
@@ -18,11 +17,8 @@ $xblog-post-title: (
 ) !default;
 
 
-$xblog-post-subtitle-font-size-large: xblog-font-size(sm) !default;
-$xblog-post-subtitle-font-size-small: xblog-font-size(xs) !default;
+$xblog-post-subtitle-font-size: xblog-font-size(xs) !default;
 $xblog-post-subtitle-font-style: italic !default;
 
-
-$xblog-post-description-font-size-small: xblog-font-size(sm) !default;
-
-$xblog-post-description-max-height: xblog-max-height(xblog-line-height(base), 2) !default;
+$xblog-post-description-font-size: xblog-font-size(sm) !default;
+$xblog-post-description-max-height: xblog-max-height(xblog-line-height(base), 3) !default;
