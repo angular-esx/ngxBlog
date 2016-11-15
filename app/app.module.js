@@ -6,7 +6,6 @@ import { StoreModule } from '@ngrx/store';
 
 import { xblogReducer } from 'xblog-store';
 
-import { cmsArticleService } from '../cms/cores/services';
 
 import { 
   xblogHomePageModule,
@@ -25,7 +24,6 @@ export var xblogModule = NgModule({
     xblogArticlePageModule
   ],
   declarations: [ xblogApp ],
-  providers: [ cmsArticleService ],
   bootstrap: [ xblogApp ]
 })
 .Class({

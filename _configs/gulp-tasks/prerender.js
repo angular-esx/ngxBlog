@@ -12,7 +12,6 @@ import { prerenderWebpackFactory } from '../webpacks';
 import { xblogReducer } from 'xblog-store';
 
 import { ARTICLE_STORE } from '../../cms/articles';
-import { cmsArticleService } from '../../cms/cores/services';
 
 import { HOMEPAGE_PAGE_SIZE as PAGE_SIZE } from 'xblog-cores/constants';
 
@@ -137,25 +136,10 @@ function _getModule(router){
       UniversalModule
     ],
     declarations: [ xblogApp ],
-    providers: [ 
-      { provide: cmsArticleService, useClass: _getCmsArticleService() } 
-    ],
     bootstrap: [ xblogApp ]
   })
   .Class({
     constructor: function(){}
-  });
-}
-
-function _getCmsArticleService(){
-  return Class({
-    constructor: function(){},
-
-    getCodeBlock: function(id, fileName){
-      return require('fs')
-      .readFileSync(`./cms/articles/${id}/code-blocks/${fileName}`, 'utf8')
-      .toString();
-    }
   });
 }
 
