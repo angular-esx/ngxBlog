@@ -22,10 +22,10 @@
 <p>At here, there's spacial one that Angular comes with a directive <span xblog-highlight>ngForm</span> that matches the <span xblog-highlight>&lt;form&gt;</span> selector, so in fact, our form element already has an instance of ngForm applied.</p>
 <p>The <span xblog-highlight>ngForm</span> directive holds additional features which help us to get information about the current state of the form including:</p>
 <br/>
-<p>- A JSON representation of the form value</p>
-<p>- Validity state of the entire form</p>
+<p>- A JSON representation of the form value.</p>
+<p>- Validity state of the entire form.</p>
 <br/>
-<p>As you know, you can expose directive instances in a component’s template using the <span xblog-highlight>exportAs</span> property of the directive metadata. If you haven't known about it yet, <a [href]="references.componentArticleLink">read a our previous article</a></p>
+<p>As you know, you can expose directive instances in a component’s template using the <span xblog-highlight>exportAs</span> property of the directive metadata. If you haven't known about it yet, <a [href]="references.componentArticleLink">read a our previous article</a>.</p>
 <p><span xblog-highlight>ngForm</span> directive also is exposed as <span xblog-highlight>ngForm</span>, which means we can get an instance of our form without writing any application code like this:</p>
 <br/>
 <xblog-code-panel type="no-header">
@@ -36,7 +36,7 @@
 <p>Next, we need to tell the form that the input controls are part of. This is where <span xblog-highlight>ngModel</span> comes into play.</p>
 <br/>
 <h2 id="ng-model" class="section-heading">ngModel directive</h2>
-<p>We'll use <span xblog-highlight>ngModel</span> to do two-way binding. In combination with a <span xblog-highlight>name</span> attribute, internally Angular creates <span xblog-highlight>FormControls</span> and registers them with an <span xblog-highlight>NgForm</span></p>
+<p>We'll use <span xblog-highlight>ngModel</span> to do two-way binding. In combination with a <span xblog-highlight>name</span> attribute, internally Angular creates <span xblog-highlight>FormControls</span> and registers them with an <span xblog-highlight>NgForm</span>.</p>
 <p>Every form control that is registered will automatically show up in <span xblog-highlight>form.value</span> and can then easily be used for further post processing.</p>
 <br/>
 <xblog-code-panel>
@@ -46,7 +46,7 @@
 </xblog-code-panel>
 <br/>
 <br/>
-<p>In code snippet above, we also bind a event handler <span xblog-highlight>onSubmit</span></p> to <span xblog-highlight>ngSubmit</span>. We'll detail about ngSubmit later, at this point, if we input something then submit the form, this is result from <span xblog-highlight>form.value</span></p>
+<p>In code snippet above, we also bind a event handler <span xblog-highlight>onSubmit</span> to <span xblog-highlight>ngSubmit</span>. We'll detail about ngSubmit later, at this point, if we input something then submit the form, this is result from <span xblog-highlight>form.value</span>.</p>
 <br/>
 <xblog-code-panel type="no-header">
   <xblog-code [innerHtml]="templateDrivenForms.codeBlocks[6]"></xblog-code>
@@ -60,7 +60,7 @@
 </xblog-code-panel>
 <br/>
 <br/>
-<p>Do we must build this structure manually ourself ? Actually, Angular has a way to cover it for us - introducing <span xblog-highlight>ngModelGroup</span></p>
+<p>Do we must build this structure manually ourself ? Actually, Angular has a way to cover it for us - introducing <span xblog-highlight>ngModelGroup</span>.</p>
 <br/>
 <h2 id="ng-model-group" class="section-heading">ngModelGroup directive</h2>
 <p><span xblog-highlight>ngModelGroup</span> enables us to semantically group our form controls.</p>
@@ -134,4 +134,5 @@
   <a xblog-source-code [href]="templateDrivenForms.sourceCode.link" rel="nofollow">full code</a>
   <xblog-code [innerHtml]="templateDrivenForms.codeBlocks[5]"></xblog-code>
 </xblog-code-panel>
+<br/>
 <br/>
