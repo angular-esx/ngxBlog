@@ -12,10 +12,10 @@
 <br/>
 <p>The supported built-in validators, at the time of writing this article: </p>
 <br/>
-<p><strong>- required:</strong> Requires a form control to have a non-empty value</p>
-<p><strong>- minlength:</strong> Requires a form control to have a value of a minimum length</p>
-<p><strong>- maxlength:</strong> Requires a form control to have a value of a maximum length</p>
-<p><strong>- pattern:</strong> Requires a form control’s value to match a given regex</p>
+<p><strong>- required:</strong> Requires a form control to have a non-empty value.</p>
+<p><strong>- minlength:</strong> Requires a form control to have a value of a minimum length.</p>
+<p><strong>- maxlength:</strong> Requires a form control to have a value of a maximum length.</p>
+<p><strong>- pattern:</strong> Requires a form control’s value to match a given regex.</p>
 <br/>
 <p>For template-driven form, validators can be applied by simply using their corresponding directives like this.</p>
 <br/>
@@ -47,7 +47,7 @@
 <p>So how can we apply our custom validator for a template-driven form ? Well, we'll get the answer in next subject.</p>
 <br/>
 <h2 id="custom-form-validator-directive" class="section-heading">Custom form validator directive</h2>
-<p>An absolute thing that we need a directive to enable our validator to be used in template-driven forms. It mean we have to apply directive metadata to our <span xblog-highlight>emailValidator</span></p>
+<p>An absolute thing that we need a directive to enable our validator to be used in template-driven forms. It mean we have to apply directive metadata to our <span xblog-highlight>emailValidator</span>.</p>
 <br/>
 <xblog-code-panel type="no-header">
   <xblog-code [innerHtml]="customValidatorForTemplateDrivenForm.codeBlocks[2]"></xblog-code>
@@ -56,11 +56,11 @@
 <br/>
 <p>Next, there's a cool thing, we want to show you about the mechanism which Angular uses to execute validators on a form control.</p>
 <br/>
-<p>Angular has an internal mechanism to execute validators on a form control. It maintains a multi provider for a dependency token called <span xblog-highlight>NG_VALIDATORS</span></p>
+<p>Angular has an internal mechanism to execute validators on a form control. It maintains a multi provider for a dependency token called <span xblog-highlight>NG_VALIDATORS</span>.</p>
 <br/>
 <p>It turns out that all built-in validators are already added to the <span xblog-highlight>NG_VALIDATORS</span> token. So whenever Angular instantiates a form control and performs validation, it basically injects the dependency for the <span xblog-highlight>NG_VALIDATORS</span> token, which is a list of all validators, and executes them one by one on that form control.</p>
 <br/>
-<p>Understood about the validation mechanism which Angular does. we guess you know what we'll' do next. Yes, we'll add our validator to the <span xblog-highlight>NG_VALIDATORS</span> by using <span xblog-highlight>provide</span></p>
+<p>Understood about the validation mechanism which Angular does. we guess you know what we'll' do next. Yes, we'll add our validator to the <span xblog-highlight>NG_VALIDATORS</span> by using <span xblog-highlight>provide</span>.</p>
 <br/>
 <xblog-code-panel type="no-header">
   <xblog-code [innerHtml]="customValidatorForTemplateDrivenForm.codeBlocks[3]"></xblog-code>
