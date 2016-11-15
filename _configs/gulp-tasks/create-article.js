@@ -79,7 +79,7 @@ function _getComponentFileContent(id) {
         this.codeBlock = this.getCodeBlock('code-block.html');
       },
 
-      getCodeBlock: function(fileName, lang) {
+      getCodeBlock: function(getter, lang) {
         var _langs = lang ? [ lang ] : ['javascript', 'html', 'css'];
 
         var _codeBlock = highlight.highlightAuto(getter().replace('\n', '').replace(/^    /gm, ''), _langs).value;
