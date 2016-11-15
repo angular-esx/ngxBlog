@@ -5,8 +5,6 @@ import highlight from 'highlight.js';
 import { xblogTableContentService } from 'xblog-cores/modules';
 import { resourceUtils } from 'xblog-cores/utils';
 
-import { cmsArticleService } from '../../cores/services';
-
 
 export var article1477835542Component = Component({
   selector: 'article',
@@ -18,13 +16,11 @@ export var article1477835542Component = Component({
 .Class({
   constructor: [
     DomSanitizer,
-    cmsArticleService,
     xblogTableContentService,
 
-    function (sanitizer, articleService, tableContentService){
+    function (sanitizer, tableContentService){
       this.id = 1477835542;
       this.sanitizer = sanitizer;
-      this.articleService = articleService;
       this.tableContentService = tableContentService;
     }
   ],
@@ -48,31 +44,233 @@ export var article1477835542Component = Component({
 
     this.reactiveForms = {
       sourceCode: {
-        name: 'reactive-forms',
+        name: 'Reactive form',
         link: resourceUtils.getGithubArticleFileLink(this.id, 'reactive-forms')
       },
       codeBlocks: {
-        1: this.getCodeBlock('reactive-form-1.html'),
-        2: this.getCodeBlock('reactive-form-2.html'),
-        3: this.getCodeBlock('reactive-form-3.html'),
-        4: this.getCodeBlock('reactive-form-4.html'),
-        5: this.getCodeBlock('reactive-form-5.html'),
-        6: this.getCodeBlock('form-builder.html'),
-        7: this.getCodeBlock('form-validators-1.html'),
-        8: this.getCodeBlock('form-validators-2.html'),
-        9: this.getCodeBlock('form-control-1.html'),
-        10: this.getCodeBlock('form-control-2.html')
+        1: this.getCodeBlock(getReactiveForm01),
+        2: this.getCodeBlock(getReactiveForm02),
+        3: this.getCodeBlock(getReactiveForm03),
+        4: this.getCodeBlock(getReactiveForm04),
+        5: this.getCodeBlock(getReactiveForm05),
+        6: this.getCodeBlock(getFormBuilder),
+        7: this.getCodeBlock(getFormValidator01),
+        8: this.getCodeBlock(getFormValidator02),
+        9: this.getCodeBlock(getFormControl01),
+        10: this.getCodeBlock(getFormControl02)
       }
     };
   },
 
-  getCodeBlock: function(fileName, lang) {
+  getCodeBlock: function(getter, lang) {
     var _langs = lang ? [ lang ] : ['javascript', 'html', 'css'];
 
-    var _codeBlock = this.articleService.getCodeBlock(this.id, fileName); 
-    _codeBlock = highlight.highlightAuto(_codeBlock, _langs).value;
+    var _codeBlock = highlight.highlightAuto(getter().replace('\n', '').replace(/^    /gm, ''), _langs).value;
 
     return this.sanitizer.bypassSecurityTrustHtml(_codeBlock);
   }
 });
   
+function getReactiveForm01(){
+  return `
+    <form>
+      <label>Firstname:</label>
+      <input type="text">
+
+      <label>Lastname:</label>
+      <input type="text">
+
+      <label>Email:</label>
+      <input type="text">
+
+      <label>Phone:</label>
+      <input type="text">
+    </form>`;
+}
+
+function getReactiveForm02(){
+  return `
+    import * as ngCore from '@angular/core';
+    import {
+      FormGroup,
+      FormControl
+    } from '@angular/forms';
+
+    export var exampleComponent = ngCore.Component({
+      .....
+    })
+    .Class({
+      .....
+      ngOnInit: function(){
+        this.myForm = new FormGroup({
+          name: new FormGroup({
+            firstname: new FormControl(),
+            lastname: new FormControl()
+          }),
+          contact: new FormGroup({
+            email: new FormControl(),
+            phone: new FormControl()
+          })
+        });
+      }
+    });`;
+}
+
+function getReactiveForm03(){
+  return `
+    <form [formGroup]="myForm">
+      .....
+    </form>`;
+}
+
+function getReactiveForm04(){
+  return `
+    <form [formGroup]="myForm">
+      <label>Firstname:</label>
+      <input type="text" formControlName="firstname">
+
+      <label>Lastname:</label>
+      <input type="text" formControlName="lastname">
+
+      <label>Email:</label>
+      <input type="text" formControlName="emal">
+
+      <label>Phone:</label>
+      <input type="text" formControlName="phone">
+    </form>`;
+}
+
+function getReactiveForm05(){
+  return `
+    <form [formGroup]="myForm">
+      <div formGroupName="name">
+        <label>Firstname:</label>
+        <input type="text" formControlName="firstname">
+
+        <label>Lastname:</label>
+        <input type="text" formControlName="lastname">
+      </div>
+
+      <div formGroupName="contact">
+        <label>Email:</label>
+        <input type="text" formControlName="emal">
+
+        <label>Phone:</label>
+        <input type="text" formControlName="phone">
+      </div>
+    </form>`;
+}
+
+function getFormBuilder(){
+  return `
+    import * as ngCore from '@angular/core';
+    import {
+      FormBuilder
+    } from '@angular/forms';
+
+    export var exampleComponent = ngCore.Component({
+      .....
+    })
+    .Class({
+      constructor: [
+        FormBuilder,
+
+        function(formBuilder){
+          this.formBuilder = formBuilder;
+        }
+      ],
+
+      ngOnInit: function(){
+        this.myForm = this.formBuilder.group({
+          name: this.formBuilder.group({
+            firstname: 'Leon',
+            lastname: 'Kennedy',
+          }),
+          contact: this.formBuilder.group({
+            email: 'leon.kennedy@mail.com',
+            phone: ''
+          })
+        });
+      }
+    });`;
+}
+
+function getFormValidator01(){
+  return `
+    import * as ngCore from '@angular/core';
+    import {
+      FormBuilder,
+      Validators
+    } from '@angular/forms';
+
+    export var exampleComponent = ngCore.Component({
+      .....
+    })
+    .Class({
+      constructor: [
+        FormBuilder,
+
+        function(formBuilder){
+          this.formBuilder = formBuilder;
+        }
+      ],
+
+      ngOnInit: function(){
+        this.myForm = this.formBuilder.group({
+          name: this.formBuilder.group({
+            firstname: ['Leon', Validators.required],
+            lastname: ['Kennedy', Validators.required],
+          }),
+          contact: this.formBuilder.group({
+            email: ['leon.kennedy@mail.com', Validators.required],
+            phone: ''
+          })
+        });
+      }
+    });`;
+}
+
+function getFormValidator02(){
+  return `
+    <form [formGroup]="myForm">
+      <div formGroupName="name">
+        <div>
+          <label>Firstname:</label>
+          <input type="text" formControlName="firstname">
+        </div>
+        <div class="error-message" *ngIf="myForm.controls.name.controls.firstname.errors">
+          Firstname is required
+        </div>
+        .....
+      </div>
+      .....
+    </form>`;
+}
+
+function getFormControl01(){
+  return `
+    <form [formGroup]="myForm">
+      .....
+      <label>Address:</label>
+      <input type="search" [formControl]="addressControl">
+    </form>`;
+}
+
+function getFormControl02(){
+  return `
+    export var exampleComponent = ngCore.Component({
+      .....
+    })
+    .Class({
+      .....
+
+      ngOnInit: function(){
+        .....
+        
+        this.addressControl = new FormControl();
+        this.addressControl.valueChanges.subscribe(function(value){
+          console.log(value);
+        });
+      }
+    });`;
+}
