@@ -53,7 +53,7 @@ export var article1478094157Component = Component({
 
     this.templateDrivenForm = {
       sourceCode: {
-        name: 'custom-controls-for-template-driven-form',
+        name: 'Custom controls in template-driven form',
         link: resourceUtils.getGithubArticleFileLink(this.id, 'custom-controls-for-template-driven-form')
       },
       codeBlocks: {
@@ -63,7 +63,7 @@ export var article1478094157Component = Component({
 
     this.reactiveForm = {
       sourceCode: {
-        name: 'custom-controls-for-reactive-form',
+        name: 'Custom controls in reactive form',
         link: resourceUtils.getGithubArticleFileLink(this.id, 'custom-controls-for-reactive-form')
       },
       codeBlocks: {
