@@ -2,8 +2,8 @@ import {
   Class,
   NgModule 
 } from '@angular/core';
-
-import { RouterModule }   from '@angular/router';
+import { CommonModule }  from '@angular/common';
+import { RouterModule }  from '@angular/router';
 
 import { ngxCardModule } from 'ngx-framework/modules';
 
@@ -18,6 +18,7 @@ export var xblogPostModuleMetadata = Class({
   constructor: function xblogPostModuleMetadata(){
     Object.assign(this, {
       imports: [ 
+        CommonModule,
         RouterModule,
         ngxCardModule 
       ],

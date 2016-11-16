@@ -20,17 +20,12 @@ export class createArticleTask extends baseTask {
     .file(`article-${_id}.html`, '', { src: true })
     .pipe(this.gulp.dest(`${_dest}/templates`));
 
-    let _codeBlockStream = this
-    .file(`code-block.html`, '', { src: true })
-    .pipe(this.gulp.dest(`${_dest}/code-blocks`));
-
     let _indexStream = this
     .file(`index.js`, _getIndexFileContent(_id, _title), { src: true })
     .pipe(this.gulp.dest(_dest));
 
     return this.mergeStream(
       _componentStream,
-      _codeBlockStream,
       _templateStream,
       _indexStream
     );
@@ -45,8 +40,6 @@ function _getComponentFileContent(id) {
     import { xblogTableContentService } from 'xblog-cores/modules';
     import { resourceUtils } from 'xblog-cores/utils';
 
-    import { cmsArticleService } from '../../cores/services';
-
 
     export var article${id}Component = Component({
       selector: 'article',
@@ -58,13 +51,11 @@ function _getComponentFileContent(id) {
     .Class({
       constructor: [
         DomSanitizer,
-        cmsArticleService,
         xblogTableContentService,
 
-        function (sanitizer, articleService, tableContentService){
+        function (sanitizer, tableContentService){
           this.id = ${id};
           this.sanitizer = sanitizer;
-          this.articleService = articleService;
           this.tableContentService = tableContentService;
         }
       ],
@@ -79,15 +70,12 @@ function _getComponentFileContent(id) {
           { headingId: 'my-heading', id: 'my-subheading', name: 'My subheading' },
         ])
         .build();
-
-        this.codeBlock = this.getCodeBlock('code-block.html');
       },
 
-      getCodeBlock: function(fileName, lang) {
+      getCodeBlock: function(getter, lang) {
         var _langs = lang ? [ lang ] : ['javascript', 'html', 'css'];
 
-        var _codeBlock = this.articleService.getCodeBlock(this.id, fileName); 
-        _codeBlock = highlight.highlightAuto(_codeBlock, _langs).value;
+        var _codeBlock = highlight.highlightAuto(getter().replace('\n', '').replace(/^    /gm, ''), _langs).value;
 
         return this.sanitizer.bypassSecurityTrustHtml(_codeBlock);
       }
