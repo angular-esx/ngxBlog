@@ -4,7 +4,7 @@
       <a [routerLink]="[model.routeLink]"><p>{{model.title}}</p></a>
     </ngx-card-title>
     
-    <ngx-card-subtitle>Posted on {{model.postedDate}}</ngx-card-subtitle>
+    <ngx-card-subtitle>Posted on {{model.postedDate | date:"fullDate"}}</ngx-card-subtitle>
 
     <ngx-card-text><p>{{model.description}}</p></ngx-card-text>
   </ngx-card-header>

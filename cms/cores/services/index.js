@@ -1,1 +1,0 @@
-export { cmsArticleService } from './article.service';
