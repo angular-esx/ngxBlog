@@ -5,7 +5,6 @@ import highlight from 'highlight.js';
 import { xblogTableContentService } from 'xblog-cores/modules';
 import { resourceUtils } from 'xblog-cores/utils';
 
-import { cmsArticleService } from '../../cores/services';
 
 export var article1475677406Component = Component({
   selector: 'article',
@@ -17,13 +16,11 @@ export var article1475677406Component = Component({
 .Class({
   constructor: [
     DomSanitizer,
-    cmsArticleService,
     xblogTableContentService,
 
-    function (sanitizer, articleService, tableContentService){
+    function (sanitizer, tableContentService){
       this.id = 1475677406;
       this.sanitizer = sanitizer;
-      this.articleService = articleService;
       this.tableContentService = tableContentService;
     }
   ],
@@ -46,33 +43,33 @@ export var article1475677406Component = Component({
 
     this.viewEncapsulationNone = {
       sourceCode: {
-        name: 'example.component.js',
+        name: 'ViewEncapsulation.None ',
         link: resourceUtils.getGithubArticleFileLink(this.id, 'view-encapsulation-none/example.component.js')
       },
       codeBlocks: {
-        1: this.getCodeBlock('view-encapsulation-none-1.html'),
-        2: this.getCodeBlock('view-encapsulation-none-2.html')
+        1: this.getCodeBlock(getViewEncapsulationNone01),
+        2: this.getCodeBlock(getViewEncapsulationNone02)
       }
     };
 
     this.viewEncapsulationEmulated = {
       sourceCode: {
-        name: 'example.component.js',
+        name: 'ViewEncapsulation.Emulated',
         link: resourceUtils.getGithubArticleFileLink(this.id, 'view-encapsulation-emulated/example.component.js')
       },
       codeBlocks: {
-        1: this.getCodeBlock('view-encapsulation-emulated-1.html'),
-        2: this.getCodeBlock('view-encapsulation-emulated-2.html')
+        1: this.getCodeBlock(getViewEncapsulationEmulated01),
+        2: this.getCodeBlock(getViewEncapsulationEmulated02)
       }
     }; 
 
     this.viewEncapsulationNative = {
       sourceCode: {
-        name: 'example.component.js',
+        name: 'ViewEncapsulation.Native',
         link: resourceUtils.getGithubArticleFileLink(this.id, 'view-encapsulation-native/example.component.js')
       },
       codeBlocks: {
-        1: this.getCodeBlock('view-encapsulation-native.html')
+        1: this.getCodeBlock(getViewEncapsulationNative)
       },
       screenCaptures: {
         1: resourceUtils.getImg('viewEncapsulationNative-example-1475677406.png')
@@ -80,12 +77,98 @@ export var article1475677406Component = Component({
     };
   },
 
-  getCodeBlock: function(fileName, lang) {
+  getCodeBlock: function(getter, lang) {
     var _langs = lang ? [ lang ] : ['javascript', 'html', 'css'];
 
-    var _codeBlock = this.articleService.getCodeBlock(this.id, fileName); 
-    _codeBlock = highlight.highlightAuto(_codeBlock, _langs).value;
+    var _codeBlock = highlight.highlightAuto(getter().replace('\n', '').replace(/^    /gm, ''), _langs).value;
 
     return this.sanitizer.bypassSecurityTrustHtml(_codeBlock);
   }
 });
+
+function getViewEncapsulationNone01(){
+  return `
+    import * as ngCore from '@angular/core';
+
+    export var exampleComponent = ngCore.Component({
+      selector: 'my-example',
+      template: '<h1>ViewEncapsulation.None</h1>',
+      styles: ['h1 { color: green; }'],
+      encapsulation: ngCore.ViewEncapsulation.None
+    })
+    .Class({
+      constructor: function(){},
+    });`;
+}
+
+function getViewEncapsulationNone02(){
+  return `
+    <html>
+      <head>
+        .....
+        <style>h1 { color: green; }</style>
+      </head>
+
+      <body>
+        .....
+        <my-app _nghost-kbk-1>
+          <div _ngcontent-kbk-1></div>
+          <my-example>
+            <h1>ViewEncapsulation.None</h1>
+          </my-example>
+        </my-app>
+        .....
+      </body>
+    </html>`;
+}
+
+function getViewEncapsulationEmulated01(){
+  return `
+    import * as ngCore from '@angular/core';
+
+    export var exampleComponent = ngCore.Component({
+      selector: 'my-example',
+      template: '<h1>ViewEncapsulation.Emulated</h1>',
+      styles: ['h1 { color: green; }'],
+      encapsulation: ngCore.ViewEncapsulation.Emulated
+    })
+    .Class({
+      constructor: function(){},
+    });`;
+}
+
+function getViewEncapsulationEmulated02(){
+  return `
+    <html>
+      <head>
+        .....
+        <style>h1[_ngcontent-ujj-3] { color: green; }</style>
+      </head>
+
+      <body>
+        .....
+        <my-app _nghost-ujj-1>
+          <div _ngcontent-ujj-1></div>
+          <my-example _nghost-ujj-3>
+            <h1 _ngcontent-ujj-3>ViewEncapsulation.Emulated</h1>
+          </my-example>
+        </my-app>
+        .....
+      </body>
+    </html>`;
+}
+
+function getViewEncapsulationNative(){
+  return `
+    import * as ngCore from '@angular/core';
+
+    export var exampleComponent = ngCore.Component({
+      selector: 'my-example',
+      template: '<h1>ViewEncapsulation.Native</h1>',
+      styles: ['h1 { color: green; }'],
+      encapsulation: ngCore.ViewEncapsulation.Native
+    })
+    .Class({
+      constructor: function(){},
+    });`;
+}
