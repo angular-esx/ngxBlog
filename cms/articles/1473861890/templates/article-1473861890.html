@@ -83,7 +83,7 @@
 <br/>
 <h2 id="ngOnChanges" class="section-heading">ngOnChanges</h2>
 <p>This hook method executes before <span xblog-highlight>ngOnInit</span> and when a data-bound input property value changes.</p>
-<p>The method receives a object of current and previous values, I call it is <span xblog-highlight>changeRecord</span></p>
+<p>The method receives a object of current and previous values, I call it is <span xblog-highlight>changeRecord</span>.</p>
 <br/>
 <p>For example, I have <span xblog-highlight>ngOnChangesComponent</span> as below.</p>
 <br/>
@@ -96,26 +96,26 @@
 <br/>
 <p>There're 2 binding, <span xblog-highlight>title</span> is a primitive value, <span xblog-highlight>model</span> is an object.</p>
 <p>Because I bound data to <span xblog-highlight>childComponent</span> so after its constructor executed, its <span xblog-highlight>ngOnChanges</span> will be fired.</p>
-<p>3 seconds later, its ngOnChanges fires one more time because I've changed data-bound property values</p>
+<p>3 seconds later, its ngOnChanges fires one more time because I've changed data-bound property values.</p>
 <p>As you see the below image, although ngOnChanges fires twice, but its <span xblog-highlight>changeRecord</span> is not same.</p>  
-<p>In the second changes, changeRecord only contains current and previous values of <span xblog-highlight>title</span></p>
+<p>In the second changes, changeRecord only contains current and previous values of <span xblog-highlight>title</span>.</p>
 <p>The value of <span xblog-highlight>model</span> property is the reference to the object. Angular doesn't care if any its property's value changed.</p>
 <p>If you really want Angular to fire ngOnChanges for every changes of model. <a href="https://facebook.github.io/immutable-js/" rel="nofollow">Immutable</a> will be a solution for you.</p>
 <br/>
 <div class="screen-capture"><img [src]="ngOnChanges.screenCaptures[1]"/></div>
 <br/>
 <h2 id="ngOnInit" class="section-heading">ngOnInit</h2>
-<p>This hook method executes after the first <span xblog-highlight>ngOnChanges</span></p>
+<p>This hook method executes after the first <span xblog-highlight>ngOnChanges</span>.</p>
 <p>We turn to <span xblog-highlight>ngOnInit</span> for 2 reasons:</p>
 <br/>
-<p>- To perform complex initializations shortly after construction</p>
-<p>- To set up the component after Angular sets the input properties</p>
+<p>- To perform complex initializations shortly after construction.</p>
+<p>- To set up the component after Angular sets the input properties.</p>
 <br/>
 <p>Why shouldn't we fetch data from server in the constructor ? Because data-bound input properties only are set after construction.</p>
 <p>If you fetch data with params which base on values of input properties, make sure you will get errors.</p>
 <p>The constructor should do no more than set the initial local variables to simple values.</p>
 <br/>
-<p>Look at the example with <span xblog-highlight>childComponent</span></p>
+<p>Look at the example with <span xblog-highlight>childComponent</span>.</p>
 <br/>
 <xblog-code-panel>
   <xblog-title>{{ngOnInit.sourceCode.childComponent.name}}</xblog-title>
@@ -148,7 +148,7 @@
 <p>The <span xblog-highlight>ngAfterContentInit</span> and <span xblog-highlight>ngAfterContentChecked</span> hooks that Angular calls after Angular projects external content into the component.</p>
 <p>Angular calls both ngAfterContent hooks before calling either of the <span xblog-highlight>ngAfterView</span> hooks.</p>
 <br/>
-<p>The hooks take action based on changing values in a content child which we can only reach by querying for it via <span xblog-highlight>ContentChild</span></p>
+<p>The hooks take action based on changing values in a content child which we can only reach by querying for it via <span xblog-highlight>ContentChild</span>.</p>
 <p>The ngAfterContent hooks concern <span xblog-highlight>ContentChildren</span>, the child components that Angular projected into the component.</p>
 <br/>
 <p>Using <span xblog-highlight>ng-content</span> is a way to import Html from outside the component and insert content into component's template in a designated spot.</p>
@@ -171,7 +171,7 @@
 </xblog-code-panel>
 <br/>
 <br/>
-<p>So you can see result in the below image, I've queried instances of <span xblog-highlight>titleComponent</span> & <span xblog-highlight>itemComponent</span></p>
+<p>So you can see result in the below image, I've queried instances of <span xblog-highlight>titleComponent</span> & <span xblog-highlight>itemComponent</span>.</p>
 <br/>
 <div class="screen-capture"><img [src]="ngAfterContent.screenCaptures[1]"/></div>
 <br/>
@@ -181,7 +181,7 @@
 <h2 id="ngAfterView" class="section-heading">ngAfterView</h2>
 <p>The <span xblog-highlight>ngAfterViewInit</span> and <span xblog-highlight>ngAfterViewChecked</span> execute after initializing the component's views and child views.</p>
 <br/>
-<p>The hooks take action based on changing values within the child view which we can only reach by querying for the child view via <span xblog-highlight>ViewChild</span></p>
+<p>The hooks take action based on changing values within the child view which we can only reach by querying for the child view via <span xblog-highlight>ViewChild</span>.</p>
 <p>The AfterView hooks concern <span xblog-highlight>ViewChildren</span>, the child components whose element tags appear within the component's template.</p>
 <br/>
 <p>Have a look at <span xblog-highlight>exampleComponent</span> & the result below.</p>
@@ -206,3 +206,4 @@
 <h2 id="ngOnDestroy" class="section-heading">ngOnDestroy</h2>
 <p>This hook run just before Angular destroys the directive/component.</p>
 <p>This is the place to free resources that won't be garbage collected automatically such as unsubscribe from observables and DOM events, stop interval timers etc.</p>
+<br/>
