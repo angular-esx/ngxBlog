@@ -18,10 +18,10 @@
 <br/>
 <p>In general, we'll do these steps:</p>
 <br/>
-<p>- Define an animation trigger</p>
-<p>- Define states</p>
-<p>- Define transition</p>
-<p>- Attach the animation to element in the component's template</p>
+<p>- Define an animation trigger.</p>
+<p>- Define states.</p>
+<p>- Define transition.</p>
+<p>- Attach the animation to element in the component's template.</p>
 <br/>
 <h3 id="triggers" class="section-subheading">Triggers</h3>
 <p>First, we define an animation trigger called <span xblog-highlight>myState</span> in the component metadata. It uses animations to transition between two states which we'll define in next step.</p>
@@ -41,7 +41,7 @@
 </xblog-code-panel>
 <br/>
 <br/>
-<p>In our example, base on the value of <span xblog-highlight>isActive</span> we define two states <span xblog-highlight>true</span> and <span xblog-highlight>false</span></p>
+<p>In our example, base on the value of <span xblog-highlight>isActive</span> we define two states <span xblog-highlight>true</span> and <span xblog-highlight>false</span>.</p>
 <br/>
 <h3 id="transitions" class="section-subheading">Transitions</h3>
 <p>After you define states, you can define transitions between the states. Each transition controls the timing of switching between one set of styles and the next.</p>
@@ -58,7 +58,7 @@
 </xblog-code-panel>
 <br/>
 <br/>
-<p>When both directions of a transition have the same timing, as in the previous example, you can use the shorthand syntax <span xblog-highlight>&lt;=&gt;</span></p>
+<p>When both directions of a transition have the same timing, as in the previous example, you can use the shorthand syntax <span xblog-highlight>&lt;=&gt;</span>.</p>
 <br/>
 <xblog-code-panel type="no-header">
   <xblog-code [innerHtml]="basicTransition.codeBlocks[5]"></xblog-code>
@@ -72,8 +72,8 @@
 </xblog-code-panel>
 <br/>
 <br/>
-<p>Note at here, the style we declared before <span xblog-highlight>animate()</span> will apply to the left state, in this case, it's <span xblog-highlight>isActive = false</span></p>
-<p>The style we declared as second argument for <span xblog-highlight>animate()</span> will apply to the right state, in this case, it's <span xblog-highlight>isActive = true</span></p>
+<p>Note at here, the style we declared before <span xblog-highlight>animate()</span> will apply to the left state, in this case, it's <span xblog-highlight>isActive = false</span>.</p>
+<p>The style we declared as second argument for <span xblog-highlight>animate()</span> will apply to the right state, in this case, it's <span xblog-highlight>isActive = true</span>.</p>
 <p>When the transition finishes, none of these styles are kept because they're not defined in a state.</p>
 <br/>
 <h3 id="attach-animations" class="section-subheading">Attach animations</h3>
@@ -86,11 +86,11 @@
 </xblog-code-panel>
 <br/>
 <br/>
-<p>As you can see, in above example, we also hook callbacks by using <span xblog-highlight>(@myState.start)</span> and <span xblog-highlight>(@myState.done)</span></p>
-<p>A callback is fired when an animation is started and also when it is done. It receive an <span xblog-highlight>AnimationTransitionEvent</span> which contains useful properties such as  <span xblog-highlight>fromState</span>,  <span xblog-highlight>toState</span> and  <span xblog-highlight>totalTime</span></p>
+<p>As you can see, in above example, we also hook callbacks by using <span xblog-highlight>(@myState.start)</span> and <span xblog-highlight>(@myState.done)</span>.</p>
+<p>A callback is fired when an animation is started and also when it is done. It receive an <span xblog-highlight>AnimationTransitionEvent</span> which contains useful properties such as  <span xblog-highlight>fromState</span>,  <span xblog-highlight>toState</span> and  <span xblog-highlight>totalTime</span>.</p>
 <br/>
 <h2 id="enter-leave-transition" class="section-heading">Enter-Leave transition</h2>
-<p>In this subject, we'll show you about two special states <span xblog-highlight>wildcard state</span> and <span xblog-highlight>void state</span></p>
+<p>In this subject, we'll show you about two special states <span xblog-highlight>wildcard state</span> and <span xblog-highlight>void state</span>.</p>
 <br/>
 <h3 id="wildcard-state" class="section-subheading">Wildcard state</h3>
 <p>The * ("wildcard") state matches any animation state. This is useful for defining styles and transitions that apply regardless of which state the animation is in. For example:</p>
