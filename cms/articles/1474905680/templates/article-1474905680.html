@@ -31,21 +31,21 @@
 <br/>
 <p>JavaScript expressions that have or promote side effects are prohibited, including:</p>
 <br/>
-<p>- Assignments (=, +=, -=, ...)</p>
+<p>- Assignments (=, +=, -=, ...).</p>
 <p>- New</p>
 <p>- Chaining expressions with ; or ,</p>
-<p>- Increment and decrement operators (++ and --)</p>
+<p>- Increment and decrement operators (++ and --).</p>
 <br/>
 <p>Other notable differences from JavaScript syntax include:</p>
 <br/>
 <p>- No support for the bitwise operators | and &</p>
-<p>- New template expression operators, such as | and ?.</p>
+<p>- New template expression operators, such as | and ?</p>
 <br/>
 <h3 id="expression-context" class="section-subheading">Expression context</h3>
 <p>Template expressions cannot refer to anything in the global namespace. They can’t refer to <span xblog-highlight>window</span> or <span xblog-highlight>document</span>. They can’t call <span xblog-highlight>console.log</span> or <span xblog-highlight>Math.max</span>. They are restricted to referencing members of the expression context.</p>
 <br/>
 <p>The expression context is typically the component instance, which is the source of binding values.</p>
-<p>The expression context can include objects other than the component such as a <a href="/#template-reference-variables">template reference variable</a></p>
+<p>The expression context can include objects other than the component such as a <a href="/#template-reference-variables">template reference variable</a>.</p>
 <br/>
 <h3 id="expression-guidelines" class="section-subheading">Expression guidelines</h3>
 <p>There're guidelines you should follow while using template expressions.</p>
@@ -72,15 +72,15 @@
 <p>A template statement responds to an event raised by a binding target such as an element, component, or directive.</p>
 <p>Responding to events is the other side of Angular's <strong>unidirectional data flow</strong>. We're free to change anything, anywhere, during this turn of the event loop.</p>
 <br/>
-<p>Like template expressions, template statements use a language that looks like JavaScript. The template statement parser is different than the template expression parser and specifically supports both basic assignment (=) and chaining expressions (with ; or ,)</p>
+<p>Like template expressions, template statements use a language that looks like JavaScript. The template statement parser is different than the template expression parser and specifically supports both basic assignment (=) and chaining expressions (with ; or ,).</p>
 <br/>
 <p>However, certain JavaScript syntax is not allowed:</p>
 <br/>
-<p>- New</p>
+<p>- New.</p>
 <p>- Increment and decrement operators, ++ and --</p>
 <p>- Operator assignment, such as += and -=</p>
 <p>- The bitwise operators | and &</p>
-<p>- The template expression operators</p>
+<p>- The template expression operators.</p>
 <br/>
 <h3 id="statement-context" class="section-subheading">Statement context</h3>
 <p>As with template expressions, Template statements cannot refer to anything in the global namespace.</p>
@@ -114,7 +114,7 @@
 <br/>
 <h3 id="the-pipe-operator" class="section-subheading">The pipe operator ( | )</h3>
 <p>The result of an expression might require some transformation before we’re ready to use it in a binding.</p>
-<p>Pipes are simple functions that accept an input value and return a transformed value. They're easy to apply within template expressions, using the pipe operator <span xblog-highlight>( | )</span></p>
+<p>Pipes are simple functions that accept an input value and return a transformed value. They're easy to apply within template expressions, using the pipe operator <span xblog-highlight>( | )</span>.</p>
 <br/>
 <p>For example, we might want to uppercase a title with pipe like this.</p> 
 <br/>

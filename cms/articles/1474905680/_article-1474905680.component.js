@@ -5,8 +5,6 @@ import highlight from 'highlight.js';
 import { xblogTableContentService } from 'xblog-cores/modules';
 import { resourceUtils } from 'xblog-cores/utils';
 
-import { cmsArticleService } from '../../cores/services';
-
 
 export var article1474905680Component = Component({
   selector: 'article',
@@ -18,13 +16,11 @@ export var article1474905680Component = Component({
 .Class({
   constructor: [
     DomSanitizer,
-    cmsArticleService,
     xblogTableContentService,
 
-    function (sanitizer, articleService, tableContentService){
+    function (sanitizer, tableContentService){
       this.id = 1474905680;
       this.sanitizer = sanitizer;
-      this.articleService = articleService;
       this.tableContentService = tableContentService;
     }
   ],
@@ -53,17 +49,17 @@ export var article1474905680Component = Component({
 
     this.interpolation = {
       codeBlocks: {
-        1: this.getCodeBlock('interpolation.html'),
+        1: this.getCodeBlock(getInterpolation),
       }
     }; 
 
     this.templateRefVariable = {
       sourceCode: {
-        name: 'example.component.js',
+        name: 'TemplateRef variable',
         link: resourceUtils.getGithubArticleFileLink(this.id, 'template-ref-variable/example.component.js')
       },
       codeBlocks: {
-        1: this.getCodeBlock('template-ref-variable.html'),
+        1: this.getCodeBlock(getTemplateRefVariable),
       },
       screenCaptures: {
         1: resourceUtils.getImg('templateRefVariable-example-1474905680.png')
@@ -72,29 +68,80 @@ export var article1474905680Component = Component({
 
     this.pipeOperator = {
       codeBlocks: {
-        1: this.getCodeBlock('pipe-operator-1.html'),
-        2: this.getCodeBlock('pipe-operator-2.html'),
-        3: this.getCodeBlock('pipe-operator-3.html'),
+        1: this.getCodeBlock(getPipeOperator01),
+        2: this.getCodeBlock(getPipeOperator02),
+        3: this.getCodeBlock(getPipeOperator03),
       }
     }; 
 
     this.safeNavOperator = {
       sourceCode: {
-        name: 'example.component.js',
+        name: 'Safe Navigation Operator',
         link: resourceUtils.getGithubArticleFileLink(this.id, 'safe-nav-operator/example.component.js')
       },
       codeBlocks: {
-        1: this.getCodeBlock('safe-nav-operator.html'),
+        1: this.getCodeBlock(getSafeNavOperator),
       }
     };
   },
 
-  getCodeBlock: function(fileName, lang) {
+  getCodeBlock: function(getter, lang) {
     var _langs = lang ? [ lang ] : ['javascript', 'html', 'css'];
 
-    var _codeBlock = this.articleService.getCodeBlock(this.id, fileName); 
-    _codeBlock = highlight.highlightAuto(_codeBlock, _langs).value;
+    var _codeBlock = highlight.highlightAuto(getter().replace('\n', '').replace(/^    /gm, ''), _langs).value;
 
     return this.sanitizer.bypassSecurityTrustHtml(_codeBlock);
   }
 });
+
+function getInterpolation(){
+  return `
+    <div>
+      <h1>{{title}}</h1>
+      <img src="{{imageUrl}}">
+    </div>`;
+}
+
+function getTemplateRefVariable(){
+  return `
+    <input #email>
+    <button (click)="print(email.value)">Print</button>`;
+}
+
+function getPipeOperator01(){
+  return `<div>{{title | uppercase}}</div>`;
+}
+
+function getPipeOperator02(){
+  return `<div>{{title | uppercase | lowercase}}</div>`;
+}
+
+function getPipeOperator03(){
+  return `<div>{{currentDate | date:'longDate'}}</div>`;
+}
+
+function getSafeNavOperator(){
+  return `
+    export var exampleComponent = ngCore.Component({
+      selector: 'my-example',
+      template: [
+        '<h1>Safe Navigation Operator</h1>',
+        '<div>{{datasource[0].project?.category?.name}}</div>',
+        '<div>{{datasource[1].project?.category?.name}}</div>'
+      ].join('')
+    })
+    .Class({
+      constructor: function(){},
+
+      ngOnInit: function(){
+        this.datasource = [
+          {
+            project: { category: { name: 'project 1' } }
+          },
+          {
+            project: { category: null }
+          }
+        ];
+      }
+    });`;
+}
