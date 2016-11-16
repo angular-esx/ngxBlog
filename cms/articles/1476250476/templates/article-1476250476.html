@@ -7,13 +7,13 @@
 <p>Application state change is caused by three things:</p>
 <br/>
 <p>- <strong>Events:</strong> User events like click, change, submit, …</p>
-<p>- <strong>XMLHttpRequests:</strong> When fetching data from a remote service</p>
+<p>- <strong>XMLHttpRequests:</strong> When fetching data from a remote service.</p>
 <p>- <strong>Timers:</strong> setTimeout(), setInterval(), ...</p>
 <br/>
 <p>You can realize easily that <strong>they are all asynchronous</strong>.</p>
 <p>Because Angular takes advantage of Zones which is why Angular can easily find out, when to update the DOM if you make a change to component's input property by using event or timer or other async ways.</p>
 <br/>
-<p>In fact, the code that tells Angular to perform change detection is as simple as this</p>
+<p>In fact, the code that tells Angular to perform change detection is as simple as this.</p>
 <br/>
 <xblog-code-panel type="no-header">
   <xblog-code [innerHtml]="ngZone.codeBlocks[1]"></xblog-code>
@@ -38,7 +38,7 @@
 <br/>
 <p>- <strong>onTurnStart()</strong> Notifies subscribers just before Angular’s event turn starts.</p>
 <p>- <strong>onTurnDone()</strong> Notifies subscribers immediately after Angular’s zone is done processing the current turn and any micro tasks scheduled from that turn.</p>
-<p>- <strong>onEventDone()</strong> Notifies subscribers immediately after the final onTurnDone() callback</p>
+<p>- <strong>onEventDone()</strong> Notifies subscribers immediately after the final onTurnDone() callback.</p>
 <br/>
 <p>The main reason Angular adds its own event emitters instead of relying on <span xblog-highlight>beforeTask</span> and <span xblog-highlight>afterTask</span> callbacks, is that it has to keep track of timers and other micro tasks.</p>
 <p>It’s also nice that Observables are used as an API to handle these events.</p>
@@ -54,7 +54,7 @@
 <br/>
 <br/>
 <p>In above example, first, we injected <span xblog-highlight>NgZone</span> into <span xblog-highlight>exampleComponent</span>.</p>
-<p>Next, inside of exampleComponent's <span xblog-highlight>process()</span> we execution something logic by using <span xblog-highlight>runOutsideAngularZone()</span></p>
+<p>Next, inside of exampleComponent's <span xblog-highlight>process()</span> we execution something logic by using <span xblog-highlight>runOutsideAngularZone()</span>.</p>
 <p>If you change any application state at here, Angular will not perform any change detection, it mean that there aren't' any updates for the UI.</p>
 <p>However, once our logic is done, we run another task inside Angular’s zone again using <span xblog-highlight>run()</span> which in turn causes Angular to perform change detection which will update the UI.</p>
 <br/>
@@ -76,7 +76,7 @@
 </xblog-code-panel>
 <br/>
 <br/>
-<p>As you can see, we have a component tree that <span xblog-highlight>exampleComponent</span> is parent of <span xblog-highlight>childComponent</span>, and <span xblog-highlight>childComponent</span> is parent of <span xblog-highlight>infoComponent</span></p>
+<p>As you can see, we have a component tree that <span xblog-highlight>exampleComponent</span> is parent of <span xblog-highlight>childComponent</span>, and <span xblog-highlight>childComponent</span> is parent of <span xblog-highlight>infoComponent</span>.</p>
 <p>In exampleComponent, we created a <span xblog-highlight>model</span> then bound it to childComponent & infoComponent.</p>
 <p>When <span xblog-highlight>changeModel()</span> is triggered, we'll set new value to <span xblog-highlight>text</span> property of exampleComponent.</p>
 <p>Our example is very simple, right ? Now run it and look at the result below.</p>
@@ -86,7 +86,7 @@
 <p>What's important at here ? The important thing we want to show you is that although <span xblog-highlight>text</span> property of <span xblog-highlight>exampleComponent</span> isn't bound to <span xblog-highlight>childComponent</span>, but when we changed it, Angular would check all our components. That's the way Angular run change detection by default as I mentioned above.</p>
 <br/>
 <p>But we can make Angular do smarter change detection by telling Angular to only run change detection for the parts of the application that changed their state.</p>
-<p>In order to do that for our example, we'll set <span xblog-highlight>ChangeDetectionStrategy.OnPush</span> to  <span xblog-highlight>childComponent</span></p>
+<p>In order to do that for our example, we'll set <span xblog-highlight>ChangeDetectionStrategy.OnPush</span> to  <span xblog-highlight>childComponent</span>.</p>
 <br/>
 <xblog-code-panel>
   <xblog-title>{{onPush.sourceCode.name}}</xblog-title>
@@ -110,13 +110,13 @@
 <p>What's the result you expect ? We guess that you expect the firstname in UI will be updated, right ? But actually, there is not any update at there ! Why ?</p>
 <br/>
 <p>Because we has mutated <span xblog-highlight>model</span> by changing its <span xblog-highlight>firstname</span> property.</p>
-<p>Even though that property is going to be changed, <strong>the model reference itself stays the same.</strong></p>
+<p>Even though that property is going to be changed, <strong>the model reference itself stays the same.</strong>.</p>
 <p>As you know about the way Angular work with <span xblog-highlight>ChangeDetectionStrategy.OnPush</span>, It skip change detection for this component’s subtree if none of its inputs changed.</p>
 <p>That's why <span xblog-highlight>infoComponent</span> isn't checked, and has no any update for the UI.</p>
 <br/>
 <p>The solution for this case is that we'll make <span xblog-highlight>model</span> input property immutable.</p>
-<p>It mean that <strong>If there’s a change to model, we get a new reference.</strong></p>
-<p>For our example, we just use <span xblog-highlight>exampleService</span> to create a new reference when make a change to model. Of course, you can use any immutable library you like. One recommend for you is <a [href]="references.immutableLink" rel="nofollow">Immutable.js</a></p>
+<p>It mean that <strong>If there’s a change to model, we get a new reference.</strong>.</p>
+<p>For our example, we just use <span xblog-highlight>exampleService</span> to create a new reference when make a change to model. Of course, you can use any immutable library you like. One recommend for you is <a [href]="references.immutableLink" rel="nofollow">Immutable.js</a>.</p>
 <br/>
 <xblog-code-panel type="no-header">
   <xblog-title>{{immutable.sourceCode.name}}</xblog-title>
@@ -129,7 +129,7 @@
 <p>In your real application, you always need to fetch data from remote service by using <span xblog-highlight>Observable</span> or using <span xblog-highlight>Timer</span> to do something asynchronously.</p>
 <p>There's an issue we want to show you when use them with <span xblog-highlight>ChangeDetectionStrategy.OnPush</span> at there.</p>
 <br/>
-<p>First, we'll re-write our example, remove <span xblog-highlight>changeModel()</span> from <span xblog-highlight>exampleComponent</span>, and use a timer to create a new reference for <span xblog-highlight>model</span> property of <span xblog-highlight>childComponent</span></p>
+<p>First, we'll re-write our example, remove <span xblog-highlight>changeModel()</span> from <span xblog-highlight>exampleComponent</span>, and use a timer to create a new reference for <span xblog-highlight>model</span> property of <span xblog-highlight>childComponent</span>.</p>
 <br/>
 <xblog-code-panel type="no-header">
   <xblog-code [innerHtml]="changeDetectorRef.codeBlocks[1]"></xblog-code>
@@ -147,5 +147,5 @@
 </xblog-code-panel>
 <br/>
 <br/>
-<p>We injected <span xblog-highlight>ChangeDetectorRef</span> into <span xblog-highlight>childComponent</span>'s constructor. Then inside of the timer, we called <span xblog-highlight>changeDetectorRef.markForCheck()</span></p>
+<p>We injected <span xblog-highlight>ChangeDetectorRef</span> into <span xblog-highlight>childComponent</span>'s constructor. Then inside of the timer, we called <span xblog-highlight>changeDetectorRef.markForCheck()</span>.</p>
 <p>That's it. Now, when change detection is performed, it’ll simply go from top to bottom. Once the change detection run is over, it’ll restore the <span xblog-highlight>OnPush</span> state for the entire tree.</p>
