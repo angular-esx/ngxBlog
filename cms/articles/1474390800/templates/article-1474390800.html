@@ -15,12 +15,12 @@
 </xblog-code-panel>
 <br/>
 <br/>
-<p>It's just a simple example, we declared a service <span xblog-highlight>exampleService</span> then injected it into the component <span xblog-highlight>exampleComponent</span></p>
+<p>It's just a simple example, we declared a service <span xblog-highlight>exampleService</span> then injected it into the component <span xblog-highlight>exampleComponent</span>.</p>
 <p>We guess that you expect the text "Hello World" will display in your screen, right ? But actually, you'll get an error.</p>
 <br/>
 <div class="screen-capture"><img [src]="forwardRef.screenCaptures[1]"/></div>
 <br/>
-<p>What's happened there ? This issue is <strong>order of declarations</strong>. As you can see, we have injected <span xblog-highlight>exampleService</span> into <span xblog-highlight>exampleComponent</span> while we declared <span xblog-highlight>exampleService</span> after <span xblog-highlight>exampleComponent</span></p>
+<p>What's happened there ? This issue is <strong>order of declarations</strong>. As you can see, we have injected <span xblog-highlight>exampleService</span> into <span xblog-highlight>exampleComponent</span> while we declared <span xblog-highlight>exampleService</span> after <span xblog-highlight>exampleComponent</span>.</p>
 <p>If we re-declare <span xblog-highlight>exampleService</span> before injecting it, everything'll work well.</p>
 <br/>
 <p>So in Angular 2, we <strong>must</strong> define everthing before it's usage ? The answer is <strong>"No, we mustn't."</strong>, this's case which <span xblog-highlight>forwardRef()</span> comes into play.</p>

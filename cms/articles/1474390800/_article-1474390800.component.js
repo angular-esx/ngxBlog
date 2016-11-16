@@ -5,8 +5,6 @@ import highlight from 'highlight.js';
 import { xblogTableContentService } from 'xblog-cores/modules';
 import { resourceUtils } from 'xblog-cores/utils';
 
-import { cmsArticleService } from '../../cores/services';
-
 
 export var article1474390800Component = Component({
   selector: 'article',
@@ -18,13 +16,11 @@ export var article1474390800Component = Component({
 .Class({
   constructor: [
     DomSanitizer,
-    cmsArticleService,
     xblogTableContentService,
 
-    function (sanitizer, articleService, tableContentService){
+    function (sanitizer, tableContentService){
       this.id = 1474390800;
       this.sanitizer = sanitizer;
-      this.articleService = articleService;
       this.tableContentService = tableContentService;
     }
   ],
@@ -44,12 +40,12 @@ export var article1474390800Component = Component({
 
     this.forwardRef = {
       sourceCode: {
-        name: 'forward-references',
+        name: 'Forward references',
         link: resourceUtils.getGithubArticleFileLink(this.id, 'forward-references')
       },
       codeBlocks: {
-        1: this.getCodeBlock('forward-references-1.html'),
-        2: this.getCodeBlock('forward-references-2.html')
+        1: this.getCodeBlock(getForwardReferences01),
+        2: this.getCodeBlock(getForwardReferences02)
       },
       screenCaptures: {
         1: resourceUtils.getImg('forwardReferences-example-1-1474390800.png')
@@ -57,13 +53,63 @@ export var article1474390800Component = Component({
     };
   },
 
-  getCodeBlock: function(fileName, lang) {
+  getCodeBlock: function(getter, lang) {
     var _langs = lang ? [ lang ] : ['javascript', 'html', 'css'];
 
-    var _codeBlock = this.articleService.getCodeBlock(this.id, fileName); 
-    _codeBlock = highlight.highlightAuto(_codeBlock, _langs).value;
+    var _codeBlock = highlight.highlightAuto(getter().replace('\n', '').replace(/^    /gm, ''), _langs).value;
 
     return this.sanitizer.bypassSecurityTrustHtml(_codeBlock);
   }
 });
   
+function getForwardReferences01(){
+  return `
+    import { Component, Class } from '@angular/core';
+
+
+    export var exampleComponent = Component({
+      selector: 'my-example',
+      template: '<p>{{text}}</p>'
+    })
+    .Class({
+      constructor: [
+        exampleService,
+        
+        function(exampleService){
+          this.text = exampleService.getText();
+        }
+      ]
+    });
+
+    export var exampleService = Class({
+      constructor: function(){},
+
+      getText: function(){ return 'Hello World'; }
+    });`;
+}
+
+function getForwardReferences02(){
+  return `
+    import { Component, Class, forwardRef } from '@angular/core';
+
+
+    export var exampleComponent = Component({
+      selector: 'my-example',
+      template: '<p>{{text}}</p>'
+    })
+    .Class({
+      constructor: [
+        forwardRef(function(){ return exampleService; }),
+        
+        function exampleComponent(exampleService){
+          this.text = exampleService.getText();
+        }
+      ]
+    });
+
+    export var exampleService = Class({
+      constructor: function(){},
+
+      getText: function(){ return 'Hello World'; }
+    });`;
+}
