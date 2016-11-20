@@ -13,15 +13,17 @@ import {
   xblogTableContentService
 } from 'xblog-cores/modules';
 
-var _ARTICLES = [];
+import { article1473861890 } from './1473861890';
 
+var _ARTICLES = [
+  article1473861890
+];
 
 export var ARTICLE_STORE = _init();
 
 var _ARTICLE_COMPONENTS = ARTICLE_STORE.LIST.map(function(article){
   return article.content;
 });
-
 
 export var cmsArticlesModuleMetadata = Class({
   constructor: function cmsArticlesModuleMetadata(){
