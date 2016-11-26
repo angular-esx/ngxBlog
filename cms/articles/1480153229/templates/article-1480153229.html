@@ -1,0 +1,88 @@
+<xblog-table-content [model]="tableContents">
+  <xblog-title>
+    <h5 class="section-subject">Table of Contents</h5>
+  </xblog-title>
+</xblog-table-content>
+
+<h2>Components</h2>
+
+<p>In Angular 2, Components are the main way we build and specify elements and logic on the page.</p>
+<br/>
+<p>Every Angular application has at least one component.</p>
+
+<p>Components are the basic building blocks of Angular applications. A component controls a portion of the screen—a view—through
+  its associated template.</p>
+
+<br/>
+
+<p>A Simple Component.</p>
+
+<br/>
+
+<xblog-code-panel>
+  <xblog-title>{{components.simpleComponent.sourceCode.name}}</xblog-title>
+  <a xblog-source-code [href]="components.simpleComponent.sourceCode.link">Full Code</a>
+  <xblog-code [innerHtml]="components.simpleComponent.codeBlocks"></xblog-code>
+</xblog-code-panel>
+
+<br/><br/>
+
+<p>We use <strong>Component</strong> to add some metadata to AppComponent:</p>
+
+<ul>
+  <li>A selector that specifies a simple CSS selector for an HTML element that represents the component.</li>
+  <li>A template that tells Angular how to render the component's view.</li>
+</ul>
+
+<p>Also, we have component <strong>Class</strong> that controls the appearance and behavior of a view through its template.
+  Here, we only have the root component, AppComponent. Since we don't need any application logic in the simple example, it's
+  empty.</p>
+<br/>
+
+<p>We export the AppComponent class so that we can import it into the application.</p>
+
+<br/>
+
+<p>Notes: In <strong>Class</strong>, we need at least constructor function. If we don't have the logic for component, we need
+  to create empty constructor function as above component.</p>
+
+<br/>
+
+<p>The component will have other attributes such as: host, input, output, directives, styles, etc.</p>
+
+<br/>
+
+<p>Here is a component that has some attributes.</p>
+
+<br/>
+
+<xblog-code-panel>
+  <xblog-title>{{components.complexComponent.sourceCode.name}}</xblog-title>
+  <xblog-code [innerHtml]="components.complexComponent.codeBlocks"></xblog-code>
+</xblog-code-panel>
+
+<br/><br/>
+
+<ul>
+  <li>Styles/StyleUrls attribtue: A component can have some styles that will be contained in styles or styleUrls.</li>
+  <li>Inputs/Outputs attributes: Recevie/send data from other directives/components, it help us share data between components/directives
+    and components/directives.</li>
+  <li>Directives attribute: Inject other directive/components to a component.</li>
+  <li>Providers attribute: Inject services to a component.</li>
+</ul>
+
+<h2>Directives</h2>
+
+<p>In angular 2, Directives are the same Components without the template/templateUrl.</p>
+
+<p>This is a HightLight directive to hight light a text with dynamic color.</p>
+
+<br/>
+
+<xblog-code-panel>
+  <xblog-title>{{components.simpleDirective.sourceCode.name}}</xblog-title>
+  <a xblog-source-code [href]="components.simpleDirective.sourceCode.link">Full Code</a>
+  <xblog-code [innerHtml]="components.simpleDirective.codeBlocks"></xblog-code>
+</xblog-code-panel>
+
+<br/><br/>

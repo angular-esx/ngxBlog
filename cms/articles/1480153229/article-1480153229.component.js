@@ -28,12 +28,38 @@ export var article1480153229Component = Component({
     this.tableContents = this.tableContentService
       .getBuilder()
       .addHeadings([
-        { id: 'my-heading', name: 'My heading' }
+        { id: 'Components', name: 'Components' },
+        { id: 'Directives', name: 'Directives' }
       ])
       .addSubHeadings([
         { headingId: 'my-heading', id: 'my-subheading', name: 'My subheading' },
       ])
       .build();
+
+    this.components = {
+      simpleComponent: {
+        sourceCode: {
+          name: 'A Simple Component',
+          link: resourceUtils.getGithubArticleFileLink(this.id, 'ng-on-changes/example.component.js')
+        },
+        codeBlocks: this.getCodeBlock(getSimpleComponent)
+      },
+      complexComponent: {
+        sourceCode: {
+          exampleComponent: {
+            name: 'Component has some attributes'
+          }
+        },
+        codeBlocks: this.getCodeBlock(getComplexComponent)
+      },
+      simpleDirective: {
+        sourceCode: {
+          name: 'A Simple Directive',
+          link: resourceUtils.getGithubArticleFileLink(this.id, 'ng-on-changes/example.component.js')
+        },
+        codeBlocks: this.getCodeBlock(getSimpleDirective)
+      },
+    };
   },
 
   getCodeBlock: function (getter, lang) {
@@ -44,3 +70,49 @@ export var article1480153229Component = Component({
     return this.sanitizer.bypassSecurityTrustHtml(_codeBlock);
   }
 });
+
+
+function getSimpleComponent() {
+  return `
+    import { Component } from '@angular/core';
+
+    export const AppComponent = Component({
+      selector: 'my-app',
+      template: '<h1>My First Component</h1>'
+    })
+    .Class({
+      constructor: function(){ }
+    });`;
+}
+
+function getComplexComponent() {
+  return `
+    import { Component } from '@angular/core';
+    import { HeroService } from './HeroService';
+    import { HightLight } from './HightLight';
+
+    export const HeroListComponent = Component({
+      ...
+      inputs: ['hero'],
+      outputs: ['heroUpdated'],
+      styles: ['h1 { color: "red" }'],
+      providers: [HeroService],
+      directives: [HightLight]
+    })
+    .Class({
+      constructor: function(){ }
+    });`;
+}
+
+function getSimpleDirective() {
+  return `
+    import { Directive } from '@angular/core';
+
+    export const HightLight = Component({
+      selector: '[hightlight]',
+      inputs: ['color']
+    })
+    .Class({
+      constructor: function(){ }
+    });`;
+}
