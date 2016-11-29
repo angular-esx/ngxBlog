@@ -120,7 +120,7 @@ function registerServicesAtTheModuleLevel() {
 
     export const AppModule = NgModule({
       ...
-      providers: [ HeroService ] // You can put your services here!
+      providers: [ HeroService ] // We can put our services here!
     }).Class({
       constructor: function() {}
     });
