@@ -13,7 +13,11 @@ import {
   xblogTableContentService
 } from 'xblog-cores/modules';
 
-var _ARTICLES = [];
+import { article1480177579 } from './1480177579';
+
+var _ARTICLES = [
+  article1480177579
+];
 
 
 export var ARTICLE_STORE = _init();

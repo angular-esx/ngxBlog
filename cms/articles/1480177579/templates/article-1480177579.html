@@ -1,0 +1,58 @@
+<p>Every application is composed of a lot of subsystems that do different things like logging, data access, caching, specific application domain knowledge, etc. Depending on the type of application that we are building or the framework that we are using there’s different ways to represent these subsystems.</p>
+<br/>
+
+<p>Angular 2 uses the concept of services, an Angular 2 service is a class that encapsulates some sort of functionality and provides it as a service for the rest of our application.</p>
+
+<br/>
+
+<p>If we have an Angular 1 background we’ll welcome this simplification in the Angular conceptual model: there’s no more service/factory/constant/provider conundrum. In Angular 2 there’s only services.</p>
+
+<xblog-table-content [model]="tableContents">
+  <xblog-title>
+    <h5 class="section-subject">Table of Contents</h5>
+  </xblog-title>
+</xblog-table-content>
+
+<br/>
+
+<h3>Creating a simple Service</h3>
+
+<br/>
+
+<xblog-code-panel>
+  <xblog-title>{{examples.simpleService.sourceCode.name}}</xblog-title>
+  <a xblog-source-code [href]="examples.simpleService.sourceCode.link">Full Code</a>
+  <xblog-code [innerHtml]="examples.simpleService.codeBlocks"></xblog-code>
+</xblog-code-panel>
+
+<br/><br/><br/>
+
+<h3>Inject Service to Component</h3>
+
+<p>Using Angular 2 DI to Inject Our Hero Service to the Hero List Component. We inject it into the HeroListComponent via its constructor:</p>
+
+<br/>
+
+<xblog-code-panel>
+  <xblog-title>{{examples.injectServiceToComponent.sourceCode.name}}</xblog-title>
+  <a xblog-source-code [href]="examples.injectServiceToComponent.sourceCode.link">Full Code</a>
+  <xblog-code [innerHtml]="examples.injectServiceToComponent.codeBlocks"></xblog-code>
+</xblog-code-panel>
+
+<br/><br/><br/>
+
+<h3>Register Services at the Module Level</h3>
+
+<p>When would we want to do that? – we may wonder. Well, whenever we want to use the same instance of a service for our whole application. When we register services at the module level, we can use service in component without register at providers.</p>
+
+<br/>
+
+<p>This is an example of the registration service at the module level and use the service in components.</p>
+
+<br/>
+
+<xblog-code-panel>
+  <xblog-title>{{examples.registerServicesAtTheModuleLevel.sourceCode.name}}</xblog-title>
+  <a xblog-source-code [href]="examples.registerServicesAtTheModuleLevel.sourceCode.link">Full Code</a>
+  <xblog-code [innerHtml]="examples.registerServicesAtTheModuleLevel.codeBlocks"></xblog-code>
+</xblog-code-panel>
