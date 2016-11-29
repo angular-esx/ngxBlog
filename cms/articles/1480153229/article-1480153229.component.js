@@ -108,7 +108,7 @@ function getSimpleDirective() {
   return `
     import { Directive } from '@angular/core';
 
-    export const HightLight = Component({
+    export const HightLight = Directive({
       selector: '[hightlight]',
       inputs: ['color']
     })
