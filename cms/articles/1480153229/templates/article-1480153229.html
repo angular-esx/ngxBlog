@@ -1,21 +1,32 @@
+<p>Full sources code example</p>
+<p>Version: Angular 2.4</p>
+
 <xblog-table-content [model]="tableContents">
   <xblog-title>
     <h5 class="section-subject">Table of Contents</h5>
   </xblog-title>
 </xblog-table-content>
 
-<h2>Components</h2>
+<h2>What is Component?</h2>
 
-<p>In Angular 2, Components are the main way we build and specify elements and logic on the page.</p>
+<p>In Angular 2, components are the main way we build and specify elements and logic on the page.</p>
+
 <br/>
-<p>Every Angular application has at least one component.</p>
 
-<p>Components are the basic building blocks of Angular applications. A component controls a portion of the screen—a view—through
+<p>Components are the most basic building block of an UI in an Angular application. An Angular application is a tree of Angular
+  components. Angular components are a subset of directives. Unlike directives, components always have a template and only
+  one component can be instantiated per an element in a template. A component controls a portion of the screen—a view—through
   its associated template.</p>
 
 <br/>
 
-<p>A Simple Component.</p>
+<p>A component must belong to an NgModule in order for it to be usable by another component or application. To specify that
+  a component is a member of an NgModule, you should list it in the declarations field of that NgModule.</p>
+
+<br/>
+
+<p>In addition to the metadata configuration specified via the Component, components can control their runtime behavior
+  by implementing various Life-Cycle hooks.</p>
 
 <br/>
 
@@ -36,23 +47,26 @@
 
 <p>Also, we have component <strong>Class</strong> that controls the appearance and behavior of a view through its template.
   Here, we only have the root component, AppComponent. Since we don't need any application logic in the simple example, it's
-  empty.</p>
+  empty.
+</p>
 <br/>
 
 <p>We export the AppComponent class so that we can import it into the application.</p>
 
 <br/>
 
-<p>Notes: In <strong>Class</strong>, we need at least constructor function. If we don't have the logic for component, we need
+<p><strong>Note:</strong> We are using angular 2 by Javascript, so we need at least constructor function. If we don't have the logic for component, we need
   to create empty constructor function as above component.</p>
 
 <br/>
 
-<p>The component will have other attributes such as: host, input, output, directives, styles, etc.</p>
+<h2>Component's Metadata Properties</h2>
+
+<p>A component needs at least 2 metadata properties: selector and template. So, it can have a lot of metadata properties to handle logic and behavior.</p>
 
 <br/>
 
-<p>Here is a component that has some attributes.</p>
+<p>Here is a component using <strong>inputs</strong> to list of class property names to data-bind as component inputs and <strong>outputs</strong> to list of class property names that expose output events that others can subscribe to.</p>
 
 <br/>
 
@@ -63,17 +77,46 @@
 
 <br/><br/>
 
+<p>In addition, a component has many others metadata properties:</p>
+
 <ul>
-  <li>Styles/StyleUrls attribtue: A component can have some styles that will be contained in styles or styleUrls.</li>
-  <li>Inputs/Outputs attributes: Recevie/send data from other directives/components, it help us share data between components/directives
-    and components/directives.</li>
-  <li>Directives attribute: Inject other directive/components to a component.</li>
-  <li>Providers attribute: Inject services to a component.</li>
+  <li><strong>animations</strong> - list of animations of this component.</li>
+  <li><strong>changeDetection</strong> - change detection strategy used by this component.</li>
+  <li><strong>encapsulation</strong> - style encapsulation strategy used by this component.</li>
+  <li><strong>entryComponents</strong> - list of components that are dynamically inserted into the view of this component.</li>
+  <li><strong>exportAs</strong> - name under which the component instance is exported in a template.</li>
+  <li><strong>host</strong> - map of class property to host element bindings for events, properties and attributes.</li>
+  <li><strong>inputs</strong> - list of class property names to data-bind as component inputs.</li>
+  <li><strong>interpolation</strong> - custom interpolation markers used in this component's template.</li>
+  <li><strong>moduleId</strong> - ES/CommonJS module id of the file in which this component is defined.</li>
+  <li><strong>outputs</strong> - list of class property names that expose output events that others can subscribe to.</li>
+  <li><strong>providers</strong> - list of providers available to this component and its children.</li>
+  <li><strong>queries</strong> - configure queries that can be injected into the component.</li>
+  <li><strong>selector</strong> - css selector that identifies this component in a template.</li>
+  <li><strong>styleUrls</strong> - list of urls to stylesheets to be applied to this component's view.</li>
+  <li><strong>styles</strong> - inline-defined styles to be applied to this component's view.</li>
+  <li><strong>template</strong> - inline-defined template for the view.</li>
+  <li><strong>templateUrl</strong> - url to an external file containing a template for the view.</li>
+  <li><strong>viewProviders</strong> - list of providers available to this component and its view children.</li>
 </ul>
 
-<h2>Directives</h2>
+<h2>What is Directive?</h2>
 
-<p>In angular 2, Directives are the same Components without the template/templateUrl.</p>
+<p>Directive allows you to mark a class as an Angular directive and provide additional metadata that determines how the directive should be processed, instantiated and used at runtime.</p>
+
+<br/>
+
+<p>Directives allow you to attach behavior to elements in the DOM..</p>
+
+<br/>
+
+<p>A directive must belong to an NgModule in order for it to be usable by another directive, component, or application. To specify that a directive is a member of an NgModule, you should list it in the declarations field of that NgModule.</p>
+
+<br/>
+
+<p>In addition to the metadata configuration specified via the Directive, directives can control their runtime behavior by implementing various Life-Cycle hooks.</p>
+
+<br/>
 
 <p>This is a HightLight directive to hight light a text with dynamic color.</p>
 
@@ -85,4 +128,18 @@
   <xblog-code [innerHtml]="components.simpleDirective.codeBlocks"></xblog-code>
 </xblog-code-panel>
 
-<br/><br/>
+<br/><br/><br/>
+
+<h2>Directive's Metadata Properties</h2>
+
+<p>The directive does not have template and style, but it has a lot of the metadata properties to handle behavior</p>
+
+<ul>
+  <li><strong>exportAs</strong> - name under which the component instance is exported in a template.</li>
+  <li><strong>host</strong> - map of class property to host element bindings for events, properties and attributes.</li>
+  <li><strong>inputs</strong> - list of class property names to data-bind as component inputs.</li>
+  <li><strong>outputs</strong> - list of class property names that expose output events that others can subscribe to.</li>
+  <li><strong>providers</strong> - list of providers available to this component and its children.</li>
+  <li><strong>queries</strong> - configure queries that can be injected into the component.</li>
+  <li><strong>selector</strong> - css selector that identifies this component in a template.</li>
+</ul>

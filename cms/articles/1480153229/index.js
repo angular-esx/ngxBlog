@@ -3,7 +3,7 @@ import { article1480153229Component } from './article-1480153229.component';
 
 export var article1480153229 = {
   id: 1480153229,
-  title: 'Components Directives',
+  title: 'Components Directives in Angular 2',
   postedDate: 'Sat Nov 26 2016 16:40:28 GMT+0700 (ICT)',
   author: 'Thanh Tran',
   cover: resourceUtils.getImg('xblog-home-cover.jpg'),

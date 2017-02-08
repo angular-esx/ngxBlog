@@ -28,8 +28,10 @@ export var article1480153229Component = Component({
     this.tableContents = this.tableContentService
       .getBuilder()
       .addHeadings([
-        { id: 'Components', name: 'Components' },
-        { id: 'Directives', name: 'Directives' }
+        { id: 'What is Component?', name: 'What is Component?' },
+        { id: 'Component\'s Metadata Properties', name: 'Component\'s Metadata Properties' },
+        { id: 'What is Directive?', name: 'What is Directive?' },
+        { id: 'Directive\'s Metadata Properties', name: 'Directive\'s Metadata Properties' }
       ])
       .addSubHeadings([
         { headingId: 'my-heading', id: 'my-subheading', name: 'My subheading' },
@@ -88,16 +90,12 @@ function getSimpleComponent() {
 function getComplexComponent() {
   return `
     import { Component } from '@angular/core';
-    import { HeroService } from './HeroService';
-    import { HightLight } from './HightLight';
 
     export const HeroListComponent = Component({
       ...
       inputs: ['hero'],
       outputs: ['heroUpdated'],
-      styles: ['h1 { color: "red" }'],
-      providers: [HeroService],
-      directives: [HightLight]
+      styles: ['h1 { color: "red" }']
     })
     .Class({
       constructor: function(){ }
