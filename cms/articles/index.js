@@ -1,7 +1,13 @@
-import { Class } from '@angular/core';
-import { BrowserModule }  from '@angular/platform-browser';
+import {
+  Class
+} from '@angular/core';
+import {
+  BrowserModule
+} from '@angular/platform-browser';
 
-import { ngxGridModule } from 'ngx-framework/modules';
+import {
+  ngxGridModule
+} from 'ngx-framework/modules';
 
 import {
   xblogCodePanelModule,
@@ -13,20 +19,24 @@ import {
   xblogTableContentService
 } from 'xblog-cores/modules';
 
-var _ARTICLES = [];
+import {
+  article1480153229
+} from './1480153229';
 
+var _ARTICLES = [
+  article1480153229
+];
 
 export var ARTICLE_STORE = _init();
 
-var _ARTICLE_COMPONENTS = ARTICLE_STORE.LIST.map(function(article){
+var _ARTICLE_COMPONENTS = ARTICLE_STORE.LIST.map(function(article) {
   return article.content;
 });
 
-
 export var cmsArticlesModuleMetadata = Class({
-  constructor: function cmsArticlesModuleMetadata(){
+  constructor: function cmsArticlesModuleMetadata() {
     Object.assign(this, {
-      imports: [ 
+      imports: [
         BrowserModule,
 
         ngxGridModule,
@@ -39,7 +49,7 @@ export var cmsArticlesModuleMetadata = Class({
         xblogPostModule
       ],
       declarations: _ARTICLE_COMPONENTS,
-      providers: [ 
+      providers: [
         xblogTableContentService
       ],
       entryComponents: _ARTICLE_COMPONENTS,
@@ -48,14 +58,13 @@ export var cmsArticlesModuleMetadata = Class({
   }
 });
 
-
 function _init() {
   let _list = [];
   let _map = {};
 
   _ARTICLES.forEach((article, index) => {
-    if(_validate(article, index)){ 
-      if(!_map[article.id]){
+    if (_validate(article, index)) {
+      if (!_map[article.id]) {
         _map[article.id] = article;
         _list.push(article);
       }
@@ -64,27 +73,49 @@ function _init() {
 
   _list.sort((article1, article2) => article2.id - article1.id);
 
-  return { LIST: _list, MAP: _map };
+  return {
+    LIST: _list,
+    MAP: _map
+  };
 }
 
 function _validate(article, index) {
   let _message = `Article ${article.id} is missing`;
 
   try {
-    if(!article.id){ throw `Article is at index ${index} missing id`; }
-    if(!article.title){ throw `${_message} title`; }
-    if(!article.postedDate){ throw `${_message} postedDate`; }
-    if(!article.author){ throw `${_message} author`; }
-    if(!article.cover){ throw `${_message} cover`; }
-    if(!article.routeLink){ throw `${_message} routeLink`; }
-    if(!article.relatedArticles){ throw `${_message} relatedArticles`; }
-    if(!article.tags){ throw `${_message} tags`; }
-    if(!article.description){ throw `${_message} description`; }
-    if(!article.content){ throw `${_message} content`; }
-  }
-  catch(ex){ 
+    if (!article.id) {
+      throw `Article is at index ${index} missing id`;
+    }
+    if (!article.title) {
+      throw `${_message} title`;
+    }
+    if (!article.postedDate) {
+      throw `${_message} postedDate`;
+    }
+    if (!article.author) {
+      throw `${_message} author`;
+    }
+    if (!article.cover) {
+      throw `${_message} cover`;
+    }
+    if (!article.routeLink) {
+      throw `${_message} routeLink`;
+    }
+    if (!article.relatedArticles) {
+      throw `${_message} relatedArticles`;
+    }
+    if (!article.tags) {
+      throw `${_message} tags`;
+    }
+    if (!article.description) {
+      throw `${_message} description`;
+    }
+    if (!article.content) {
+      throw `${_message} content`;
+    }
+  } catch (ex) {
     console.log(ex);
-    return false; 
+    return false;
   }
 
   return true;
