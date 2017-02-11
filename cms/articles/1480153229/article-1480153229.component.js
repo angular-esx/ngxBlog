@@ -5,7 +5,6 @@ import highlight from 'highlight.js';
 import { xblogTableContentService } from 'xblog-cores/modules';
 import { resourceUtils } from 'xblog-cores/utils';
 
-
 export var article1480153229Component = Component({
   selector: 'article',
   templateUrl: './templates/article-1480153229.html',
@@ -17,25 +16,38 @@ export var article1480153229Component = Component({
     DomSanitizer,
     xblogTableContentService,
 
-    function (sanitizer, tableContentService) {
+    function(sanitizer, tableContentService) {
       this.id = 1480153229;
       this.sanitizer = sanitizer;
       this.tableContentService = tableContentService;
     }
   ],
 
-  ngOnInit: function () {
+  ngOnInit: function() {
     this.tableContents = this.tableContentService
       .getBuilder()
-      .addHeadings([
-        { id: 'What is Component?', name: 'What is Component?' },
-        { id: 'Component\'s Metadata Properties', name: 'Component\'s Metadata Properties' },
-        { id: 'What is Directive?', name: 'What is Directive?' },
-        { id: 'Directive\'s Metadata Properties', name: 'Directive\'s Metadata Properties' }
+      .addHeadings([{
+          id: 'What is Component?',
+          name: 'What is Component?'
+        },
+        {
+          id: 'Component\'s Metadata Properties',
+          name: 'Component\'s Metadata Properties'
+        },
+        {
+          id: 'What is Directive?',
+          name: 'What is Directive?'
+        },
+        {
+          id: 'Directive\'s Metadata Properties',
+          name: 'Directive\'s Metadata Properties'
+        }
       ])
-      .addSubHeadings([
-        { headingId: 'my-heading', id: 'my-subheading', name: 'My subheading' },
-      ])
+      .addSubHeadings([{
+        headingId: 'my-heading',
+        id: 'my-subheading',
+        name: 'My subheading'
+      }, ])
       .build();
 
     this.components = {
@@ -64,7 +76,7 @@ export var article1480153229Component = Component({
     };
   },
 
-  getCodeBlock: function (getter, lang) {
+  getCodeBlock: function(getter, lang) {
     var _langs = lang ? [lang] : ['javascript', 'html', 'css'];
 
     var _codeBlock = highlight.highlightAuto(getter().replace('', '').replace(/^    /gm, ''), _langs).value;
@@ -72,7 +84,6 @@ export var article1480153229Component = Component({
     return this.sanitizer.bypassSecurityTrustHtml(_codeBlock);
   }
 });
-
 
 function getSimpleComponent() {
   return `
